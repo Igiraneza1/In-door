@@ -15,14 +15,14 @@ const navLinks: NavLink[] = [
 ];
 
 const categories = [
-  { name: "Furniture", href: "/categories/All Rooms" },
-  { name: "Headsets", href: "/categorie/Living Room" },
-  { name: "Sport", href: "/categories/Bedroom" },
-  { name: "Jackets", href: "/categories/Kitchen" },
-  { name: "Jackets", href: "/categories/Bathroom" },
-  { name: "Jackets", href: "/categories/Dinning" },
-  { name: "Jackets", href: "/categories/Office" },
-  { name: "Jackets", href: "/categories/Outdoor" },
+  { name: "All Rooms", href: "/categories/All Rooms" },
+  { name: "Living Room", href: "/categorie/Living Room" },
+  { name: "Bedroom", href: "/categories/Bedroom" },
+  { name: "Kitchen", href: "/categories/Kitchen" },
+  { name: "Bathroom", href: "/categories/Bathroom" },
+  { name: "Dinning", href: "/categories/Dinning" },
+  { name: "Office", href: "/categories/Office" },
+  { name: "Outdoor", href: "/categories/Outdoor" },
 ];
 
 export default function Navbar() {
