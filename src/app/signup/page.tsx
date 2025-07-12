@@ -11,17 +11,21 @@ function SignUp() {
   const router = useRouter();
 
   const [formData, setFormData] = useState({
-    name: "",
-    username: "",
+    fullName: "",
+    userName: "",
     email: "",
     password: "",
   });
 
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [message, setMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -30,7 +34,7 @@ function SignUp() {
     setMessage(null);
 
     try {
-      const response = await axios.post(
+      await axios.post(
         "https://elegant-be.onrender.com/api/users/register",
         formData,
         {
@@ -40,42 +44,21 @@ function SignUp() {
         }
       );
 
-      console.log("Success:", response.data);
-      setMessage({ type: "success", text: "Registration successful! 🎉 Redirecting..." });
+      setMessage({
+        type: "success",
+        text: "Registration successful! 🎉 Redirecting...",
+      });
 
       setTimeout(() => {
         router.push("/signin");
       }, 2000);
-    } catch (error: unknown) {
-      if (
-        typeof error === "object" &&
-        error !== null &&
-        "response" in error &&
-        typeof (error as { response?: unknown }).response === "object"
-      ) {
-        const err = error as { response: { data?: { message?: string } } };
-        console.error("Server error:", err.response.data);
-        setMessage({ type: "error", text: err.response.data?.message || "Registration failed." });
-      } else if (
-        typeof error === "object" &&
-        error !== null &&
-        "request" in error
-      ) {
-        const err = error as { request: unknown };
-        console.error("No response received:", err.request);
-        setMessage({ type: "error", text: "No response from server." });
-      } else if (
-        typeof error === "object" &&
-        error !== null &&
-        "message" in error
-      ) {
-        const err = error as { message: string };
-        console.error("Axios error:", err.message);
-        setMessage({ type: "error", text: "Unexpected error occurred." });
-      } else {
-        console.error("Unknown error:", error);
-        setMessage({ type: "error", text: "Unexpected error occurred." });
-      }
+    } catch (error: any) {
+      const errorMsg =
+        error?.response?.data?.message ||
+        error?.message ||
+        "An unexpected error occurred.";
+      console.error("Error:", error);
+      setMessage({ type: "error", text: errorMsg });
     } finally {
       setLoading(false);
     }
@@ -83,14 +66,15 @@ function SignUp() {
 
   return (
     <div className="grid items-center justify-center bg-gray-200 h-screen">
-      <div className="bg-white p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 items-center justify-center rounded gap-6 shadow-md">
+      <div className="bg-white p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 items-center justify-center rounded gap-6 shadow-md max-w-4xl mx-auto">
         <div className="flex items-center justify-center">
           <Image
             src={chair}
-            alt="Chair"
+            alt="Decorative Chair"
             width={500}
             height={400}
             className="rounded"
+            priority
           />
         </div>
 
@@ -103,30 +87,34 @@ function SignUp() {
             </Link>
           </p>
 
-          <form className="mt-4" onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="mt-4">
             <div className="mb-4">
-              <label htmlFor="name" className="block text-gray-700 mb-2">
+              <label htmlFor="fullName" className="block text-gray-700 mb-2">
                 Full Name
               </label>
               <input
                 type="text"
-                id="name"
+                id="fullName"
                 placeholder="Your full name"
-                value={formData.name}
+                value={formData.fullName}
                 onChange={handleChange}
+                autoComplete="name"
                 required
-                className="w-full px-3 py-2 rounded border border-gray-300 mb-4"
+                className="w-full px-3 py-2 rounded border border-gray-300"
               />
+            </div>
 
-              <label htmlFor="username" className="block text-gray-700 mb-2">
+            <div className="mb-4">
+              <label htmlFor="userName" className="block text-gray-700 mb-2">
                 Username
               </label>
               <input
                 type="text"
-                id="username"
+                id="userName"
                 placeholder="Your username"
-                value={formData.username}
+                value={formData.userName}
                 onChange={handleChange}
+                autoComplete="username"
                 required
                 className="w-full px-3 py-2 rounded border border-gray-300"
               />
@@ -134,14 +122,15 @@ function SignUp() {
 
             <div className="mb-4">
               <label htmlFor="email" className="block text-gray-700 mb-2">
-                Email address
+                Email Address
               </label>
               <input
                 type="email"
                 id="email"
-                placeholder="Your email address"
+                placeholder="Your email"
                 value={formData.email}
                 onChange={handleChange}
+                autoComplete="email"
                 required
                 className="w-full px-3 py-2 rounded border border-gray-300"
               />
@@ -157,6 +146,7 @@ function SignUp() {
                 placeholder="Your password"
                 value={formData.password}
                 onChange={handleChange}
+                autoComplete="new-password"
                 required
                 className="w-full px-3 py-2 rounded border border-gray-300"
               />
@@ -173,7 +163,9 @@ function SignUp() {
             {message && (
               <p
                 className={`mt-4 text-center text-sm ${
-                  message.type === "success" ? "text-green-600" : "text-red-500"
+                  message.type === "success"
+                    ? "text-green-600"
+                    : "text-red-500"
                 }`}
               >
                 {message.text}
