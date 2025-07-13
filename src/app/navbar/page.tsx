@@ -17,14 +17,13 @@ const navLinks: NavLink[] = [
 ];
 
 const categories = [
-  { name: "Room-Furniture", href: "/categories/All Rooms" },
-  { name: "Living-Room ", href: "/categorie/Living Room" },
+  { name: "All Rooms", href: "/categories/All Rooms" },
+  { name: "Living Room", href: "/categorie/Living Room" },
   { name: "Bedroom", href: "/categories/Bedroom" },
   { name: "Kitchen", href: "/categories/Kitchen" },
   { name: "Bathroom", href: "/categories/Bathroom" },
-  { name: "Dining", href: "/categories/Dinning" },
-  { name: "Office", href: "/categories/Office" },
-  { name: "Outdoor", href: "/categories/Outdoor" },
+  { name: "Dinning", href: "/categories/Dinning" },
+
 ];
 
 export default function Navbar() {
