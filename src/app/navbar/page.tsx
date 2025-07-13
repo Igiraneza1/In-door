@@ -4,6 +4,8 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 
+
+
 interface NavLink {
   name: string;
   href: string;
@@ -15,14 +17,14 @@ const navLinks: NavLink[] = [
 ];
 
 const categories = [
-  { name: "Furniture", href: "/categories/All Rooms" },
-  { name: "Headsets", href: "/categorie/Living Room" },
-  { name: "Sport", href: "/categories/Bedroom" },
-  { name: "Jackets", href: "/categories/Kitchen" },
-  { name: "Jackets", href: "/categories/Bathroom" },
-  { name: "Jackets", href: "/categories/Dinning" },
-  { name: "Jackets", href: "/categories/Office" },
-  { name: "Jackets", href: "/categories/Outdoor" },
+  { name: "Room-Furniture", href: "/categories/All Rooms" },
+  { name: "Living-Room ", href: "/categorie/Living Room" },
+  { name: "Bedroom", href: "/categories/Bedroom" },
+  { name: "Kitchen", href: "/categories/Kitchen" },
+  { name: "Bathroom", href: "/categories/Bathroom" },
+  { name: "Dining", href: "/categories/Dinning" },
+  { name: "Office", href: "/categories/Office" },
+  { name: "Outdoor", href: "/categories/Outdoor" },
 ];
 
 export default function Navbar() {
@@ -56,9 +58,9 @@ export default function Navbar() {
               <ChevronDown size={16} />
             </button>
             <div className="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-lg rounded-md w-40">
-              {categories.map((cat) => (
+              {categories.map((cat, index) => (
                 <Link
-                  key={cat.name}
+                  key={`${cat.name}-${cat.href}-${index}`}
                   href={cat.href}
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
                 >
@@ -130,9 +132,9 @@ export default function Navbar() {
 
           {catOpen && (
             <div className="ml-4 space-y-1">
-              {categories.map((cat) => (
+              {categories.map((cat, index) => (
                 <Link
-                  key={cat.name}
+                  key={`${cat.name}-${cat.href}-${index}`}
                   href={cat.href}
                   onClick={() => setIsOpen(false)}
                   className="block text-sm text-gray-600 hover:text-blue-600"
