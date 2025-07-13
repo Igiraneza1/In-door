@@ -1,22 +1,21 @@
 export default function Intro() {
   return (
-    <div className=" bg-white mx-auto justify-start  text-center p-1 m-5 max-w-7xl h-98">
-      <nav className="absolute top-4 left-4 text-sm">
-        <a href="#" className="text-black hover:text-blue-800 mr-6">Home</a>
-        <a href="#" className="text-black hover:text-blue-800">Contact Us</a>
-      </nav>
-      <main className="max-w-7xl">
-        <h1 className="text-7xl mb-6 leading-tight text-left text-black">
+    <section className="bg-white w-full py-16 sm:py-20 px-4 sm:px-8 md:px-12 lg:px-16 relative">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-snug text-black mb-6 sm:mb-8 text-left">
           We believe in sustainable <br />
-          decor. We're passionate about <br />
+          decor. We are passionate about <br />
           life at home.
         </h1>
-        <p className="text-base text-gray-600 leading-relaxed text-left text-xl">
-          Our collection features timeless furniture with natural fabrics, curved lines, plenty of mirrors, and classic  design <br/>
-          which can be incorporated into any decor project. These pieces enchant with their elegance, made to last for generations <br />
-          —faithful to the forms of each era with a modern touch.
+
+        <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed text-left max-w-4xl">
+          Our collection features timeless furniture with natural fabrics, curved lines,
+          plenty of mirrors, and classic design that can be incorporated into any décor project.
+          <br /><br />
+          These pieces enchant with their elegance made to last for generations,
+          faithful to the forms of each era with a modern touch.
         </p>
-      </main>
-    </div>
+      </div>
+    </section>
   );
 }

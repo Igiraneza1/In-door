@@ -19,13 +19,13 @@ export default function About() {
       <div className="w-full md:w-1/2 bg-gray-50 p-8 flex flex-col justify-center mr-38 items-start rounded-lg">
         <h1 className="text-3xl font-bold mb-4 text-black">About Us</h1>
         <p className="text-gray-600 mb-4">
-          3legant is a gift & decorations store based in HCMC,<br/>
+          Elegant is a gift & decorations store based in HCMC,<br/>
            Vietnam. Est since
           2019. Our customer service is always prepared to support you <br/>
            24/7.
         </p>
         <a
-          href="#"
+          href="/shop"
           className="text-black hover:text-blue-800 underline mt-4"
         >
           Shop Now →
