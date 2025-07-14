@@ -15,7 +15,7 @@ export default function HomePage() {
     setCurrentIndex((prev) => (prev === products.length - 1 ? 0 : prev + 1));
   };
 
-  // Auto-slide effect every 1 second
+  
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();

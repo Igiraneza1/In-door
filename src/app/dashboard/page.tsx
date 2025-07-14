@@ -75,7 +75,7 @@ export default function Dashboard() {
           title: "Success!",
           description: result.message,
         })
-        fetchProducts() // Re-fetch products after deletion
+        fetchProducts() 
       } else {
         toast({
           title: "Error",
