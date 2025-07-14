@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "title": "Wooden Chair",
+    "price": "$49.99",
+    "category": "chairs",
+    "imageUrl": "/image/Living-room/homechair.jpg",
+    "description": "Comfortable wooden chair perfect for your living room."
+  },
+  {
+    "id": "2",
+    "title": "Wooden Bedroom",
+    "price": "$199.99",
+    "category": "Beds",
+    "imageUrl": "/image/bedroom/bedroom1.jpg",
+    "description": "Elegant dining table made from solid oak."
+  },
+  {
+    "id": "3",
+    "title": "Modern Kitchen",
+    "price": "$299.99",
+    "category": "Kitchen",
+    "imageUrl": "/image/kitchen/pexels-andreaedavis-27065116.jpg",
+    "description": "Spacious and stylish sofa with soft cushions."
+  },
+  {
+    "id": "4",
+    "title": "King Size Bed",
+    "price": "$499.99",
+    "category": "beds",
+    "imageUrl": "/image/bedroom/bedroom6.jpg",
+    "description": "Sturdy and comfortable king size bed frame."
+  },
+  {
+    "id": "5",
+    "title": "Livingroom Chair",
+    "price": "$89.99",
+    "category": "chairs",
+    "imageUrl": "/image/Living-room/sofa12.jpg",
+    "description": "Ergonomic office chair with adjustable height."
+  },
+  {
+    "id": "6",
+    "title": "Kitchen Table",
+    "price": "$79.99",
+    "category": "tables",
+    "imageUrl": "/image/kitchen/pexels-heyho-6032416.jpg",
+    "description": "Modern coffee table made from tempered glass."
+  },
+  {
+    "id": "7",
+    "title": "Single Bed",
+    "price": "$399.99",
+    "category": "beds",
+    "imageUrl": "/image/bedroom/bedroom9.jpg",
+    "description": "Luxurious recliner sofa with soft leather finish."
+  },
+  {
+    "id": "8",
+    "title": "Garden Chair",
+    "price": "$299.99",
+    "category": "chairs",
+    "imageUrl": "/image/Living-room/sofa13.jpg",
+    "description": "Space-saving single bed for small rooms."
+  },
+  {
+    "id": "9",
+    "title": "All in one Kitchen",
+    "price": "$59.99",
+    "category": "Kitchen",
+    "imageUrl": "/image/kitchen/pexels-curtis-adams-1694007-12119223.jpg",
+    "description": "Classic wooden rocking chair with smooth finish."
+  },
+  {
+    "id": "10",
+    "title": "Waterproof Bed",
+    "price": "$39.99",
+    "category": "beds",
+    "imageUrl": "/image/bedroom/bedroom10.jpg",
+    "description": "Compact side table perfect next to your sofa."
+  }
+]
