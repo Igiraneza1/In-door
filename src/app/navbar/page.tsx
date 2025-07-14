@@ -34,8 +34,8 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold text-gray-800">
-          In-door Home
+        <Link href="/" className="text-2xl pl-5 font-bold text-gray-800">
+          Elegant
         </Link>
 
         <div className="hidden md:flex items-center space-x-6">

@@ -4,7 +4,7 @@ export default function Intro() {
       <main>
         <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight text-center md:text-left text-black">
           We believe in sustainable <br />
-          decor. We're passionate about <br />
+          decor. We are passionate about <br />
           life at home.
         </h1>
         <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed text-center md:text-left">

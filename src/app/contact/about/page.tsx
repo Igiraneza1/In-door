@@ -23,7 +23,7 @@ export default function About() {
           Est since 2019. Our customer service is always prepared to support you 24/7.
         </p>
         <a
-          href="#"
+          href="/shop"
           className="text-black hover:text-blue-800 underline mt-4"
         >
           Shop Now →
