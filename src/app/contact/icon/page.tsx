@@ -3,7 +3,7 @@ import { FaTruck, FaUndo, FaLock, FaPhoneAlt } from "react-icons/fa";
 
 export default function Icon() {
   return (
-    <div className="bg-gray-100 py-6 flex justify-around items-center">
+    <div className="bg-gray-100 py-6 flex justify-around items-center text-black">
       <div className="text-center">
         <FaTruck className="w-12 h-12 mx-auto mb-2 text-gray-800" />
         <h3 className="text-lg font-semibold">Free Shipping</h3>
