@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import chair from "../../../public/image/chair1.jpg";
+import chair from "../../../public/image/Living-room/chair1.jpg";
 import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
@@ -52,7 +52,7 @@ function SignUp() {
       setTimeout(() => {
         router.push("/signin");
       }, 2000);
-    } catch (error: any) {
+    } catch (error: unknown) {
       const errorMsg =
         error?.response?.data?.message ||
         error?.message ||

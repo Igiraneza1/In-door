@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import chair from "../../../public/image/chair1.jpg";
+import chair from "../../../public/image/Living-room/chair1.jpg";
 
 export default function SignIn() {
   const router = useRouter();

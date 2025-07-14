@@ -32,7 +32,7 @@ export default function Shop() {
               className="object-contain"
             />
             <div className="absolute inset-0 flex flex-col items-start justify-end p-6 b">
-              <h3 className="text-xl font-semibold text-black font-semibold">
+              <h3 className="text-xl text-black font-semibold">
                 Bedroom
               </h3>
               <a href="#" className="text-sm text-gray-600 underline">
@@ -49,7 +49,7 @@ export default function Shop() {
               className="object-contain"
             />
             <div className="absolute inset-0 flex flex-col items-start justify-end p-6 ">
-              <h3 className="text-xl font-semibold text-black font-semibold">
+              <h3 className="text-xl text-black font-semibold">
                 Kitchen
               </h3>
               <a href="#" className="text-sm text-gray-600 underline">
