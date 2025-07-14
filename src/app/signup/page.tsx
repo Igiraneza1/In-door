@@ -52,16 +52,13 @@ function SignUp() {
       setTimeout(() => {
         router.push("/signin");
       }, 2000);
-    } catch (error: any) {
-       const errorData = error.response?.data;
-  if (typeof errorData === "string") {
-    alert(errorData); 
-  } else if (typeof errorData === "object") {
-    alert(errorData.error || "Something went wrong");
-  } else {
-    alert("Unexpected error occurred");
-  }
-
+    } catch (error: unknown) {
+      const errorMsg =
+        error?.response?.data?.message ||
+        error?.message ||
+        "An unexpected error occurred.";
+      console.error("Error:", error);
+      setMessage({ type: "error", text: errorMsg });
     } finally {
       setLoading(false);
     }
