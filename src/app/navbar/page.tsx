@@ -14,6 +14,7 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { name: "Shop", href: "/shop" },
   { name: "Contact", href: "/contact" },
+  {name: "Dashboard", href: "/user-dashboard"},
 ];
 
 const categories = [
@@ -32,7 +33,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+    <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50 mb-10">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <Link href="/" className="text-2xl pl-5 font-bold text-gray-800">
           Elegant

@@ -5,7 +5,7 @@ import { RecentActivity } from "../../app/user-component/recent-activity"
 
 export default function DashboardPage() {
   return (
-    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] mt-15">
       <DashboardSidebar />
       <div className="flex flex-col">
         <DashboardHeader />
