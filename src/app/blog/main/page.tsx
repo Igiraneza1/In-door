@@ -2,8 +2,9 @@
 import React, { useState } from "react";
 import { Grid, List, LayoutGrid, Rows } from "lucide-react";
 import Link from "next/link";
+import articles from "../../../jsondata/articles.json";
 
-interface BlogPost {
+interface articles {
   id: number;
   title: string;
   date: string;
@@ -11,6 +12,7 @@ interface BlogPost {
   category: string;
   slug: string;
   featured?: boolean;
+  excerpt?: string;
 }
 
 export default function Blog() {
@@ -19,85 +21,9 @@ export default function Blog() {
   const [activeFilter, setActiveFilter] = useState("All Blog");
   const [sortOption, setSortOption] = useState("Latest");
 
-  const blogPosts: BlogPost[] = [
-    {
-      id: 1,
-      title: "7 ways to decor your home like a professional",
-      date: "2023-10-16",
-      image: "/images/blog/1.jpg",
-      category: "Home Decor",
-      slug: "decorate-home-professionally",
-      featured: true,
-    },
-    {
-      id: 2,
-      title: "Inside a beautiful kitchen organization",
-      date: "2023-10-16",
-      image: "/images/blog/2.jpg",
-      category: "Kitchen",
-      slug: "kitchen-organization",
-    },
-    {
-      id: 3,
-      title: "Decor your bedroom for your children",
-      date: "2023-10-16",
-      image: "/images/blog/3.jpg",
-      category: "Bedroom",
-      slug: "bedroom-for-children",
-    },
-    {
-      id: 4,
-      title: "Modern texas home is kid-friendly",
-      date: "2023-10-16",
-      image: "/images/blog/4.jpg",
-      category: "Home Decor",
-      slug: "modern-texas-home",
-      featured: true,
-    },
-    {
-      id: 5,
-      title: "Creating a cozy reading nook in your living room",
-      date: "2023-10-15",
-      image: "/images/blog/10.jpg",
-      category: "Living Room",
-      slug: "cozy-reading-nook",
-    },
-    {
-      id: 6,
-      title: "Minimalist bathroom design ideas that work",
-      date: "2023-10-15",
-      image: "/images/blog/11.jpg",
-      category: "Bathroom",
-      slug: "minimalist-bathroom-design",
-    },
-    {
-      id: 7,
-      title: "Small space solutions for urban apartments",
-      date: "2023-10-14",
-      image: "/images/blog/12.jpg",
-      category: "Home Decor",
-      slug: "small-space-solutions",
-    },
-    {
-      id: 8,
-      title: "Seasonal decor transitions made easy",
-      date: "2023-10-14",
-      image: "/images/blog/13.jpg",
-      category: "Home Decor",
-      slug: "seasonal-decor-transitions",
-    },
-    {
-      id: 9,
-      title: "Smart storage solutions for every room",
-      date: "2023-10-13",
-      image: "/images/blog/14.jpg",
-      category: "Organization",
-      slug: "smart-storage-solutions",
-    },
-  ];
+ 
 
-  
-  const filteredPosts = blogPosts.filter((post) =>
+  const filteredPosts = articles.filter((post) =>
     activeFilter === "All Blog"
       ? true
       : activeFilter === "Featured"
@@ -114,7 +40,7 @@ export default function Blog() {
     return 0;
   });
 
-  const displayedPosts = showAll ? sortedPosts : sortedPosts.slice(0, 9);
+  const displayedPosts = showAll ? sortedPosts : sortedPosts.slice(0, 6);
 
   const ViewModeButton = ({ mode, icon: Icon, isActive }: any) => (
     <button
@@ -138,36 +64,50 @@ export default function Blog() {
     }
   };
 
-  const BlogCard = ({ post }: { post: BlogPost }) => (
-    <Link
-      href={`/blog/${post.slug}`}
-      className={`bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ${
-        viewMode === "list" ? "flex gap-4" : ""
-      }`}
-    >
-      <div className={`${viewMode === "list" ? "w-48 flex-shrink-0" : ""}`}>
-        <img
-          src={post.image}
-          alt={post.title || "Blog image"}
-          className={`w-full object-cover ${
-            viewMode === "list" ? "h-32" : "h-48"
-          }`}
-        />
-      </div>
-      <div className={`p-4 ${viewMode === "list" ? "flex-1" : ""}`}>
-        <h3
-          className={`font-medium text-gray-900 mb-2 leading-tight ${
-            viewMode === "list" ? "text-lg" : "text-base"
-          }`}
-        >
-          {post.title}
-        </h3>
-        <p className="text-sm text-gray-500">{post.date}</p>
-        {viewMode === "list" && (
-          <p className="text-sm text-gray-600 mt-2 line-clamp-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
-          </p>
-        )}
+  const BlogCard = ({ post }: { post: articles }) => (
+    <Link href={`/blog/${post.slug}`} className="group">
+      <div
+        className={`bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ${
+          viewMode === "list" ? "flex gap-4" : ""
+        }`}
+      >
+        <div className={`${viewMode === "list" ? "w-48 flex-shrink-0" : ""}`}>
+          <img
+            src={post.image}
+            alt={post.title || "Blog image"}
+            className={`w-full object-cover group-hover:scale-105 transition-transform duration-300 ${
+              viewMode === "list" ? "h-32" : "h-48"
+            }`}
+          />
+        </div>
+        <div className={`p-4 ${viewMode === "list" ? "flex-1" : ""}`}>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-xs text-gray-500 uppercase tracking-wide">
+              {post.category}
+            </span>
+            {post.featured && (
+              <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                Featured
+              </span>
+            )}
+          </div>
+          <h3
+            className={`font-medium text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors ${
+              viewMode === "list" ? "text-lg" : "text-base"
+            }`}
+          >
+            {post.title}
+          </h3>
+          <p className="text-sm text-gray-500 mb-2">{post.date}</p>
+          {viewMode === "list" && (
+            <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+              {post.excerpt || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt."}
+            </p>
+          )}
+          <div className="mt-4 text-sm text-blue-600 group-hover:underline">
+            Read More →
+          </div>
+        </div>
       </div>
     </Link>
   );

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import articles from "@/data/articles";
+import articles from "../../../jsondata/articles.json";
 
 export default function Articles() {
   const featured = articles.slice(0, 3);
@@ -19,7 +19,7 @@ export default function Articles() {
             <div key={article.id} className="text-center">
               <div className="relative w-full h-64">
                 <Image
-                  src={article.Image}
+                  src={article.image}
                   alt={article.title}
                   fill
                   className="rounded-lg object-cover"
