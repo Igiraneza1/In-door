@@ -3,14 +3,17 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const [showFooter, setShowFooter] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     function checkAuth() {
       const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
-      setShowFooter(isAuthenticated);
+      // Show footer only if authenticated and NOT on home page
+      setShowFooter(isAuthenticated && pathname !== "/");
     }
 
     checkAuth(); // initial check on mount
@@ -20,9 +23,9 @@ export default function Footer() {
     return () => {
       window.removeEventListener("storage", checkAuth);
     };
-  }, []);
+  }, [pathname]);
 
-  if (!showFooter) return null; // Hide footer if not authenticated
+  if (!showFooter) return null; // Hide footer if not authenticated or on home page
 
   return (
     <footer className="bg-black text-white">

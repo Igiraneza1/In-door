@@ -33,10 +33,12 @@ export default function Navbar() {
 
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
-    if (isAuthenticated === "true") {
+    if (isAuthenticated === "true" && pathname !== "/") {
       setShowNavbar(true);
+    } else {
+      setShowNavbar(false);
     }
-  }, []);
+  }, [pathname]);
 
   if (!showNavbar) return null; 
 
