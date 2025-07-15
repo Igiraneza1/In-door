@@ -114,7 +114,6 @@ export default function Blog() {
 
   return (
     <section className="px-4 py-10 max-w-7xl mx-auto">
-      {/* Header with filters and view options */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div className="flex items-center gap-6">
           {["All Blog", "Featured"].map((filter) => (
@@ -154,14 +153,12 @@ export default function Blog() {
         </div>
       </div>
 
-      {/* Blog posts grid */}
       <div className={`grid ${getGridClass()} gap-6 mb-8`}>
         {displayedPosts.map((post) => (
           <BlogCard key={post.id} post={post} />
         ))}
       </div>
 
-      {/* Show more / less toggle */}
       <div className="text-center">
         <button
           onClick={() => setShowAll(!showAll)}

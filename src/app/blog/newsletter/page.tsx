@@ -4,8 +4,8 @@ import Link from 'next/link';
 
 export default function Newsletter() {
     const image=[
-        {Image: "/image/furniture/bedroom.png"},
-        {Image: "/image/furniture/chair1.png"}
+        {Image: "/image/bedroom/bedroom.png"},
+        {Image: "/image/Living-room/chair1.png"}
     ]
   return (
    
