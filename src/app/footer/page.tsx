@@ -8,18 +8,26 @@ export default function Footer() {
   const [showFooter, setShowFooter] = useState(false);
 
   useEffect(() => {
-    const isAuthenticated = localStorage.getItem("isAuthenticated");
-    if (isAuthenticated === "true") {
-      setShowFooter(true);
+    function checkAuth() {
+      const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+      setShowFooter(isAuthenticated);
     }
+
+    checkAuth(); // initial check on mount
+
+    window.addEventListener("storage", checkAuth);
+
+    return () => {
+      window.removeEventListener("storage", checkAuth);
+    };
   }, []);
 
-  if (!showFooter) return null; // ⛔ Don't render footer unless authenticated or guest
+  if (!showFooter) return null; // Hide footer if not authenticated
 
   return (
     <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-6 py-12 space-y-10">
-        
+
         {/* Brand + Navigation */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-center md:text-left">

@@ -8,12 +8,4 @@ export default function Indoor() {
       <CategoryPage />
     </div>
   );
-    return (
-        <div className=" bg-white mx-auto p-10">
-            <HomePage />
-            <Discount />
-            <NewArrivals />
-            <Articles />
-        </div>
-    )
 }

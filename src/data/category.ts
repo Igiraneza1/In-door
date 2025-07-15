@@ -3,19 +3,19 @@ const categories = [
     id: 1,
     name: "Living Room",
     slug: "living-room",
-    image: "/images/categories/living-room.jpg",
+    image: "/image/Living-room/living room category.jpg",
   },
   {
     id: 2,
     name: "Bedroom",
     slug: "bedroom",
-    image: "/images/categories/bedroom.jpg",
+    image: "/image/bedroom/bedroom category.jpg",
   },
   {
     id: 3,
     name: "Kitchen",
     slug: "kitchen",
-    image: "/images/categories/kitchen.jpg",
+    image: "/image/kitchen/kitchen4.jpg",
   },
   {
     id: 4,

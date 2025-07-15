@@ -31,7 +31,6 @@ export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(false);
   const pathname = usePathname();
 
-  // 👇 Check if user is authenticated or is a guest
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
     if (isAuthenticated === "true") {
@@ -39,7 +38,7 @@ export default function Navbar() {
     }
   }, []);
 
-  if (!showNavbar) return null; // ❌ Don't show navbar if not signed in or guest
+  if (!showNavbar) return null; 
 
   return (
     <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50 mb-10">
