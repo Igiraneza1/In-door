@@ -1,17 +1,25 @@
 "use client";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function WelcomePage() {
   const router = useRouter();
 
   return (
-    <main
-      className="flex items-center justify-center min-h-screen bg-cover bg-center bg-no-repeat px-4"
-      style={{
-        backgroundImage: 'url("/image/living-room/sofa17.jpg")',
-      }}
-    >
-      <div className="max-w-xl w-full bg-black/50 backdrop-blur-md shadow-xl rounded-2xl p-8 text-center">
+    <main className="relative flex items-center justify-center min-h-screen px-4 overflow-hidden">
+     
+      <div className="absolute inset-0 z-0 opacity-70">
+        <Image
+          src="/image/living-room/sofa17.jpg"
+          alt="Living Room Background"
+          layout="fill"
+          objectFit="cover"
+          priority
+        />
+      </div>
+
+      
+      <div className="relative z-10 max-w-xl w-full bg-black/70 backdrop-blur-md shadow-xl rounded-2xl p-8 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
           Welcome to In-door Products
         </h1>
@@ -33,7 +41,10 @@ export default function WelcomePage() {
             Sign Up
           </button>
           <button
-            onClick={() => router.push("/inDoor")}
+            onClick={() => {
+              localStorage.setItem("isAuthenticated", "true");
+              router.push("/inDoor");
+            }}
             className="w-full text-gray-100 underline hover:text-blue-600 transition"
           >
             Continue as Guest

@@ -1,47 +1,34 @@
-import { Category } from "../types/category";
-const categories: Category[] = [
+const categories = [
   {
-    id: "1",
+    id: 1,
     name: "Living Room",
     slug: "living-room",
-    image: "/images/living-room.jpg",
-    description: "Comfortable furniture for your living space"
+    image: "/images/categories/living-room.jpg",
   },
   {
-    id: "2",
+    id: 2,
     name: "Bedroom",
     slug: "bedroom",
-    image: "/images/bedroom.jpg",
-    description: "Create your perfect sleeping sanctuary"
+    image: "/images/categories/bedroom.jpg",
   },
   {
-    id: "3",
+    id: 3,
     name: "Kitchen",
     slug: "kitchen",
-    image: "/images/kitchen.jpg",
-    description: "Modern appliances and kitchen essentials"
+    image: "/images/categories/kitchen.jpg",
   },
   {
-    id: "4",
-    name: "Office",
-    slug: "office",
-    image: "/images/office.jpg",
-    description: "Productive workspaces for home or business"
+    id: 4,
+    name: "Bathroom",
+    slug: "bathroom",
+    image: "/images/categories/bathroom.jpg",
   },
   {
-    id: "5",
-    name: "Outdoor",
-    slug: "outdoor",
-    image: "/images/outdoor.jpg",
-    description: "Durable furniture for outdoor living"
+    id: 5,
+    name: "Dinning",
+    slug: "dinning",
+    image: "/images/categories/dinning.jpg",
   },
-  {
-    id: "6",
-    name: "Dining",
-    slug: "dining",
-    image: "/images/dining.jpg",
-    description: "Elegant dining sets for every occasion"
-  }
 ];
 
 export default categories;

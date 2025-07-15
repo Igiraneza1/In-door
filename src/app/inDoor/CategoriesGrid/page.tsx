@@ -1,12 +1,10 @@
-// app/category/page.tsx
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import  categories from "../../../data/category"; // Import directly from your data file
+import categories from "../../../data/category";
 
 export default function CategoryPage() {
-  // No props needed - using directly imported data
   if (!categories.length) {
     return <div className="text-center py-12">No categories available</div>;
   }
@@ -14,50 +12,48 @@ export default function CategoryPage() {
   const [primary, ...secondary] = categories;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Primary Category */}
-      <div className="relative h-96 w-full mb-8 rounded-xl overflow-hidden">
+    <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {/* Primary category on the left, with centered content */}
+      <div className="relative h-[500px] w-full rounded-xl overflow-hidden shadow-md hover:shadow-lg flex justify-center items-center">
         <Image
           src={primary.image}
           alt={primary.name}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-300"
           priority
-          sizes="(max-width: 768px) 100vw, 80vw"
         />
-        <div className="absolute bottom-6 left-6 bg-white/90 px-6 py-4 rounded-lg shadow-sm backdrop-blur-sm">
-          <h2 className="text-3xl font-bold text-gray-900">{primary.name}</h2>
+        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10 text-center bg-white/70 px-4 py-2 rounded-md shadow-md">
+          <h2 className="text-2xl font-bold text-black">{primary.name}</h2>
           <Link
             href={`/category/${primary.slug}`}
-            className="mt-2 inline-flex items-center text-lg font-medium text-indigo-600 hover:text-indigo-500"
+            className="mt-2 inline-flex items-center justify-center text-sm text-black hover:text-blue-600 transition"
           >
-            Shop Collection →
+            Shop Now →
           </Link>
         </div>
       </div>
 
-      {/* Secondary Categories Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Secondary categories in 2x2 grid on right */}
+      <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
         {secondary.map((category) => (
-          <div key={category.id} className="group relative h-64 rounded-xl overflow-hidden shadow-md hover:shadow-lg">
+          <div
+            key={category.id}
+            className="relative h-[240px] w-full rounded-xl overflow-hidden shadow-md hover:shadow-lg"
+          >
             <Image
               src={category.image}
               alt={category.name}
               fill
-              className="object-cover group-hover:scale-105 transition-transform"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
-            <div className="absolute bottom-4 left-4 right-4">
-              <h3 className="text-xl font-bold text-white">{category.name}</h3>
+            <div className="absolute top-4 left-4 z-10">
+              <h3 className="text-xl font-semibold text-black">{category.name}</h3>
               <Link
                 href={`/category/${category.slug}`}
-                className="mt-1 inline-flex items-center text-sm font-medium text-white hover:text-indigo-200"
+                className="mt-1 inline-flex items-center text-sm text-black hover:text-blue-600 transition"
               >
-                Shop Now
-                <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+                Shop Now →
               </Link>
             </div>
           </div>

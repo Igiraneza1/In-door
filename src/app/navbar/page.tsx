@@ -1,10 +1,8 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
-
-
 
 interface NavLink {
   name: string;
@@ -15,23 +13,33 @@ const navLinks: NavLink[] = [
   { name: "Home", href: "/inDoor" },
   { name: "Shop", href: "/shop" },
   { name: "Contact", href: "/contact" },
-  {name: "Dashboard", href: "/user-dashboard"},
+  { name: "Dashboard", href: "/user-dashboard" },
 ];
 
 const categories = [
   { name: "All Rooms", href: "/categories/All Rooms" },
-  { name: "Living Room", href: "/categorie/Living Room" },
+  { name: "Living Room", href: "/categories/Living Room" },
   { name: "Bedroom", href: "/categories/Bedroom" },
   { name: "Kitchen", href: "/categories/Kitchen" },
   { name: "Bathroom", href: "/categories/Bathroom" },
   { name: "Dinning", href: "/categories/Dinning" },
-
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [catOpen, setCatOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(false);
   const pathname = usePathname();
+
+  // 👇 Check if user is authenticated or is a guest
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+    if (isAuthenticated === "true") {
+      setShowNavbar(true);
+    }
+  }, []);
+
+  if (!showNavbar) return null; // ❌ Don't show navbar if not signed in or guest
 
   return (
     <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50 mb-10">
