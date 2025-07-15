@@ -2,8 +2,9 @@
 import React, { useState } from "react";
 import { Grid, List, LayoutGrid, Rows } from "lucide-react";
 import Link from "next/link";
+import articles from "../../../jsondata/articles.json";
 
-interface BlogPost {
+interface articles {
   id: number;
   title: string;
   date: string;
@@ -20,93 +21,9 @@ export default function Blog() {
   const [activeFilter, setActiveFilter] = useState("All Blog");
   const [sortOption, setSortOption] = useState("Latest");
 
-  const blogPosts: BlogPost[] = [
-    {
-      id: 1,
-      title: "7 ways to decor your home like a professional",
-      date: "2023-10-16",
-      image: "/images/blog/1.jpg",
-      category: "Home Decor",
-      slug: "decorate-home-professionally",
-      featured: true,
-      excerpt: "Transform your living space with these professional interior design tips and tricks."
-    },
-    {
-      id: 2,
-      title: "Inside a beautiful kitchen organization",
-      date: "2023-10-16",
-      image: "/images/blog/2.jpg",
-      category: "Kitchen",
-      slug: "kitchen-organization",
-      excerpt: "Discover smart storage solutions and organization tips for a functional kitchen."
-    },
-    {
-      id: 3,
-      title: "Decor your bedroom for your children",
-      date: "2023-10-16",
-      image: "/images/blog/3.jpg",
-      category: "Bedroom",
-      slug: "bedroom-for-children",
-      excerpt: "Create a fun and functional bedroom space that your kids will love."
-    },
-    {
-      id: 4,
-      title: "Modern texas home is kid-friendly",
-      date: "2023-10-16",
-      image: "/images/blog/4.jpg",
-      category: "Home Decor",
-      slug: "modern-texas-home",
-      featured: true,
-      excerpt: "Explore how modern design can be both stylish and family-friendly."
-    },
-    {
-      id: 5,
-      title: "Creating a cozy reading nook in your living room",
-      date: "2023-10-15",
-      image: "/images/blog/10.jpg",
-      category: "Living Room",
-      slug: "cozy-reading-nook",
-      excerpt: "Design the perfect reading corner for relaxation and comfort."
-    },
-    {
-      id: 6,
-      title: "Minimalist bathroom design ideas that work",
-      date: "2023-10-15",
-      image: "/images/blog/11.jpg",
-      category: "Bathroom",
-      slug: "minimalist-bathroom-design",
-      excerpt: "Simplify your bathroom with clean lines and functional design."
-    },
-    {
-      id: 7,
-      title: "Small space solutions for urban apartments",
-      date: "2023-10-14",
-      image: "/images/blog/12.jpg",
-      category: "Home Decor",
-      slug: "small-space-solutions",
-      excerpt: "Maximize your small apartment with clever design and storage solutions."
-    },
-    {
-      id: 8,
-      title: "Seasonal decor transitions made easy",
-      date: "2023-10-14",
-      image: "/images/blog/13.jpg",
-      category: "Home Decor",
-      slug: "seasonal-decor-transitions",
-      excerpt: "Learn how to transition your home decor between seasons seamlessly."
-    },
-    {
-      id: 9,
-      title: "Smart storage solutions for every room",
-      date: "2023-10-13",
-      image: "/images/blog/14.jpg",
-      category: "Organization",
-      slug: "smart-storage-solutions",
-      excerpt: "Discover innovative storage ideas for every room in your home."
-    },
-  ];
+ 
 
-  const filteredPosts = blogPosts.filter((post) =>
+  const filteredPosts = articles.filter((post) =>
     activeFilter === "All Blog"
       ? true
       : activeFilter === "Featured"
@@ -123,7 +40,7 @@ export default function Blog() {
     return 0;
   });
 
-  const displayedPosts = showAll ? sortedPosts : sortedPosts.slice(0, 9);
+  const displayedPosts = showAll ? sortedPosts : sortedPosts.slice(0, 6);
 
   const ViewModeButton = ({ mode, icon: Icon, isActive }: any) => (
     <button
@@ -147,7 +64,7 @@ export default function Blog() {
     }
   };
 
-  const BlogCard = ({ post }: { post: BlogPost }) => (
+  const BlogCard = ({ post }: { post: articles }) => (
     <Link href={`/blog/${post.slug}`} className="group">
       <div
         className={`bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ${

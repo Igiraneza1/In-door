@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "7 Ways to Decor Your Home Like a Professional",
-    "image": "./public/images/blog/1.jpg",
+    "image": "/image/Living-room/sofa2.jpg",
     "slug": "7-ways-to-decor-your-home",
     "description": "Discover 7 unique and affordable ways to upgrade your home's interior.",
     "price": "$149.99",
@@ -11,7 +11,7 @@
   {
     "id": 2,
     "title": "Inside a Beautiful Kitchen Organization",
-    "image": "./public/images/blog/2.jpg",
+    "image": "/image/kitchen/kitchen.jpg",
     "slug": "kitchen-organisation",
     "description": "Maximize your kitchen space with these simple organization hacks.",
     "price": "$89.99",
@@ -20,7 +20,7 @@
   {
     "id": 3,
     "title": "Decor Your Bedroom for Your Children",
-    "image": "./public/images/blog/3.jpg",
+    "image": "/image/bedroom/bedroom11.jpg",
     "slug": "decor-your-bedroom",
     "description": "Transform your bedroom into a cozy retreat with these decor tips.",
     "price": "$199.99",
@@ -29,7 +29,7 @@
   {
     "id": 4,
     "title": "Modern Texas Home is Kid-Friendly",
-    "image": "./public/images/blog/4.jpg",
+    "image": "/image/Living-room/sofa19.jpg",
     "slug": "living-room-makeover-ideas",
     "description": "Simple ideas to refresh your living room style.",
     "price": "$179.99",
@@ -38,7 +38,7 @@
   {
     "id": 5,
     "title": "Creating a Cozy Reading Nook in Your Living Room",
-    "image": "./public/images/blog/10.jpg",
+    "image": "/image/Living-room/sofa12.jpg",
     "slug": "modern-bathroom-design",
     "description": "Inspiration for a sleek and stylish bathroom upgrade.",
     "price": "$129.99",
@@ -46,8 +46,8 @@
   },
   {
     "id": 6,
-    "title": "Minimalist Bathroom Design Ideas That Work",
-    "image": "./public/images/blog/11.jpg",
+    "title": "Minimalist Kitchen Design Ideas That Work",
+    "image": "/image/kitchen/kitchen3.jpg",
     "slug": "modern-bathroom-design",
     "description": "Inspiration for a sleek and stylish bathroom upgrade.",
     "price": "$129.99",
@@ -56,7 +56,7 @@
   {
     "id": 7,
     "title": "Small Space Solutions for Urban Apartments",
-    "image": "./public/images/blog/12.jpg",
+    "image": "/image/kitchen/kitchen4.jpg",
     "slug": "small-space-solutions",
     "description": "Smart design tips for maximizing small living spaces.",
     "price": "$99.99",
@@ -65,7 +65,7 @@
   {
     "id": 8,
     "title": "Seasonal Decor Transitions Made Easy",
-    "image": "./public/images/blog/13.jpg",
+    "image": "/image/bedroom/bedroom3.jpg",
     "slug": "seasonal-decor-transitions",
     "description": "Tips for effortlessly changing your home decor with the seasons.",
     "price": "$59.99",
@@ -74,7 +74,7 @@
   {
     "id": 9,
     "title": "Smart Storage Solutions for Every Room",
-    "image": "./public/images/blog/14.jpg",
+    "image": "/image/bedroom/bedroom2.jpg",
     "slug": "smart-storage-solutions",
     "description": "Innovative storage ideas to keep your home organized and clutter-free.",
     "price": "$79.99",
