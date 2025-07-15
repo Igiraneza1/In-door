@@ -53,13 +53,16 @@ function SignUp() {
         router.push("/signin");
       }, 2000);
     } catch (error: unknown) {
-      const errorMsg =
-        error?.response?.data?.message ||
-        error?.message ||
-        "An unexpected error occurred.";
-      console.error("Error:", error);
-      setMessage({ type: "error", text: errorMsg });
-    } finally {
+  let errorMsg = "An unexpected error occurred.";
+
+  if (axios.isAxiosError(error) && error.response) {
+    errorMsg = error.response.data?.message || error.message;
+  } else if (error instanceof Error) {
+    errorMsg = error.message;
+  }
+
+  console.error("Error:", errorMsg);
+}finally {
       setLoading(false);
     }
   };

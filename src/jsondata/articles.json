@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "title": "7 Ways to Decor Your Home Like a Professional",
+    "image": "./public/images/blog/1.jpg",
+    "slug": "7-ways-to-decor-your-home",
+    "description": "Discover 7 unique and affordable ways to upgrade your home's interior.",
+    "price": "$149.99",
+    "content": "Want to give your home a designer's touch? Here are 7 ways to decorate your home like a pro:\n\n1. Start with a Neutral Base – Whites, beiges, and soft grays set a calm foundation.\n2. Layer Textures – Combine linen, velvet, wood, and metals to add depth.\n3. Play with Lighting – Mix ambient, task, and accent lighting.\n4. Incorporate Greenery – Plants make every room feel fresh and lively.\n5. Balance the Room – Use symmetry and scale like a pro.\n6. Invest in Statement Pieces – A bold rug or art piece can define the space.\n7. Edit Ruthlessly – Remove clutter to let key features shine."
+  },
+  {
+    "id": 2,
+    "title": "Inside a Beautiful Kitchen Organization",
+    "image": "./public/images/blog/2.jpg",
+    "slug": "kitchen-organisation",
+    "description": "Maximize your kitchen space with these simple organization hacks.",
+    "price": "$89.99",
+    "content": "A beautiful kitchen is more than just aesthetics—it's smart design:\n\n- Declutter ruthlessly\n- Group by zones — spices near cooking, plates near dishwashers\n- Use pull-outs and stackable bins\n- Clear jars = clean look\n- Hooks & racks — use your walls!\n- Labels for everything"
+  },
+  {
+    "id": 3,
+    "title": "Decor Your Bedroom for Your Children",
+    "image": "./public/images/blog/3.jpg",
+    "slug": "decor-your-bedroom",
+    "description": "Transform your bedroom into a cozy retreat with these decor tips.",
+    "price": "$199.99",
+    "content": "Design a fun, safe, and functional room your kids will love:\n\n- Choose vibrant but calming colors\n- Smart furniture — beds with storage or built-in desks\n- Interactive corners — reading nook, chalk wall, or play zone\n- Soft rugs and safe finishes\n- Furniture that grows with them"
+  },
+  {
+    "id": 4,
+    "title": "Modern Texas Home is Kid-Friendly",
+    "image": "./public/images/blog/4.jpg",
+    "slug": "living-room-makeover-ideas",
+    "description": "Simple ideas to refresh your living room style.",
+    "price": "$179.99",
+    "content": "Modern and kid-friendly can co-exist beautifully:\n\n- Open-concept floor plan\n- Soft furnishings with rounded edges\n- Built-in play zones with hidden storage\n- Abundant natural light\n- Durable materials like quartz and matte tile"
+  },
+  {
+    "id": 5,
+    "title": "Creating a Cozy Reading Nook in Your Living Room",
+    "image": "./public/images/blog/10.jpg",
+    "slug": "modern-bathroom-design",
+    "description": "Inspiration for a sleek and stylish bathroom upgrade.",
+    "price": "$129.99",
+    "content": "Transform any corner into a cozy reading escape:\n\n1. Pick a peaceful spot — near a window is best\n2. Add comfy seating — like a deep armchair or pouf\n3. Throw in textiles — blankets and cushions are musts\n4. Good lighting — a lamp or sconce is key\n5. Shelving or baskets — keep favorite books nearby\n6. Add personality — art, plants, or candles"
+  },
+  {
+    "id": 6,
+    "title": "Minimalist Bathroom Design Ideas That Work",
+    "image": "./public/images/blog/11.jpg",
+    "slug": "modern-bathroom-design",
+    "description": "Inspiration for a sleek and stylish bathroom upgrade.",
+    "price": "$129.99",
+    "content": "Minimalism brings calm and clarity. Here's how:\n\n- Neutral color palette — whites, beiges, and matte blacks\n- Floating vanities — clean look and easier to clean under\n- Hidden storage — built-ins or mirror cabinets\n- Simple fixtures — no-fuss taps and handles\n- Less clutter = more peace"
+  },
+  {
+    "id": 7,
+    "title": "Small Space Solutions for Urban Apartments",
+    "image": "./public/images/blog/12.jpg",
+    "slug": "small-space-solutions",
+    "description": "Smart design tips for maximizing small living spaces.",
+    "price": "$99.99",
+    "content": "Urban apartments require smart, space-saving ideas:\n\n- Multi-use furniture — beds with storage, fold-out desks\n- Vertical storage — wall-mounted shelves and pegboards\n- Light colors + mirrors — open up the space visually\n- Declutter often\n- Utilize awkward corners — every inch counts"
+  },
+  {
+    "id": 8,
+    "title": "Seasonal Decor Transitions Made Easy",
+    "image": "./public/images/blog/13.jpg",
+    "slug": "seasonal-decor-transitions",
+    "description": "Tips for effortlessly changing your home decor with the seasons.",
+    "price": "$59.99",
+    "content": "Easily refresh your home for each season:\n\n- Keep a neutral base year-round\n- Change out pillows and throws seasonally\n- Use seasonal greenery — like eucalyptus or autumn leaves\n- Rotate scents — citrus for summer, spice for winter\n- Layer and mix — candles, wreaths, table runners"
+  },
+  {
+    "id": 9,
+    "title": "Smart Storage Solutions for Every Room",
+    "image": "./public/images/blog/14.jpg",
+    "slug": "smart-storage-solutions",
+    "description": "Innovative storage ideas to keep your home organized and clutter-free.",
+    "price": "$79.99",
+    "content": "Tame the mess with these room-by-room ideas:\n\nLiving Room:\n- Ottoman storage + floating shelves\n\nKitchen:\n- Pull-outs, vertical dividers, and clear containers\n\nBedroom:\n- Under-bed drawers + over-door organizers\n\nBathroom:\n- Over-toilet shelves + magnetic cabinet strips\n\nClosets:\n- Stackable bins and slim hangers"
+  }
+]

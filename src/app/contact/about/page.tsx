@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function About() {
   return (
@@ -22,12 +23,12 @@ export default function About() {
           In-door Home is an online store based in Kigali, Rwanda.<br />
           Est since 2019. Our customer service is always prepared to support you 24/7.
         </p>
-        <a
+        <Link
           href="/shop"
           className="text-black hover:text-blue-800 underline mt-4"
         >
           Shop Now →
-        </a>
+        </Link>
       </div>
     </div>
   );

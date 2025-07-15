@@ -11,6 +11,7 @@ interface BlogPost {
   category: string;
   slug: string;
   featured?: boolean;
+  excerpt?: string;
 }
 
 export default function Blog() {
@@ -28,6 +29,7 @@ export default function Blog() {
       category: "Home Decor",
       slug: "decorate-home-professionally",
       featured: true,
+      excerpt: "Transform your living space with these professional interior design tips and tricks."
     },
     {
       id: 2,
@@ -36,6 +38,7 @@ export default function Blog() {
       image: "/images/blog/2.jpg",
       category: "Kitchen",
       slug: "kitchen-organization",
+      excerpt: "Discover smart storage solutions and organization tips for a functional kitchen."
     },
     {
       id: 3,
@@ -44,6 +47,7 @@ export default function Blog() {
       image: "/images/blog/3.jpg",
       category: "Bedroom",
       slug: "bedroom-for-children",
+      excerpt: "Create a fun and functional bedroom space that your kids will love."
     },
     {
       id: 4,
@@ -53,6 +57,7 @@ export default function Blog() {
       category: "Home Decor",
       slug: "modern-texas-home",
       featured: true,
+      excerpt: "Explore how modern design can be both stylish and family-friendly."
     },
     {
       id: 5,
@@ -61,6 +66,7 @@ export default function Blog() {
       image: "/images/blog/10.jpg",
       category: "Living Room",
       slug: "cozy-reading-nook",
+      excerpt: "Design the perfect reading corner for relaxation and comfort."
     },
     {
       id: 6,
@@ -69,6 +75,7 @@ export default function Blog() {
       image: "/images/blog/11.jpg",
       category: "Bathroom",
       slug: "minimalist-bathroom-design",
+      excerpt: "Simplify your bathroom with clean lines and functional design."
     },
     {
       id: 7,
@@ -77,6 +84,7 @@ export default function Blog() {
       image: "/images/blog/12.jpg",
       category: "Home Decor",
       slug: "small-space-solutions",
+      excerpt: "Maximize your small apartment with clever design and storage solutions."
     },
     {
       id: 8,
@@ -85,6 +93,7 @@ export default function Blog() {
       image: "/images/blog/13.jpg",
       category: "Home Decor",
       slug: "seasonal-decor-transitions",
+      excerpt: "Learn how to transition your home decor between seasons seamlessly."
     },
     {
       id: 9,
@@ -93,10 +102,10 @@ export default function Blog() {
       image: "/images/blog/14.jpg",
       category: "Organization",
       slug: "smart-storage-solutions",
+      excerpt: "Discover innovative storage ideas for every room in your home."
     },
   ];
 
-  
   const filteredPosts = blogPosts.filter((post) =>
     activeFilter === "All Blog"
       ? true
@@ -139,35 +148,49 @@ export default function Blog() {
   };
 
   const BlogCard = ({ post }: { post: BlogPost }) => (
-    <Link
-      href={`/blog/${post.slug}`}
-      className={`bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ${
-        viewMode === "list" ? "flex gap-4" : ""
-      }`}
-    >
-      <div className={`${viewMode === "list" ? "w-48 flex-shrink-0" : ""}`}>
-        <img
-          src={post.image}
-          alt={post.title || "Blog image"}
-          className={`w-full object-cover ${
-            viewMode === "list" ? "h-32" : "h-48"
-          }`}
-        />
-      </div>
-      <div className={`p-4 ${viewMode === "list" ? "flex-1" : ""}`}>
-        <h3
-          className={`font-medium text-gray-900 mb-2 leading-tight ${
-            viewMode === "list" ? "text-lg" : "text-base"
-          }`}
-        >
-          {post.title}
-        </h3>
-        <p className="text-sm text-gray-500">{post.date}</p>
-        {viewMode === "list" && (
-          <p className="text-sm text-gray-600 mt-2 line-clamp-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
-          </p>
-        )}
+    <Link href={`/blog/${post.slug}`} className="group">
+      <div
+        className={`bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ${
+          viewMode === "list" ? "flex gap-4" : ""
+        }`}
+      >
+        <div className={`${viewMode === "list" ? "w-48 flex-shrink-0" : ""}`}>
+          <img
+            src={post.image}
+            alt={post.title || "Blog image"}
+            className={`w-full object-cover group-hover:scale-105 transition-transform duration-300 ${
+              viewMode === "list" ? "h-32" : "h-48"
+            }`}
+          />
+        </div>
+        <div className={`p-4 ${viewMode === "list" ? "flex-1" : ""}`}>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-xs text-gray-500 uppercase tracking-wide">
+              {post.category}
+            </span>
+            {post.featured && (
+              <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                Featured
+              </span>
+            )}
+          </div>
+          <h3
+            className={`font-medium text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors ${
+              viewMode === "list" ? "text-lg" : "text-base"
+            }`}
+          >
+            {post.title}
+          </h3>
+          <p className="text-sm text-gray-500 mb-2">{post.date}</p>
+          {viewMode === "list" && (
+            <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+              {post.excerpt || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt."}
+            </p>
+          )}
+          <div className="mt-4 text-sm text-blue-600 group-hover:underline">
+            Read More →
+          </div>
+        </div>
       </div>
     </Link>
   );
