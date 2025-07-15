@@ -7,7 +7,7 @@ export default function Newsletter() {
     
       <div className="relative w-full md:w-1/3 hidden h-60 md:h-full">
         <Image
-          src="/image/furniture/bedroom.png"
+          src="/image/bedroom/bedroom.png"
           alt="dresser"
           fill
           className="object-cover"
@@ -41,7 +41,7 @@ export default function Newsletter() {
   
       <div className="relative w-full  hidden md:w-1/3 h-60 md:h-full">
         <Image
-          src="/image/furniture/chair1.png"
+          src="/image/Living-room/chair1.png"
           alt="chair"
           fill
           className="object-cover"

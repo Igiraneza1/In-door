@@ -6,7 +6,9 @@
     "slug": "7-ways-to-decor-your-home",
     "description": "Discover 7 unique and affordable ways to upgrade your home's interior.",
     "price": "$149.99",
-    "content": "Want to give your home a designer's touch? Here are 7 ways to decorate your home like a pro:\n\n1. Start with a Neutral Base – Whites, beiges, and soft grays set a calm foundation.\n2. Layer Textures – Combine linen, velvet, wood, and metals to add depth.\n3. Play with Lighting – Mix ambient, task, and accent lighting.\n4. Incorporate Greenery – Plants make every room feel fresh and lively.\n5. Balance the Room – Use symmetry and scale like a pro.\n6. Invest in Statement Pieces – A bold rug or art piece can define the space.\n7. Edit Ruthlessly – Remove clutter to let key features shine."
+    "content": "Want to give your home a designer’s touch without spending a fortune? Learn how to create stunning interiors with seven simple yet impactful decor techniques used by professionals. From playing with textures and layering textiles to strategically placing mirrors and artwork, each method will help elevate your space with style and personality. Whether you're redecorating a room or refreshing your entire home, these tips make high-end design accessible and budget-friendly.",
+    "featured": true,
+    "date": "2025-07-01"
   },
   {
     "id": 2,
@@ -15,7 +17,9 @@
     "slug": "kitchen-organisation",
     "description": "Maximize your kitchen space with these simple organization hacks.",
     "price": "$89.99",
-    "content": "A beautiful kitchen is more than just aesthetics—it's smart design:\n\n- Declutter ruthlessly\n- Group by zones — spices near cooking, plates near dishwashers\n- Use pull-outs and stackable bins\n- Clear jars = clean look\n- Hooks & racks — use your walls!\n- Labels for everything"
+    "content":" A beautiful kitchen goes beyond just aesthetic appeal—it's about smart functionality and thoughtful organization. Explore practical tips to declutter your space, streamline meal prep, and enhance the overall kitchen experience. Learn how to use shelf organizers, drawer dividers, labeled jars, and vertical storage to make your kitchen feel more spacious and efficient. With a few clever hacks, you can transform your kitchen into a more inviting and productive space.",
+    "featured": false,
+    "date": "2025-06-28"
   },
   {
     "id": 3,
@@ -24,7 +28,9 @@
     "slug": "decor-your-bedroom",
     "description": "Transform your bedroom into a cozy retreat with these decor tips.",
     "price": "$199.99",
-    "content": "Design a fun, safe, and functional room your kids will love:\n\n- Choose vibrant but calming colors\n- Smart furniture — beds with storage or built-in desks\n- Interactive corners — reading nook, chalk wall, or play zone\n- Soft rugs and safe finishes\n- Furniture that grows with them"
+    "content": "Designing your child’s bedroom involves more than picking colorful themes—it’s about creating a safe, joyful, and nurturing environment where they can play, learn, and rest. Discover creative decor ideas that blend functionality and fun, from multi-purpose furniture and storage solutions to personalized wall art and cozy lighting. With thoughtful planning, you can build a bedroom that grows with your child and sparks their imagination every day.",
+    "featured": true,
+    "date": "2025-06-15"
   },
   {
     "id": 4,
@@ -33,16 +39,20 @@
     "slug": "living-room-makeover-ideas",
     "description": "Simple ideas to refresh your living room style.",
     "price": "$179.99",
-    "content": "Modern and kid-friendly can co-exist beautifully:\n\n- Open-concept floor plan\n- Soft furnishings with rounded edges\n- Built-in play zones with hidden storage\n- Abundant natural light\n- Durable materials like quartz and matte tile"
+    "content": "Modern design and kid-friendly living don’t have to be mutually exclusive. This guide shows how to achieve a stylish, contemporary home that also accommodates the needs of young children. Learn about durable fabrics, rounded furniture edges, playful yet elegant accessories, and open layouts that promote both safety and aesthetic appeal. With the right touches, you can create a modern home that's practical, comfortable, and family-approved.",
+    "featured": false,
+    "date": "2025-05-20"
   },
   {
     "id": 5,
     "title": "Creating a Cozy Reading Nook in Your Living Room",
     "image": "/image/Living-room/sofa12.jpg",
     "slug": "modern-bathroom-design",
-    "description": "Inspiration for a sleek and stylish bathroom upgrade.",
+    "description": "Inspiration for a sleek and stylish Living-room upgrade.",
     "price": "$129.99",
-    "content": "Transform any corner into a cozy reading escape:\n\n1. Pick a peaceful spot — near a window is best\n2. Add comfy seating — like a deep armchair or pouf\n3. Throw in textiles — blankets and cushions are musts\n4. Good lighting — a lamp or sconce is key\n5. Shelving or baskets — keep favorite books nearby\n6. Add personality — art, plants, or candles"
+    "content": "Looking to carve out a peaceful retreat in your home? Turn an empty corner of your living room into a cozy reading nook that invites relaxation. Use soft lighting, plush cushions, a comfy armchair, and a small bookshelf or floating shelves to design a serene space perfect for unwinding with your favorite book. Whether your style is minimalist or eclectic, this little haven can add both charm and comfort to your living area.",
+    "featured": true,
+    "date": "2025-05-12"
   },
   {
     "id": 6,
@@ -51,7 +61,9 @@
     "slug": "modern-bathroom-design",
     "description": "Inspiration for a sleek and stylish bathroom upgrade.",
     "price": "$129.99",
-    "content": "Minimalism brings calm and clarity. Here's how:\n\n- Neutral color palette — whites, beiges, and matte blacks\n- Floating vanities — clean look and easier to clean under\n- Hidden storage — built-ins or mirror cabinets\n- Simple fixtures — no-fuss taps and handles\n- Less clutter = more peace"
+    "content": "Minimalism isn't just a trend—it's a lifestyle that brings peace and clarity into your home. In the kitchen, this approach translates into sleek cabinetry, clutter-free countertops, and purposeful design choices. Explore minimalist kitchen ideas that focus on neutral tones, smart storage, and high-quality materials. By eliminating excess and emphasizing functionality, you can create a space that feels open, calming, and timelessly elegant.",
+    "featured": false,
+    "date": "2025-04-28"
   },
   {
     "id": 7,
@@ -60,7 +72,9 @@
     "slug": "small-space-solutions",
     "description": "Smart design tips for maximizing small living spaces.",
     "price": "$99.99",
-    "content": "Urban apartments require smart, space-saving ideas:\n\n- Multi-use furniture — beds with storage, fold-out desks\n- Vertical storage — wall-mounted shelves and pegboards\n- Light colors + mirrors — open up the space visually\n- Declutter often\n- Utilize awkward corners — every inch counts"
+    "content": "Living in a small urban apartment doesn’t mean sacrificing comfort or style. Discover smart solutions designed to maximize space without compromising on design. Learn how to use foldable furniture, wall-mounted storage, multipurpose pieces, and light color palettes to create an illusion of spaciousness. These space-saving tricks will help you organize efficiently and make the most of every square foot in your city dwelling.",
+    "featured": true,
+    "date": "2025-04-10"
   },
   {
     "id": 8,
@@ -69,7 +83,9 @@
     "slug": "seasonal-decor-transitions",
     "description": "Tips for effortlessly changing your home decor with the seasons.",
     "price": "$59.99",
-    "content": "Easily refresh your home for each season:\n\n- Keep a neutral base year-round\n- Change out pillows and throws seasonally\n- Use seasonal greenery — like eucalyptus or autumn leaves\n- Rotate scents — citrus for summer, spice for winter\n- Layer and mix — candles, wreaths, table runners"
+    "content": "Changing your home’s decor to match the seasons doesn’t have to be complicated. With a few thoughtful touches, you can keep your space feeling fresh and timely all year round. Swap out textiles, update color schemes, and incorporate seasonal elements like florals in spring, warm tones in fall, and cozy textures in winter. This guide offers simple strategies to transition your home decor seamlessly from one season to the next.",
+    "featured": false,
+    "date": "2025-03-30"
   },
   {
     "id": 9,
@@ -78,6 +94,8 @@
     "slug": "smart-storage-solutions",
     "description": "Innovative storage ideas to keep your home organized and clutter-free.",
     "price": "$79.99",
-    "content": "Tame the mess with these room-by-room ideas:\n\nLiving Room:\n- Ottoman storage + floating shelves\n\nKitchen:\n- Pull-outs, vertical dividers, and clear containers\n\nBedroom:\n- Under-bed drawers + over-door organizers\n\nBathroom:\n- Over-toilet shelves + magnetic cabinet strips\n\nClosets:\n- Stackable bins and slim hangers"
+    "content": "Clutter can quickly take over any home, but with the right storage solutions, every room can be both tidy and functional. Explore creative and innovative ideas for organizing your bedroom, kitchen, living room, and more. From under-bed compartments and vertical shelving to hidden storage ottomans and modular closet systems, this guide will help you find the perfect balance between form and function—ensuring every item has its place.",
+    "featured": true,
+    "date": "2025-03-10"
   }
 ]
