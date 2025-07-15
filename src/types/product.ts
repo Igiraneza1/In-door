@@ -1,8 +1,9 @@
 export interface Category {
-  id: number
-  categoryName: string
-  description: string
-  createdAt: string
+  id: number;
+  name: string;
+  slug: string;
+  image: string;
+  description?: string;
 }
 
 
@@ -16,8 +17,6 @@ export interface Product {
   size?: string
   color?: string
   imageUrl?: string
-  category?: {
-    categoryName: string
-  }
+  category?: Category;
 }
 

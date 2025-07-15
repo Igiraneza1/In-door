@@ -1,12 +1,37 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const [showFooter, setShowFooter] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    function checkAuth() {
+      const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+      // Show footer only if authenticated and NOT on home page
+      setShowFooter(isAuthenticated && pathname !== "/");
+    }
+
+    checkAuth(); // initial check on mount
+
+    window.addEventListener("storage", checkAuth);
+
+    return () => {
+      window.removeEventListener("storage", checkAuth);
+    };
+  }, [pathname]);
+
+  if (!showFooter) return null; // Hide footer if not authenticated or on home page
+
   return (
     <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-6 py-12 space-y-10">
-        
+
+        {/* Brand + Navigation */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-center md:text-left">
             <h2 className="text-2xl font-bold text-white">
@@ -28,12 +53,11 @@ export default function Footer() {
           </nav>
         </div>
 
-        
+        {/* Divider */}
         <div className="border-t border-gray-700"></div>
 
-       
+        {/* Copyright + Social */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-6 text-sm text-gray-400">
-          
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-center sm:text-left">
             <p>&copy; {new Date().getFullYear()} Elegant. All rights reserved.</p>
             <Link href="/privacy-policy" className="hover:text-white transition">
@@ -44,12 +68,12 @@ export default function Footer() {
             </Link>
           </div>
 
-          
           <ul className="flex gap-4 text-xl">
             <li>
               <Link
                 href="https://www.facebook.com/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-blue-500 transition-transform hover:scale-110"
               >
                 <FaFacebookF />
@@ -59,6 +83,7 @@ export default function Footer() {
               <Link
                 href="https://www.instagram.com/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-pink-500 transition-transform hover:scale-110"
               >
                 <FaInstagram />
@@ -68,6 +93,7 @@ export default function Footer() {
               <Link
                 href="https://www.twitter.com/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-sky-400 transition-transform hover:scale-110"
               >
                 <FaTwitter />
