@@ -9,19 +9,32 @@ import { GrSecure } from "react-icons/gr";
 import { IoCallOutline } from "react-icons/io5";
 import news from "../../../jsondata/news.json";
 
+interface Product {
+  id: number;
+  title: string;
+  description?: string; 
+  price: string;
+  originalPrice?: string;
+  rating: number;
+  discount?: string;
+  isNew?: boolean;
+  image: string;
+}
+
 export default function NewArrivals() {
   const [activeProductId, setActiveProductId] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const router = useRouter();
 
-  const productsToShow = showAll ? news : news.slice(0, 5);
+  const products: Product[] = news;
+  const productsToShow = showAll ? products : products.slice(0, 5);
 
-  const handleAddToCart = (product: any) => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  const handleAddToCart = (product: Product) => {
+    const cart: (Product & { quantity: number })[] = JSON.parse(localStorage.getItem("cart") || "[]");
 
-    const existing = cart.find((item: any) => item.id === product.id);
+    const existing = cart.find((item) => item.id === product.id);
     if (existing) {
       existing.quantity += 1;
     } else {
@@ -68,9 +81,11 @@ export default function NewArrivals() {
                       <span className="block bg-white text-black text-[10px] font-semibold px-2 py-0.5 rounded shadow-sm">
                         NEW
                       </span>
-                      <span className="block bg-green-500 text-white text-[10px] font-semibold px-2 py-0.5 rounded">
-                        -{item.discount}
-                      </span>
+                      {item.discount && (
+                        <span className="block bg-green-500 text-white text-[10px] font-semibold px-2 py-0.5 rounded">
+                          -{item.discount}
+                        </span>
+                      )}
                     </div>
                   )}
 
@@ -128,7 +143,6 @@ export default function NewArrivals() {
                     )}
                   </div>
 
-                  {/* Description visible when active */}
                   {activeProductId === item.id && (
                     <p className="text-gray-600 text-xs mt-2">{item.description}</p>
                   )}
@@ -139,7 +153,7 @@ export default function NewArrivals() {
         </div>
       </section>
 
-      {/* === Features Section === */}
+      {/* === Feature Section === */}
       <section className="max-w-6xl mx-auto bg-white py-12 px-4 sm:px-6 md:px-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {[
@@ -197,7 +211,7 @@ export default function NewArrivals() {
             <h2 className="text-lg font-semibold">{selectedProduct.title}</h2>
             <p className="text-gray-600">{selectedProduct.description || "No description"}</p>
             <div className="mt-2 font-bold text-black text-md">
-              ${selectedProduct.price}
+              {selectedProduct.price}
             </div>
             <button
               onClick={() => router.push("/cart")}

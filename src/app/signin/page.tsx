@@ -47,7 +47,7 @@ export default function SignIn() {
         if (data.role === "admin") {
           router.push("/dashboard");
         } else {
-          router.push("/home");
+          router.push("/inDoor");
         }
       }, 1500);
     } catch (err: unknown) {
