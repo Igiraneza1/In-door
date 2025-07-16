@@ -7,6 +7,7 @@ import { LiaMoneyBillSolid } from "react-icons/lia";
 import { GrSecure } from "react-icons/gr";
 import { IoCallOutline } from "react-icons/io5";
 
+
 export default function NewArrivals() {
   const [activeProductId, setActiveProductId] = useState(1);
   const [showAll, setShowAll] = useState(false);
@@ -14,7 +15,7 @@ export default function NewArrivals() {
   const allProducts = [
     {
       id: 1,
-      image: "/image/furniture/Loveseat sofa.png",
+      image: "/image/Living-room/loveseat.png",
       title: "Loveseat",
       price: "$71.00",
       rating: 5,
@@ -131,21 +132,26 @@ export default function NewArrivals() {
     const isLoggedIn = localStorage.getItem("user");
     localStorage.setItem("pendingProduct", JSON.stringify(product));
 
-    if (!isLoggedIn) {
-      window.location.href = "/signup";
-    } else {
+    // if (!isLoggedIn) {
+    //   window.location.href = "/signup";
+    // } else {
+    //   window.location.href = "/cart";
+    // }
+    if(!isLoggedIn){
       window.location.href = "/cart";
+    }else{
+      console.error("unable to add to cart");
     }
   };
 
   return (
-    <div className="bg-white ml-10 ">
+    <div className="bg-white  ">
       
       <section className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         <div className="flex justify-between items-center mb-6"> 
 
-          <h2 className=" ml-30   text-3xl sm:text-4xl font-semibold text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900">
             New<br />Arrivals
           </h2>
           <button
@@ -157,7 +163,7 @@ export default function NewArrivals() {
         </div>
 
        
-        <div className="overflow-x-auto  m-15 p-20 mb-10 ">
+        <div className="overflow-x-auto  ">
           <div className="flex gap-4 pr-10 ">
             {productsToShow.map((item, index) => (
               <div
@@ -190,8 +196,8 @@ export default function NewArrivals() {
                   <Image
                     src={item.image}
                     alt={item.title}
-                    width={500}
-                    height={500}
+                    width={300}
+                    height={300}
                     className="w-full h-40 sm:h-48 md:h-52 object-contain transition-transform duration-500 group-hover:scale-105"
                   />
 
@@ -204,8 +210,8 @@ export default function NewArrivals() {
                     </button>
                   )}
                 </div>
-
-                <div className="text-yellow-500 text-sm mb-1 flex">
+                <div className="pb-10 mb-4">
+                <div className="text-yellow-500 text-sm mb-2 flex">
                   {[...Array(5)].map((_, i) => (
                     <FaStar
                       key={i}
@@ -221,6 +227,7 @@ export default function NewArrivals() {
                   {item.originalPrice && (
                     <span className="text-gray-400 line-through text-xs">{item.originalPrice}</span>
                   )}
+                </div>
                 </div>
               </div>
             ))}

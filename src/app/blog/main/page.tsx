@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import { Grid, List, LayoutGrid, Rows } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import articles from "../../../jsondata/articles.json";
 
-interface articles {
+interface article {
   id: number;
   title: string;
   date: string;
@@ -15,13 +16,17 @@ interface articles {
   excerpt?: string;
 }
 
+ interface ViewModeButtonProps {
+  mode: string;
+  icon: React.ElementType;
+  isActive: boolean;
+}
 export default function Blog() {
-  const [viewMode, setViewMode] = useState("grid");
   const [showAll, setShowAll] = useState(false);
   const [activeFilter, setActiveFilter] = useState("All Blog");
   const [sortOption, setSortOption] = useState("Latest");
+  const [viewMode, setViewMode] = useState("grid");
 
- 
 
   const filteredPosts = articles.filter((post) =>
     activeFilter === "All Blog"
@@ -31,7 +36,6 @@ export default function Blog() {
       : false
   );
 
-  // Sorting
   const sortedPosts = [...filteredPosts].sort((a, b) => {
     const dateA = new Date(a.date).getTime();
     const dateB = new Date(b.date).getTime();
@@ -42,14 +46,21 @@ export default function Blog() {
 
   const displayedPosts = showAll ? sortedPosts : sortedPosts.slice(0, 6);
 
-  const ViewModeButton = ({ mode, icon: Icon, isActive }: any) => (
-    <button
-      onClick={() => setViewMode(mode)}
-      className={`p-2 rounded ${isActive ? "bg-gray-200" : "hover:bg-gray-100"}`}
-    >
-      <Icon className="w-4 h-4" />
-    </button>
-  );
+// const ViewModeButton = ({ mode, icon: Icon, isActive }: ViewModeButtonProps) => (
+//   <button className={isActive ? 'active' : ''}>
+//     <Icon />
+//     {mode}
+//   </button>
+// );
+const ViewModeButton = ({ mode, icon: Icon, isActive }: ViewModeButtonProps) => (
+  <button
+    className={`p-1 ${isActive ? 'bg-gray-200' : ''}`}
+    onClick={() => setViewMode(mode)}
+  >
+    <Icon className="w-4 h-4" />
+  </button>
+);
+
 
   const getGridClass = () => {
     switch (viewMode) {
@@ -64,7 +75,7 @@ export default function Blog() {
     }
   };
 
-  const BlogCard = ({ post }: { post: articles }) => (
+    const BlogCard = ({ post }: { post: article }) => (
     <Link href={`/blog/${post.slug}`} className="group">
       <div
         className={`bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ${
@@ -72,9 +83,10 @@ export default function Blog() {
         }`}
       >
         <div className={`${viewMode === "list" ? "w-48 flex-shrink-0" : ""}`}>
-          <img
+          <Image
             src={post.image}
             alt={post.title || "Blog image"}
+            fill
             className={`w-full object-cover group-hover:scale-105 transition-transform duration-300 ${
               viewMode === "list" ? "h-32" : "h-48"
             }`}

@@ -3,10 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Newsletter() {
-    const image=[
-        {Image: "/image/bedroom/bedroom.png"},
-        {Image: "/image/Living-room/chair1.png"}
-    ]
   return (
    
          <section className="relative h-72 flex items-center justify-center bg-gray-100 mt-8">
