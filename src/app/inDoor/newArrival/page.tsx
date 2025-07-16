@@ -104,18 +104,17 @@ export default function NewArrivals() {
                     height={300}
                     className="w-full h-32 sm:h-36 md:h-40 object-contain transition-transform duration-500 group-hover:scale-105"
                   />
-
-                  {activeProductId === item.id && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleAddToCart(item);
-                      }}
-                      className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded-lg text-xs sm:text-sm font-medium z-10"
-                    >
-                      Add to cart
-                    </button>
-                  )}
+{activeProductId === item.id && (
+  <button
+    onClick={(e) => {
+      e.stopPropagation();
+      handleAddToCart(item);
+    }}
+    className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded-lg text-xs sm:text-sm font-medium z-10"
+  >
+    Add to cart
+  </button>
+)}
                 </div>
 
                 <div className="pb-10 mb-4">
