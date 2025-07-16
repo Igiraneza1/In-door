@@ -2,176 +2,65 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FaHeart, FaStar, FaShippingFast } from "react-icons/fa";
 import { LiaMoneyBillSolid } from "react-icons/lia";
 import { GrSecure } from "react-icons/gr";
 import { IoCallOutline } from "react-icons/io5";
-
+import news from "../../../jsondata/news.json";
 
 export default function NewArrivals() {
-  const [activeProductId, setActiveProductId] = useState(1);
+  const [activeProductId, setActiveProductId] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const router = useRouter();
 
-  const allProducts = [
-    {
-      id: 1,
-      image: "/image/Living-room/loveseat.png",
-      title: "Loveseat",
-      price: "$71.00",
-      rating: 5,
-      originalPrice: "$99.00",
-      isNew: true,
-      discount: "50%",
-    },
-    {
-      id: 2,
-      image: "/image/furniture/Table lamp.png",
-      title: "Table Lamp",
-      price: "$24.00",
-      rating: 4,
-      isNew: true,
-      discount: "50%",
-    },
-    {
-      id: 3,
-      image: "/image/furniture/Beige table lamp.png",
-      title: "Beige Table Lamp",
-      price: "$30.00",
-      rating: 4,
-      isNew: true,
-      discount: "50%",
-    },
-    {
-      id: 4,
-      image: "/image/furniture/basket.png",
-      title: "Bamboo Basket",
-      price: "$12.00",
-      rating: 5,
-      originalPrice: "$24.00",
-      isNew: true,
-      discount: "50%",
-    },
-    {
-      id: 5,
-      image: "/image/furniture/toaster.png",
-      title: "Toaster",
-      price: "$35.00",
-      rating: 4,
-      isNew: true,
-      discount: "50%",
-    },
-    {
-      id: 6,
-      image: "/image/furniture/chair.png",
-      title: "Cozy Chair",
-      price: "$55.00",
-      rating: 5,
-      isNew: true,
-      discount: "30%",
-    },
-    {
-      id: 7,
-      image: "/image/furniture/wooden-shelf.png",
-      title: "Wooden Shelf",
-      price: "$48.00",
-      rating: 4,
-      isNew: true,
-      discount: "20%",
-    },
-    {
-    id: 8,
-    image: "/image/furniture/wooden-chair.png",
-    title: "Wooden Chair",
-    price: "$50.00",
-    rating: 5,
-    isNew: true,
-    discount: "15%",
-  },
-  {
-    id: 9,
-    image: "/image/furniture/curtains.png",
-    title: "Curtains",
-    price: "$20.00",
-    rating: 4,
-    isNew: true,
-    discount: "40%",
-  },
-  {
-    id: 10,
-    image: "/image/furniture/rug.png",
-    title: "Modern Rug",
-    price: "$60.00",
-    rating: 5,
-    isNew: true,
-    discount: "35%",
-  },
-  {
-    id: 11,
-    image: "/image/furniture/shelf.png",
-    title: "Wall Shelf",
-    price: "$28.00",
-    rating: 4,
-    isNew: true,
-    discount: "10%",
-  },
-  {
-    id: 12,
-    image: "/image/furniture/pillow.png",
-    title: "Pillow",
-    price: "$15.00",
-    rating: 4,
-    isNew: true,
-    discount: "20%",
-  },
-
-  ];
-
-  const productsToShow = showAll ? allProducts : allProducts.slice(0, 5);
+  const productsToShow = showAll ? news : news.slice(0, 5);
 
   const handleAddToCart = (product: any) => {
-    const isLoggedIn = localStorage.getItem("user");
-    localStorage.setItem("pendingProduct", JSON.stringify(product));
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
-    // if (!isLoggedIn) {
-    //   window.location.href = "/signup";
-    // } else {
-    //   window.location.href = "/cart";
-    // }
-    if(!isLoggedIn){
-      window.location.href = "/cart";
-    }else{
-      console.error("unable to add to cart");
+    const existing = cart.find((item: any) => item.id === product.id);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
     }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    setSelectedProduct(product);
+    setShowPopup(true);
   };
 
   return (
-    <div className="bg-white  ">
-      
+    <div className="bg-white">
+      {/* === New Arrivals Section === */}
       <section className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
-        <div className="flex justify-between items-center mb-6"> 
-
+        <div className="flex justify-between items-center mb-6">
           <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900">
             New<br />Arrivals
           </h2>
           <button
             onClick={() => setShowAll((prev) => !prev)}
-            className="text-gray-600 hover:text-gray-900 flex items-center text-sm font-medium gap-1 transition-colors "
+            className="text-gray-600 hover:text-gray-900 flex items-center text-sm font-medium gap-1 transition-colors"
           >
             {showAll ? "Show Less" : "More Products"} <span className="ml-1">→</span>
           </button>
         </div>
 
-       
-        <div className="overflow-x-auto  ">
-          <div className="flex gap-4 pr-10 ">
+        <div className="overflow-x-auto">
+          <div className="flex gap-4 pr-10">
             {productsToShow.map((item, index) => (
               <div
                 key={item.id}
                 className={`group relative min-w-[180px] sm:min-w-[200px] md:min-w-[220px] lg:min-w-[240px] ${
                   index === productsToShow.length - 1 ? "mr-20" : ""
                 }`}
-                onClick={() => setActiveProductId(item.id)}
+                onClick={() => {
+                  setActiveProductId(item.id);
+                  setSelectedProduct(item);
+                }}
               >
                 <div className="relative mb-3 rounded-xl overflow-hidden bg-gray-100">
                   {item.isNew && (
@@ -198,36 +87,51 @@ export default function NewArrivals() {
                     alt={item.title}
                     width={300}
                     height={300}
-                    className="w-full h-40 sm:h-48 md:h-52 object-contain transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-32 sm:h-36 md:h-40 object-contain transition-transform duration-500 group-hover:scale-105"
                   />
 
                   {activeProductId === item.id && (
                     <button
-                      onClick={() => handleAddToCart(item)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleAddToCart(item);
+                      }}
                       className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded-lg text-xs sm:text-sm font-medium z-10"
                     >
                       Add to cart
                     </button>
                   )}
                 </div>
+
                 <div className="pb-10 mb-4">
-                <div className="text-yellow-500 text-sm mb-2 flex">
-                  {[...Array(5)].map((_, i) => (
-                    <FaStar
-                      key={i}
-                      className={`${i < item.rating ? "text-black" : "text-gray-300"} text-sm`}
-                    />
-                  ))}
-                </div>
+                  <div className="text-yellow-500 text-sm mb-2 flex">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar
+                        key={i}
+                        className={`${
+                          i < item.rating ? "text-black" : "text-gray-300"
+                        } text-sm`}
+                      />
+                    ))}
+                  </div>
 
-                <h3 className="text-gray-900 font-semibold text-sm mb-1">{item.title}</h3>
+                  <h3 className="text-gray-900 font-semibold text-sm mb-1">
+                    {item.title}
+                  </h3>
 
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-900 font-bold text-sm">{item.price}</span>
-                  {item.originalPrice && (
-                    <span className="text-gray-400 line-through text-xs">{item.originalPrice}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-900 font-bold text-sm">{item.price}</span>
+                    {item.originalPrice && (
+                      <span className="text-gray-400 line-through text-xs">
+                        {item.originalPrice}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Description visible when active */}
+                  {activeProductId === item.id && (
+                    <p className="text-gray-600 text-xs mt-2">{item.description}</p>
                   )}
-                </div>
                 </div>
               </div>
             ))}
@@ -235,8 +139,7 @@ export default function NewArrivals() {
         </div>
       </section>
 
-
-
+      {/* === Features Section === */}
       <section className="max-w-6xl mx-auto bg-white py-12 px-4 sm:px-6 md:px-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {[
@@ -272,6 +175,39 @@ export default function NewArrivals() {
           ))}
         </div>
       </section>
+
+      {/* === Add to Cart Popup === */}
+      {showPopup && selectedProduct && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-xl shadow-xl w-[90%] max-w-sm relative">
+            <button
+              onClick={() => setShowPopup(false)}
+              className="absolute top-2 right-3 text-gray-600 hover:text-black text-xl"
+            >
+              ×
+            </button>
+
+            <Image
+              src={selectedProduct.image}
+              alt={selectedProduct.title}
+              width={200}
+              height={200}
+              className="w-full h-48 object-contain mb-4"
+            />
+            <h2 className="text-lg font-semibold">{selectedProduct.title}</h2>
+            <p className="text-gray-600">{selectedProduct.description || "No description"}</p>
+            <div className="mt-2 font-bold text-black text-md">
+              ${selectedProduct.price}
+            </div>
+            <button
+              onClick={() => router.push("/cart")}
+              className="mt-4 bg-black text-white px-4 py-2 rounded-lg w-full"
+            >
+              Go to Checkout
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
