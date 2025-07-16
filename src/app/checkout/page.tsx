@@ -1,104 +1,136 @@
+// File: components/Checkout.tsx
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function CheckoutPage() {
-  const [cart, setCart] = useState<any[]>([]);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    address: "",
-  });
+interface CartItem {
+  id: number;
+  title: string;
+  price: number;
+  quantity: number;
+  image: string;
+}
+
+export default function Checkout() {
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [coupon, setCoupon] = useState("");
+  const [discount, setDiscount] = useState(0);
 
   useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    setCart(storedCart);
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
   }, []);
 
-  const total = cart.reduce((sum, item) => {
-    const price = parseFloat(item.price.replace("$", ""));
-    return sum + price * item.quantity;
-  }, 0);
+  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = subtotal - discount;
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleApplyCoupon = () => {
+    if (coupon === "JenkateMW") {
+      setDiscount(25);
+    }
   };
 
-  const handleCheckout = () => {
-    if (!form.name || !form.email || !form.address) {
-      alert("Please fill in all fields.");
-      return;
-    }
-
-    // In a real app, send form + cart to backend
-    console.log("Order submitted:", { form, cart });
-
-    // Clear cart
-    localStorage.removeItem("cart");
+  const handlePlaceOrder = () => {
     alert("Order placed successfully!");
-    window.location.href = "/";
+    setCart([]);
+    localStorage.removeItem("cart");
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-6">Checkout</h1>
+    <div className="max-w-6xl mx-auto p-4">
+      <h1 className="text-3xl font-bold text-center mb-8">Checkout</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* 📋 Shipping Form */}
-        <div>
-          <h2 className="text-lg font-semibold mb-4">Shipping Details</h2>
-          <div className="space-y-4">
-            <input
-              type="text"
-              name="name"
-              placeholder="Full Name"
-              value={form.name}
-              onChange={handleInputChange}
-              className="w-full border p-2 rounded"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              value={form.email}
-              onChange={handleInputChange}
-              className="w-full border p-2 rounded"
-            />
-            <input
-              type="text"
-              name="address"
-              placeholder="Shipping Address"
-              value={form.address}
-              onChange={handleInputChange}
-              className="w-full border p-2 rounded"
-            />
+      <div className="grid md:grid-cols-2 gap-6">
+        <form className="space-y-6">
+          <div>
+            <h2 className="text-lg font-semibold">Contact Information</h2>
+            <input className="w-full p-2 border rounded mt-2" placeholder="First Name" />
+            <input className="w-full p-2 border rounded mt-2" placeholder="Last Name" />
+            <input className="w-full p-2 border rounded mt-2" placeholder="Phone Number" />
+            <input className="w-full p-2 border rounded mt-2" placeholder="Email Address" />
           </div>
-        </div>
 
-        {/* 🛒 Order Summary */}
-        <div>
-          <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
-          <div className="space-y-4">
-            {cart.map((item) => (
-              <div key={item.id} className="flex justify-between">
-                <span>
-                  {item.title} x {item.quantity}
-                </span>
-                <span>{item.price}</span>
-              </div>
-            ))}
+          <div>
+            <h2 className="text-lg font-semibold">Shipping Address</h2>
+            <input className="w-full p-2 border rounded mt-2" placeholder="Street Address" />
+            <input className="w-full p-2 border rounded mt-2" placeholder="Country" />
+            <input className="w-full p-2 border rounded mt-2" placeholder="City" />
+            <input className="w-full p-2 border rounded mt-2" placeholder="State" />
+            <input className="w-full p-2 border rounded mt-2" placeholder="Zip Code" />
           </div>
-          <div className="border-t mt-4 pt-4 flex justify-between font-bold">
-            <span>Total:</span>
-            <span>${total.toFixed(2)}</span>
+
+          <div>
+            <h2 className="text-lg font-semibold">Payment Method</h2>
+            <div className="flex gap-2 items-center">
+              <input type="radio" name="payment" defaultChecked />
+              <label>Card Credit</label>
+            </div>
+            <input className="w-full p-2 border rounded mt-2" placeholder="Card Number" />
+            <input className="w-full p-2 border rounded mt-2" placeholder="MM/YY" />
+            <input className="w-full p-2 border rounded mt-2" placeholder="CVC" />
+            <div className="flex gap-2 items-center mt-2">
+              <input type="radio" name="payment" />
+              <label>Paypal</label>
+            </div>
           </div>
 
           <button
-            onClick={handleCheckout}
-            className="mt-6 w-full bg-black text-white py-2 rounded-lg"
+            type="button"
+            onClick={handlePlaceOrder}
+            className="w-full py-3 bg-black text-white rounded-lg hover:bg-gray-800"
           >
-            Confirm Order
+            Place Order
           </button>
+        </form>
+
+        <div className="bg-white p-6 border rounded-lg">
+          <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
+          {cart.map((item) => (
+            <div key={item.id} className="flex justify-between items-center mb-4">
+              <div className="flex gap-3 items-center">
+                <img src={item.image} className="w-16 h-16 object-contain" alt={item.title} />
+                <div>
+                  <h4 className="font-medium">{item.title}</h4>
+                  <p>Qty: {item.quantity}</p>
+                </div>
+              </div>
+              <span>${(item.price * item.quantity).toFixed(2)}</span>
+            </div>
+          ))}
+
+          <div className="flex gap-2 mb-4">
+            <input
+              type="text"
+              className="w-full p-2 border rounded"
+              placeholder="Coupon Code"
+              value={coupon}
+              onChange={(e) => setCoupon(e.target.value)}
+            />
+            <button
+              type="button"
+              className="bg-black text-white px-4 py-2 rounded"
+              onClick={handleApplyCoupon}
+            >
+              Apply
+            </button>
+          </div>
+
+          {discount > 0 && (
+            <div className="text-green-600 mb-2">Coupon Applied: -${discount.toFixed(2)}</div>
+          )}
+
+          <div className="border-t pt-4 space-y-2">
+            <div className="flex justify-between">
+              <span>Subtotal:</span>
+              <span>${subtotal.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between font-bold text-lg">
+              <span>Total:</span>
+              <span>${total.toFixed(2)}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
