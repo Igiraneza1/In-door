@@ -24,15 +24,15 @@ export default function HomePage() {
   }, [currentIndex]);
 
   return (
-    <div className="p-6">
+    <div className="w-full">
       <div className="flex flex-col md:flex-row h-[500px]">
         {/* 2/3 Image Slider */}
-        <div className="relative w-full md:w-2/3 h-full overflow-hidden rounded-lg">
+        <div className="relative w-full md:w-2/3 h-full overflow-hidden">
           <Image
             src={products[currentIndex].imageUrl}
             alt={products[currentIndex].title}
             fill
-            className="object-cover rounded-lg transition-all duration-500"
+            className="object-cover transition-all duration-500"
           />
 
           <div className="absolute bottom-0 left-0 w-full bg-black/60 text-white text-center py-2">
@@ -59,7 +59,7 @@ export default function HomePage() {
         </div>
 
         {/* 1/3 Welcome Message */}
-        <div className="w-full md:w-1/3 h-full bg-white shadow-lg rounded-lg p-6 flex items-center justify-center text-center">
+        <div className="w-full md:w-1/3 h-full bg-white shadow-lg p-6 flex items-center justify-center text-center">
           <div>
             <h2 className="text-3xl font-bold mb-4 text-gray-800">Welcome to Elegant.</h2>
             <p className="text-gray-600">
