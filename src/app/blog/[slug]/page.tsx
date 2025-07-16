@@ -16,10 +16,7 @@ interface BlogPost {
   date: string;
 }
 
-interface Props {
-  params: { slug: string };
-  searchParams?: Record<string, string>;
-}
+
 
 
 interface Props {
@@ -85,7 +82,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </div>
         </div>
 
-        <div className="prose max-w-none">
+        <div className="h-18">
           {contentSections}
           {(post.slug.includes('kitchen') || post.slug.includes('organization')) && (
             <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500 mt-6">
@@ -97,6 +94,28 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </p>
             </div>
           )}
+          {(post.slug.includes('living-room')) && (
+  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-green-500 mt-6">
+    <p className="text-sm italic text-gray-600">
+      "Transforming cluttered living rooms into calming spaces is what we do best."
+    </p>
+    <p className="text-sm font-medium text-gray-500 mt-2">
+      — Daniel R., Interior Stylist
+    </p>
+  </div>
+)}
+
+{(post.slug.includes('bedroom')) && (
+  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-purple-500 mt-6">
+    <p className="text-sm italic text-gray-600">
+      "Clients often tell us their redesigned bedrooms feel like a peaceful retreat."
+    </p>
+    <p className="text-sm font-medium text-gray-500 mt-2">
+      — Alina S., Home Consultant
+    </p>
+  </div>
+)}
+
         </div>
       </article>
 

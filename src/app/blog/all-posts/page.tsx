@@ -3,19 +3,7 @@ import { useState } from "react";
 import { Grid, List, LayoutGrid, Rows } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { LucideProps } from "lucide-react";
 import articles from "../../../jsondata/articles.json";
-
-interface BlogPost {
-  id: number;
-  title: string;
-  date: string;
-  image: string;
-  category: string;
-  slug: string;
-  featured?: boolean;
-  expert?: string;
-}
 
 export default function AllPostsPage() {
   const [viewMode, setViewMode] = useState("grid");
@@ -151,9 +139,9 @@ export default function AllPostsPage() {
                 </div>
                 <div className={`p-4 ${viewMode === "list" ? "flex-1" : ""}`}>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs text-gray-500 uppercase tracking-wide">
+                    {/* <span className="text-xs text-gray-500 uppercase tracking-wide">
                       {post.category}
-                    </span>
+                    </span> */}
                     {post.featured && (
                       <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
                         Featured
@@ -168,11 +156,11 @@ export default function AllPostsPage() {
                     {post.title}
                   </h3>
                   <p className="text-sm text-gray-500 mb-2">{post.date}</p>
-                  {viewMode === "list" && (
+                  {/* {viewMode === "list" && (
                     <p className="text-sm text-gray-600 mt-2 line-clamp-2">
                       {post.expert || "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
                     </p>
-                  )}
+                  )} */}
                   <div className="mt-4 text-sm text-blue-600 group-hover:underline">
                     Read More →
                   </div>

@@ -27,7 +27,7 @@ export default function Articles() {
               </div>
               <h3 className="mt-4 text-xl font-semibold text-black">{article.title}</h3>
               <Link
-                href={`/articles/${article.slug}`}
+                href={`/blog/${article.slug}`}
                 className="mt-2 inline-block text-lg underline text-black"
               >
                 Read More →
