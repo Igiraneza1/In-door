@@ -5,7 +5,6 @@ import Link from "next/link";
 import categories from "../../../data/category";
 
 export default function CategoryPage() {
- 
   const [primary, ...secondary] = categories;
 
   return (
@@ -23,7 +22,7 @@ export default function CategoryPage() {
         <div className="mt-4 flex flex-col items-center text-center">
           <h2 className="text-2xl font-bold text-gray-900">{primary.name}</h2>
           <Link
-            href={`/category/${primary.slug}`}
+            href={primary.link}
             className="mt-2 inline-block text-sm text-blue-600 hover:underline transition"
           >
             Shop Now →
@@ -31,7 +30,6 @@ export default function CategoryPage() {
         </div>
       </div>
 
-      
       <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
         {secondary.map((category) => (
           <div key={category.id}>
@@ -49,10 +47,10 @@ export default function CategoryPage() {
                 {category.name}
               </h3>
               <Link
-                href={`/category/${category.slug}`}
+                href={category.link}
                 className="mt-1 inline-block text-sm text-blue-600 hover:underline transition"
               >
-                Shop Now →
+                Collection →
               </Link>
             </div>
           </div>
