@@ -1,9 +1,8 @@
-// File: components/Cart.tsx
 "use client";
 
 import { useState, useEffect } from "react";
 import { Minus, Plus, X, Search, User, ShoppingCart } from "lucide-react";
-import news from "../../jsondata/news.json";
+import Image from "next/image";
 
 interface CartItem {
   id: number;
@@ -16,43 +15,27 @@ interface CartItem {
 
 export default function Cart() {
   const [cart, setCart] = useState<CartItem[]>([]);
+
   const [shippingOption, setShippingOption] = useState("free");
   const [couponCode, setCouponCode] = useState("");
 
+  // Load and sanitize cart data from localStorage on mount
   useEffect(() => {
-    const savedCart = localStorage.getItem("cart");
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
-    }
+    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const sanitizedCart = savedCart.map((item: any) => ({
+      ...item,
+      price: typeof item.price === "number" ? item.price : 0,
+      quantity: typeof item.quantity === "number" && item.quantity > 0 ? item.quantity : 1,
+      image: item.image || "", // fallback empty string if missing
+      title: item.title || "Unknown product",
+    }));
+    setCart(sanitizedCart);
   }, []);
 
+  // Update localStorage whenever cart changes
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
-
-  const addToCart = (newsItem: typeof news[0]) => {
-    setCart((prev) => {
-      const existing = prev.find((item) => item.id === newsItem.id);
-      if (existing) {
-        return prev.map((item) =>
-          item.id === newsItem.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      }
-      return [
-        ...prev,
-        {
-          id: newsItem.id,
-          title: newsItem.title,
-          price: Number(newsItem.price),
-          image: newsItem.image,
-          quantity: 1,
-          color: "Black", // Default color
-        },
-      ];
-    });
-  };
 
   const updateQuantity = (id: number, newQuantity: number) => {
     if (newQuantity < 1) return;
@@ -68,13 +51,17 @@ export default function Cart() {
   };
 
   const subtotal = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + (typeof item.price === "number" ? item.price : 0) * item.quantity,
     0
   );
 
-  const shippingCost = shippingOption === "free" ? 0 : 
-                      shippingOption === "express" ? 15 : 21;
-  
+  const shippingCost =
+    shippingOption === "free"
+      ? 0
+      : shippingOption === "express"
+      ? 15
+      : 21;
+
   const total = subtotal + shippingCost;
 
   const handleCheckout = () => {
@@ -89,7 +76,7 @@ export default function Cart() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 text-black">
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -98,10 +85,18 @@ export default function Cart() {
               <h1 className="text-2xl font-bold">3legant.</h1>
             </div>
             <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text-gray-700 hover:text-black">Home</a>
-              <a href="#" className="text-gray-700 hover:text-black">Shop</a>
-              <a href="#" className="text-gray-700 hover:text-black">Product</a>
-              <a href="#" className="text-gray-700 hover:text-black">Contact Us</a>
+              <a href="#" className="text-gray-700 hover:text-black">
+                Home
+              </a>
+              <a href="#" className="text-gray-700 hover:text-black">
+                Shop
+              </a>
+              <a href="#" className="text-gray-700 hover:text-black">
+                Product
+              </a>
+              <a href="#" className="text-gray-700 hover:text-black">
+                Contact Us
+              </a>
             </nav>
             <div className="flex items-center space-x-4">
               <Search size={20} className="text-gray-600" />
@@ -119,66 +114,12 @@ export default function Cart() {
         </div>
       </header>
 
-      {/* Products Section */}
+      {/* Cart Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h2 className="text-3xl font-bold text-center mb-8">Our Products</h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {news.map((item) => (
-            <div key={item.id} className="bg-white border rounded-lg p-4 shadow-sm">
-              <div className="h-48 bg-gray-100 mb-4 rounded-lg overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "/default-image.jpg";
-                  }}
-                />
-              </div>
-              <h3 className="font-semibold text-lg">{item.title}</h3>
-              <p className="text-gray-600 my-2">
-                ${Number(item.price).toFixed(2)}
-              </p>
-              <button
-                onClick={() => addToCart(item)}
-                className="w-full py-2 bg-black text-white rounded-lg hover:bg-gray-800"
-              >
-                Add to Cart
-              </button>
-            </div>
-          ))}
-        </div>
-
-        {/* Cart Section */}
         <div className="bg-white rounded-lg shadow-sm">
           {/* Cart Header */}
           <div className="p-6 border-b">
             <h1 className="text-3xl font-bold text-center mb-8">Cart</h1>
-            
-            {/* Progress Steps */}
-            <div className="flex items-center justify-center mb-8">
-              <div className="flex items-center">
-                <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-sm font-medium">
-                  1
-                </div>
-                <span className="ml-2 text-sm font-medium">Shopping cart</span>
-              </div>
-              <div className="w-16 h-px bg-gray-300 mx-4"></div>
-              <div className="flex items-center">
-                <div className="w-8 h-8 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-sm font-medium">
-                  2
-                </div>
-                <span className="ml-2 text-sm text-gray-500">Checkout details</span>
-              </div>
-              <div className="w-16 h-px bg-gray-300 mx-4"></div>
-              <div className="flex items-center">
-                <div className="w-8 h-8 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-sm font-medium">
-                  3
-                </div>
-                <span className="ml-2 text-sm text-gray-500">Order complete</span>
-              </div>
-            </div>
           </div>
 
           {cart.length === 0 ? (
@@ -198,19 +139,30 @@ export default function Cart() {
 
                   {/* Cart Items */}
                   {cart.map((item) => (
-                    <div key={item.id} className="grid grid-cols-12 gap-4 py-6 border-b items-center">
+                    <div
+                      key={item.id}
+                      className="grid grid-cols-12 gap-4 py-6 border-b items-center"
+                    >
                       {/* Product */}
                       <div className="col-span-6 flex items-center gap-4">
                         <div className="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            className="w-full h-full object-contain"
-                          />
+                          {item.image ? (
+                            <Image
+                              src={item.image}
+                              alt={item.title}
+                              width={80}
+                              height={80}
+                              className="object-contain"
+                            />
+                          ) : (
+                            <div className="w-12 h-12 bg-gray-300 rounded"></div>
+                          )}
                         </div>
                         <div>
                           <h3 className="font-medium">{item.title}</h3>
-                          <p className="text-sm text-gray-500">Color: {item.color || 'Black'}</p>
+                          {item.color && (
+                            <p className="text-sm text-gray-500">Color: {item.color}</p>
+                          )}
                           <button
                             onClick={() => removeItem(item.id)}
                             className="text-sm text-gray-400 hover:text-red-500 flex items-center gap-1 mt-1"
@@ -231,7 +183,9 @@ export default function Cart() {
                           >
                             <Minus size={14} />
                           </button>
-                          <span className="px-4 py-2 min-w-[3rem] text-center">{item.quantity}</span>
+                          <span className="px-4 py-2 min-w-[3rem] text-center">
+                            {item.quantity}
+                          </span>
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
                             className="p-2 hover:bg-gray-100"
@@ -243,12 +197,18 @@ export default function Cart() {
 
                       {/* Price */}
                       <div className="col-span-2 text-center">
-                        ${item.price.toFixed(2)}
+                        $
+                        {typeof item.price === "number"
+                          ? item.price.toFixed(2)
+                          : "0.00"}
                       </div>
 
                       {/* Subtotal */}
                       <div className="col-span-2 text-center font-medium">
-                        ${(item.price * item.quantity).toFixed(2)}
+                        $
+                        {typeof item.price === "number"
+                          ? (item.price * item.quantity).toFixed(2)
+                          : "0.00"}
                       </div>
                     </div>
                   ))}
@@ -258,7 +218,7 @@ export default function Cart() {
                 <div className="lg:col-span-1">
                   <div className="bg-gray-50 p-6 rounded-lg">
                     <h2 className="text-xl font-semibold mb-4">Cart summary</h2>
-                    
+
                     {/* Shipping Options */}
                     <div className="space-y-3 mb-6">
                       <label className="flex items-center justify-between">
@@ -275,7 +235,7 @@ export default function Cart() {
                         </div>
                         <span className="text-sm">$0.00</span>
                       </label>
-                      
+
                       <label className="flex items-center justify-between">
                         <div className="flex items-center">
                           <input
@@ -286,69 +246,66 @@ export default function Cart() {
                             onChange={(e) => setShippingOption(e.target.value)}
                             className="mr-3"
                           />
-                          <span className="text-sm">Express shipping</span>
+                          <span className="text-sm">+$15.00</span>
                         </div>
-                        <span className="text-sm">+$15.00</span>
+                        <span className="text-sm">Express shipping</span>
                       </label>
-                      
+
                       <label className="flex items-center justify-between">
                         <div className="flex items-center">
                           <input
                             type="radio"
                             name="shipping"
-                            value="pickup"
-                            checked={shippingOption === "pickup"}
+                            value="priority"
+                            checked={shippingOption === "priority"}
                             onChange={(e) => setShippingOption(e.target.value)}
                             className="mr-3"
                           />
-                          <span className="text-sm">Pick Up</span>
+                          <span className="text-sm">+$21.00</span>
                         </div>
-                        <span className="text-sm">%21.00</span>
+                        <span className="text-sm">Priority shipping</span>
                       </label>
                     </div>
 
-                    {/* Summary */}
-                    <div className="space-y-2 mb-4">
+                    {/* Coupon */}
+                    <div className="mb-6">
+                      <input
+                        type="text"
+                        placeholder="Coupon code"
+                        value={couponCode}
+                        onChange={(e) => setCouponCode(e.target.value)}
+                        className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
+                      />
+                      <button
+                        onClick={applyCoupon}
+                        className="mt-2 w-full bg-black text-white py-2 rounded hover:bg-gray-900"
+                      >
+                        Apply Coupon
+                      </button>
+                    </div>
+
+                    {/* Totals */}
+                    <div className="border-t border-gray-300 pt-4 space-y-2">
                       <div className="flex justify-between text-sm">
                         <span>Subtotal</span>
                         <span>${subtotal.toFixed(2)}</span>
                       </div>
-                    </div>
-
-                    <div className="border-t pt-4">
-                      <div className="flex justify-between font-semibold text-lg mb-4">
+                      <div className="flex justify-between text-sm">
+                        <span>Shipping</span>
+                        <span>${shippingCost.toFixed(2)}</span>
+                      </div>
+                      <div className="flex justify-between font-semibold text-lg">
                         <span>Total</span>
                         <span>${total.toFixed(2)}</span>
                       </div>
-                      
-                      <button
-                        onClick={handleCheckout}
-                        className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition-colors"
-                      >
-                        Checkout
-                      </button>
                     </div>
-                  </div>
 
-                  {/* Coupon Section */}
-                  <div className="mt-6">
-                    <h3 className="font-medium mb-2">Have a coupon?</h3>
-                    <p className="text-sm text-gray-600 mb-4">Add your code for an instant cart discount</p>
-                    <div className="flex gap-2">
-                      <input
-                        type="text"
-                        placeholder="Coupon Code"
-                        value={couponCode}
-                        onChange={(e) => setCouponCode(e.target.value)}
-                        className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-                      />
-                      <button 
-                        onClick={applyCoupon}
-                        className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-black"
-                      >
-                        Apply
-                      </button>
-                    </div>
+                    <button
+                      onClick={handleCheckout}
+                      className="mt-6 w-full bg-black text-white py-3 rounded hover:bg-gray-900"
+                    >
+                      Checkout
+                    </button>
                   </div>
                 </div>
               </div>
@@ -356,43 +313,6 @@ export default function Cart() {
           )}
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-            <div className="md:col-span-2">
-              <h3 className="text-2xl font-bold mb-4">3legant.</h3>
-              <p className="text-gray-400">Gift & Decoration Store</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Home</h4>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Shop</h4>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Product</h4>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Blog</h4>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Contact Us</h4>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="text-sm text-gray-400">
-              <span>Copyright © 2023 3legant. All rights reserved</span>
-              <span className="mx-4">Privacy Policy</span>
-              <span>Terms of Use</span>
-            </div>
-            <div className="flex space-x-4 mt-4 md:mt-0">
-              {/* Social media icons would go here */}
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

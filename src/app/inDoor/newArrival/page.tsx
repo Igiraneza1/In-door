@@ -1,3 +1,4 @@
+// newArrival/page.tsx
 "use client";
 
 import { useState } from "react";
@@ -7,13 +8,12 @@ import { FaHeart, FaStar, FaShippingFast } from "react-icons/fa";
 import { LiaMoneyBillSolid } from "react-icons/lia";
 import { GrSecure } from "react-icons/gr";
 import { IoCallOutline } from "react-icons/io5";
+import toast, { Toaster } from "react-hot-toast";
 import news from "../../../jsondata/news.json";
 
 export default function NewArrivals() {
   const [activeProductId, setActiveProductId] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const router = useRouter();
 
   const productsToShow = showAll ? news : news.slice(0, 5);
@@ -29,12 +29,22 @@ export default function NewArrivals() {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
-    setSelectedProduct(product);
-    setShowPopup(true);
+
+    toast.success("Added to cart! Redirecting...", {
+      duration: 1000,
+      position: "top-center",
+    });
+
+    // Delay redirect so toast can show
+    setTimeout(() => {
+      router.push("/cart");
+    }, 1000);
   };
 
   return (
     <div className="bg-white">
+      <Toaster />
+      
       {/* === New Arrivals Section === */}
       <section className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-between items-center mb-6">
@@ -59,7 +69,6 @@ export default function NewArrivals() {
                 }`}
                 onClick={() => {
                   setActiveProductId(item.id);
-                  setSelectedProduct(item);
                 }}
               >
                 <div className="relative mb-3 rounded-xl overflow-hidden bg-gray-100">
@@ -89,17 +98,18 @@ export default function NewArrivals() {
                     height={300}
                     className="w-full h-32 sm:h-36 md:h-40 object-contain transition-transform duration-500 group-hover:scale-105"
                   />
-{activeProductId === item.id && (
-  <button
-    onClick={(e) => {
-      e.stopPropagation();
-      handleAddToCart(item);
-    }}
-    className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded-lg text-xs sm:text-sm font-medium z-10"
-  >
-    Add to cart
-  </button>
-)}
+
+                  {activeProductId === item.id && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleAddToCart(item);
+                      }}
+                      className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded-lg text-xs sm:text-sm font-medium z-10"
+                    >
+                      Add to cart
+                    </button>
+                  )}
                 </div>
 
                 <div className="pb-10 mb-4">
@@ -127,7 +137,6 @@ export default function NewArrivals() {
                     )}
                   </div>
 
-                  {/* Description visible when active */}
                   {activeProductId === item.id && (
                     <p className="text-gray-600 text-xs mt-2">{item.description}</p>
                   )}
@@ -174,39 +183,6 @@ export default function NewArrivals() {
           ))}
         </div>
       </section>
-
-      {/* === Add to Cart Popup === */}
-      {showPopup && selectedProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-xl shadow-xl w-[90%] max-w-sm relative">
-            <button
-              onClick={() => setShowPopup(false)}
-              className="absolute top-2 right-3 text-gray-600 hover:text-black text-xl"
-            >
-              ×
-            </button>
-
-            <Image
-              src={selectedProduct.image}
-              alt={selectedProduct.title}
-              width={200}
-              height={200}
-              className="w-full h-48 object-contain mb-4"
-            />
-            <h2 className="text-lg font-semibold">{selectedProduct.title}</h2>
-            <p className="text-gray-600">{selectedProduct.description || "No description"}</p>
-            <div className="mt-2 font-bold text-black text-md">
-              ${selectedProduct.price}
-            </div>
-            <button
-              onClick={() => router.push("/cart")}
-              className="mt-4 bg-black text-white px-4 py-2 rounded-lg w-full"
-            >
-              Go to Checkout
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
