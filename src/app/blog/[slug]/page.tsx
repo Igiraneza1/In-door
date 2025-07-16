@@ -17,13 +17,6 @@ interface BlogPost {
 }
 
 
-
-
-interface Props {
-  params: { slug: string };
-  searchParams?: Record<string, string>;
-}
-
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = articles.find((article) => article.slug === params.slug) as BlogPost;
 
@@ -87,7 +80,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           {(post.slug.includes('kitchen') || post.slug.includes('organization')) && (
             <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500 mt-6">
               <p className="text-sm italic text-gray-600">
-                "This method has helped hundreds of clients maximize their kitchen space efficiently."
+                This method has helped hundreds of clients maximize their kitchen space efficiently.
               </p>
               <p className="text-sm font-medium text-gray-500 mt-2">
                 — Maria K., Professional Organizer
@@ -97,7 +90,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           {(post.slug.includes('living-room')) && (
   <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-green-500 mt-6">
     <p className="text-sm italic text-gray-600">
-      "Transforming cluttered living rooms into calming spaces is what we do best."
+      Transforming cluttered living rooms into calming spaces is what we do best.
     </p>
     <p className="text-sm font-medium text-gray-500 mt-2">
       — Daniel R., Interior Stylist
@@ -108,7 +101,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 {(post.slug.includes('bedroom')) && (
   <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-purple-500 mt-6">
     <p className="text-sm italic text-gray-600">
-      "Clients often tell us their redesigned bedrooms feel like a peaceful retreat."
+      Clients often tell us their redesigned bedrooms feel like a peaceful retreat.
     </p>
     <p className="text-sm font-medium text-gray-500 mt-2">
       — Alina S., Home Consultant
