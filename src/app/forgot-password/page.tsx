@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import chair from "../../../public/image/Living-room/chair1.jpg";
+import chair from "../../../public/image/Living-room/chair1.png";
 import Link from "next/link";
 
 export default function NewPassword() {

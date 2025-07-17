@@ -3,7 +3,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { FaHeart, FaStar, FaShippingFast } from "react-icons/fa";
 import { LiaMoneyBillSolid } from "react-icons/lia";
 import { GrSecure } from "react-icons/gr";
@@ -11,41 +10,58 @@ import { IoCallOutline } from "react-icons/io5";
 import toast, { Toaster } from "react-hot-toast";
 import news from "../../../jsondata/news.json";
 
+interface Product {
+  id: number;
+  title: string;
+  description?: string; 
+  price: number;
+  originalPrice?: number;
+  rating: number;
+  discount?: string;
+  isNew?: boolean;
+  image: string;
+}
+
 export default function NewArrivals() {
   const [activeProductId, setActiveProductId] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
-  const router = useRouter();
+  const products: Product[] = news;
+  const productsToShow = showAll ? products : products.slice(0, 4);
 
-  const productsToShow = showAll ? news : news.slice(0, 5);
+const handleAddToCart = (product: Product) => {
+  const cart: (Product & { quantity: number })[] = JSON.parse(localStorage.getItem("cart") || "[]");
+  
+  console.log("Current cart before adding:", cart); 
 
-  const handleAddToCart = (product: any) => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-
-    const existing = cart.find((item: any) => item.id === product.id);
-    if (existing) {
-      existing.quantity += 1;
-    } else {
-      cart.push({ ...product, quantity: 1 });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    toast.success("Added to cart! Redirecting...", {
-      duration: 1000,
-      position: "top-center",
-    });
-
-    // Delay redirect so toast can show
-    setTimeout(() => {
-      router.push("/cart");
-    }, 1000);
-  };
-
-  return (
-    <div className="bg-white">
-      <Toaster />
+  const existing = cart.find((item) => item.id === product.id);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({
+      ...product,
+      price: product.price,
+      quantity: 1,
+  
       
-      {/* === New Arrivals Section === */}
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  console.log("Updated cart:", cart); 
+
+  toast.success("Added to cart! Redirecting...", {
+    duration: 1000,
+    position: "top-center",
+  });
+
+  setTimeout(() => {
+      window.location.href = "/cart"; 
+  }, 1000);
+};
+  return (
+    
+    <div className="bg-white">
+
       <section className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900">
@@ -77,9 +93,11 @@ export default function NewArrivals() {
                       <span className="block bg-white text-black text-[10px] font-semibold px-2 py-0.5 rounded shadow-sm">
                         NEW
                       </span>
-                      <span className="block bg-green-500 text-white text-[10px] font-semibold px-2 py-0.5 rounded">
-                        -{item.discount}
-                      </span>
+                      {item.discount && (
+                        <span className="block bg-green-500 text-white text-[10px] font-semibold px-2 py-0.5 rounded">
+                          -{item.discount}
+                        </span>
+                      )}
                     </div>
                   )}
 
@@ -147,7 +165,7 @@ export default function NewArrivals() {
         </div>
       </section>
 
-      {/* === Features Section === */}
+      {/* === Feature Section === */}
       <section className="max-w-6xl mx-auto bg-white py-12 px-4 sm:px-6 md:px-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {[
@@ -183,6 +201,7 @@ export default function NewArrivals() {
           ))}
         </div>
       </section>
+
     </div>
   );
 }

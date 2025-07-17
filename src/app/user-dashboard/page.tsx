@@ -1,40 +1,39 @@
-"use client"
+"use client";
 
-import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
-import { DashboardHeader } from "../../app/user-component/header-dashboard"
-import { DashboardSidebar } from "../user-component/sidebar-dashboard"
-import { OverviewCard } from "../../app/user-component/overview-cart"
-import { RecentActivity } from "../../app/user-component/recent-activity"
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { DashboardHeader } from "../../app/user-component/header-dashboard";
+import { DashboardSidebar } from "../user-component/sidebar-dashboard";
+import { OverviewCard } from "../../app/user-component/overview-cart";
+import { RecentActivity } from "../../app/user-component/recent-activity";
 
 export default function DashboardPage() {
-  const router = useRouter()
-  const [isLoading, setIsLoading] = useState(true)
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-  const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
 
-  if (!token) {
-    const timer = setTimeout(() => {
-      router.push("/signin")
-    }, 2000)
+    if (!token) {
+      const timer = setTimeout(() => {
+        router.push("/signin");
+      }, 2000);
 
-    return () => clearTimeout(timer) 
-  } else {
-    setIsLoading(false)
-  }
-}, [router])
-
+      return () => clearTimeout(timer);
+    } else {
+      setIsLoading(false);
+    }
+  }, [router]);
 
   if (isLoading) {
-  return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="text-red-500 text-xl animate-pulse">
-        Please sign in to continue...
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-red-500 text-xl animate-pulse">
+          Please sign in to continue...
+        </div>
       </div>
-    </div>
-  )
-}
+    );
+  }
 
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] mt-15">
@@ -58,5 +57,5 @@ export default function DashboardPage() {
         </main>
       </div>
     </div>
-  )
+  );
 }

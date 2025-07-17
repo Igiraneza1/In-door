@@ -3,45 +3,45 @@
     "id": 1,
     "image": "/image/Living-room/chair3.png",
     "title": "Loveseat Sofa",
-    "price": "$71.00",
+    "price": 100.00,
     "rating": 5,
-    "originalPrice": "$99.00",
+    "originalPrice":200.00,
     "isNew": true,
     "discount": "50%"
   },
   {
     "id": 2,
-    "image": "/image/Living-room/living room categories.jpg",
+    "image": "/image/items/Table-lamp1.png",
     "title": "home chair",
-    "price": "$71.00",
+    "price": 22.00,
     "rating": 5,
-    "originalPrice": "$99.00",
+    "originalPrice": 44.00,
     "isNew": true,
     "discount": "50%"
   },
   {
     "id": 3,
-    "image": "/image/Living-room/chair2.jpg",
+    "image": "/image/items/table lamp.png",
     "title": "Table Lamp",
-    "price": "$24.00",
+    "price": 24.00,
     "rating": 4,
     "isNew": true,
     "discount": "50%"
   },
   {
     "id": 4,
-    "image": "/image/Dining/dining1.jpg",
-    "title": "White Dining Chair",
-    "price": "$30.00",
+    "image": "/image/items/basket.png",
+    "title": "Basket",
+    "price": 30.00,
     "rating": 4,
     "isNew": true,
     "discount": "50%"
   },
   {
     "id": 5,
-    "image": "/image/Dining/dining2.jpg",
-    "title": "White Dining Chair",
-    "price": "$30.00",
+    "image": "/image/kitchen/toaster.png",
+    "title": "Toaster",
+    "price": 40.00,
     "rating": 4,
     "isNew": true,
     "discount": "50%"
@@ -50,7 +50,7 @@
     "id": 6,
     "image": "/image/Dining/dining3.jpg",
     "title": "White Dining Chair",
-    "price": "$30.00",
+    "price": 30.00,
     "rating": 4,
     "isNew": true,
     "discount": "50%"
@@ -59,7 +59,7 @@
     "id": 7,
     "image": "/image/Dining/dining4.jpg",
     "title": "White Dining Chair",
-    "price": "$30.00",
+    "price": 30.00,
     "rating": 4,
     "isNew": true,
     "discount": "50%"
@@ -68,7 +68,7 @@
     "id": 8,
     "image": "/image/Dining/dining5.jpg",
     "title": "White Dining Chair",
-    "price": "$30.00",
+    "price": 30.00,
     "rating": 4,
     "isNew": true,
     "discount": "50%"
@@ -77,9 +77,9 @@
     "id": 9,
     "image": "/image/Dining/dinning8.jpg",
     "title": "Long Dining Table",
-    "price": "$12.00",
+    "price": 12.00,
     "rating": 5,
-    "originalPrice": "$24.00",
+    "originalPrice": 24.00,
     "isNew": true,
     "discount": "50%"
   },
@@ -87,7 +87,7 @@
     "id": 10,
     "image": "/image/bedroom/bedroom10.jpg",
     "title": "White Bedroom",
-    "price": "$35.00",
+    "price": 35.00,
     "rating": 4,
     "isNew": true,
     "discount": "50%"
@@ -96,7 +96,7 @@
     "id": 11,
     "image": "/image/bedroom/bedroomcategory.jpg",
     "title": "Cozy Chair",
-    "price": "$55.00",
+    "price": 55.00,
     "rating": 5,
     "isNew": true,
     "discount": "30%"
@@ -105,7 +105,7 @@
     "id": 12,
     "image": "/image/bathroom/bathroom2.jpg",
     "title": "Wooden Shelf",
-    "price": "$48.00",
+    "price": 48.00,
     "rating": 4,
     "isNew": true,
     "discount": "20%"
@@ -114,7 +114,7 @@
     "id": 13,
     "image": "/image/bathroom/bathroom3.jpg",
     "title": "Wooden Chair",
-    "price": "$50.00",
+    "price": 50.00,
     "rating": 5,
     "isNew": true,
     "discount": "15%"
@@ -123,7 +123,7 @@
     "id": 14,
     "image": "/image/bathroom/bathroom1.jpg",
     "title": "Wooden Chair",
-    "price": "$50.00",
+    "price": 50.00,
     "rating": 5,
     "isNew": true,
     "discount": "15%"
@@ -132,7 +132,7 @@
     "id": 15,
     "image": "/image/furniture/curtains.png",
     "title": "Curtains",
-    "price": "$20.00",
+    "price": 20.00,
     "rating": 4,
     "isNew": true,
     "discount": "40%"
@@ -141,7 +141,7 @@
     "id": 16,
     "image": "/image/kitchen/kitchen1.jpg",
     "title": "Modern Rug",
-    "price": "$60.00",
+    "price": 60.00,
     "rating": 5,
     "isNew": true,
     "discount": "35%"
@@ -150,7 +150,7 @@
     "id": 17,
     "image": "/image/kitchen/kitchen2.jpg",
     "title": "Wall Shelf",
-    "price": "$28.00",
+    "price": 28.00,
     "rating": 4,
     "isNew": true,
     "discount": "10%"
@@ -159,7 +159,7 @@
     "id": 18,
     "image": "/image/kitchen/kitchen3.jpg",
     "title": "Pillow",
-    "price": "$15.00",
+    "price": 15.00,
     "rating": 4,
     "isNew": true,
     "discount": "20%"

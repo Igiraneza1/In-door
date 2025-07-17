@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import chair from "../../../public/image/Living-room/chair1.jpg";
+import chair from "../../../public/image/Living-room/chair1.png";
 
 export default function SignIn() {
   const router = useRouter();
@@ -47,7 +47,7 @@ export default function SignIn() {
         if (data.role === "admin") {
           router.push("/dashboard");
         } else {
-          router.push("/home");
+          router.push("/inDoor");
         }
       }, 1500);
     } catch (err: unknown) {

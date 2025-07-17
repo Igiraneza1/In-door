@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import chair from "../../../public/image/Living-room/chair1.jpg";
+import chair from "../../../public/image/Living-room/chair1.png";
 import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";

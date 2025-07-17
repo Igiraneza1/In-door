@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import { FaTruck, FaUndo, FaLock, FaPhoneAlt } from "react-icons/fa";
 
 export default function Icon() {
