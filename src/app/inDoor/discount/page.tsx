@@ -2,10 +2,10 @@ import Image from "next/image";
 
 export default function Discount() {
   return (
-    <main className="flex flex-col md:flex-row w-full h-auto">
+    <main className="flex flex-col md:flex-row w-full h-auto w-full">
       <div className="w-full md:w-1/2 relative h-64 md:h-[350px]">
         <Image
-          src="/image/furniture/sofa3.jpg"
+          src="/image/Living-room/sofa3.jpg"
           alt="Living Room Setup"
           fill
           className="object-cover"

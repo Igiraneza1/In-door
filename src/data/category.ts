@@ -11,7 +11,7 @@ const categories = [
     id: 2,
     name: "Bedroom",
     slug: "bedroom",
-    image: "/image/bedroom/bedroom10.jpg",
+    image: "/image/bedroom/bedroom.png",
     link: "/categories/bedroom", 
   },
   {
@@ -25,14 +25,14 @@ const categories = [
     id: 4,
     name: "Bathroom",
     slug: "bathroom",
-    image: "/image/bathroom/bathroom4.jpg",
+    image: "/image/bathroom/bathtub2.png",
     link: "/categories/Bathroom",  
   },
   {
     id: 5,
     name: "Dinning",
     slug: "dinning",
-    image: "/image/Dining/dining1.jpg",
+    image: "/image/Dining/table19.png",
     link: "/categories/dinning", 
   },
 ];
