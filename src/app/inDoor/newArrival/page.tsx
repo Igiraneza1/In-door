@@ -7,7 +7,7 @@ import { FaHeart, FaStar, FaShippingFast } from "react-icons/fa";
 import { LiaMoneyBillSolid } from "react-icons/lia";
 import { GrSecure } from "react-icons/gr";
 import { IoCallOutline } from "react-icons/io5";
-import toast, { Toaster } from "react-hot-toast";
+import {toast } from "react-hot-toast";
 import news from "../../../jsondata/news.json";
 
 interface Product {

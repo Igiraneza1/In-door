@@ -1,119 +1,152 @@
 "use client"
 
-import type React from "react"
-
-import { useActionState, useState, useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { DialogFooter } from "@/components/ui/dialog"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
 import type { Product, Category } from "@/types/product"
-import { addProduct, updateProduct, getCategories } from "./actions" // Corrected import path
+import {
+  getCategories,
+  addProduct,
+  updateProduct,
+} from "@/components/actions"
 import { useToast } from "@/hooks/use-toast"
 
 interface ProductFormProps {
-  product?: Product // Optional product for editing
+  product?: Product
   onSuccess?: () => void
 }
 
 export function ProductForm({ product, onSuccess }: ProductFormProps) {
   const isEditing = !!product
-  const action = isEditing ? updateProduct : addProduct
-  const [state, formAction, isPending] = useActionState(action, null)
   const { toast } = useToast()
 
-  const [formData, setFormData] = useState<Product>(
+  const [formData, setFormData] = useState<Product>(() =>
     product || {
-      id: 0,
-      title: "",
-      description: "",
+      id: "0",
+      name: "",
       price: 0,
+      image: "/placeholder.svg",
+      description: "",
+      category: "",
       quantity: 0,
-      imageUrl: "/placeholder.svg?height=64&width=64",
-      category: { id: 0, categoryName: "", description: "", createdAt: "" }, // Default empty category
-    },
+    }
   )
+
   const [categories, setCategories] = useState<Category[]>([])
-  const [selectedCategoryId, setSelectedCategoryId] = useState<string>(product?.category.id.toString() || "")
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string>(
+    product?.category || ""
+  )
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const fetchedCategories = await getCategories()
-      setCategories(fetchedCategories)
-      if (!product && fetchedCategories.length > 0) {
-        // Set default category for new product if none selected
-        setSelectedCategoryId(fetchedCategories[0].id.toString())
+      const cats = await getCategories()
+      setCategories(cats)
+
+      if (!product && cats.length > 0) {
+        setSelectedCategoryId(cats[0].id.toString())
+        setFormData((prev) => ({
+          ...prev,
+          category: cats[0].id.toString(),
+        }))
       }
     }
+
     fetchCategories()
   }, [product])
 
-  useEffect(() => {
-    if (state?.success) {
-      toast({
-        title: "Success!",
-        description: state.message,
-      })
-      onSuccess?.()
-    } else if (state && !state.success) {
-      toast({
-        title: "Error",
-        description: state.message || "An unexpected error occurred.",
-        variant: "destructive",
-      })
-    }
-  }, [state, toast, onSuccess])
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target
     setFormData((prev) => ({
       ...prev,
       [name]:
-        name === "price" ? Number.parseFloat(value) || 0 : name === "quantity" ? Number.parseInt(value) || 0 : value,
+        name === "price"
+          ? parseFloat(value) || 0
+          : name === "quantity"
+          ? parseInt(value) || 0
+          : value,
     }))
   }
 
   const handleCategoryChange = (value: string) => {
     setSelectedCategoryId(value)
-    const categoryId = Number.parseInt(value)
-    const selectedCat = categories.find((cat) => cat.id === categoryId)
-    if (selectedCat) {
-      setFormData((prev) => ({
-        ...prev,
-        category: selectedCat,
-      }))
+    setFormData((prev) => ({
+      ...prev,
+      category: value,
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    const form = new FormData()
+    if (isEditing) form.append("id", formData.id)
+    form.append("name", formData.name)
+    form.append("price", formData.price.toString())
+    form.append("image", formData.image || "")
+    form.append("description", formData.description || "")
+    form.append("quantity", formData.quantity?.toString() || "0")
+    form.append("category", selectedCategoryId)
+
+    const response = isEditing
+      ? await updateProduct(form)
+      : await addProduct(form)
+
+    if (response.success) {
+      toast({ title: "Success", description: response.message })
+      onSuccess?.()
+    } else {
+      toast({
+        title: "Error",
+        description: response.message,
+        variant: "destructive",
+      })
     }
+
+    setIsSubmitting(false)
   }
 
   return (
-    <form action={formAction} className="grid gap-4 py-4">
-      {isEditing && <input type="hidden" name="id" value={formData.id} />}
-      <input type="hidden" name="imageUrl" value={formData.imageUrl} />
+    <form onSubmit={handleSubmit} className="grid gap-4 py-4">
       <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="title" className="text-right">
-          Title
-        </Label>
-        <Input id="title" name="title" value={formData.title} onChange={handleChange} className="col-span-3" required />
+        <Label htmlFor="name" className="text-right">Name</Label>
+        <Input
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          className="col-span-3"
+          required
+        />
       </div>
+
       <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="description" className="text-right">
-          Description
-        </Label>
+        <Label htmlFor="description" className="text-right">Description</Label>
         <Textarea
           id="description"
           name="description"
           value={formData.description}
           onChange={handleChange}
           className="col-span-3"
-          required
         />
       </div>
+
       <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="price" className="text-right">
-          Price
-        </Label>
+        <Label htmlFor="price" className="text-right">Price</Label>
         <Input
           id="price"
           name="price"
@@ -125,10 +158,9 @@ export function ProductForm({ product, onSuccess }: ProductFormProps) {
           required
         />
       </div>
+
       <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="quantity" className="text-right">
-          Quantity
-        </Label>
+        <Label htmlFor="quantity" className="text-right">Quantity</Label>
         <Input
           id="quantity"
           name="quantity"
@@ -136,41 +168,49 @@ export function ProductForm({ product, onSuccess }: ProductFormProps) {
           value={formData.quantity}
           onChange={handleChange}
           className="col-span-3"
-          required
         />
       </div>
+
       <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="size" className="text-right">
-          Size
-        </Label>
-        <Input id="size" name="size" value={formData.size || ""} onChange={handleChange} className="col-span-3" />
+        <Label htmlFor="image" className="text-right">Image URL</Label>
+        <Input
+          id="image"
+          name="image"
+          value={formData.image}
+          onChange={handleChange}
+          className="col-span-3"
+        />
       </div>
+
       <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="color" className="text-right">
-          Color
-        </Label>
-        <Input id="color" name="color" value={formData.color || ""} onChange={handleChange} className="col-span-3" />
-      </div>
-      <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="category" className="text-right">
-          Category
-        </Label>
-        <Select onValueChange={handleCategoryChange} value={selectedCategoryId} name="categoryId" required>
+        <Label htmlFor="category" className="text-right">Category</Label>
+        <Select
+          onValueChange={handleCategoryChange}
+          value={selectedCategoryId}
+          required
+        >
           <SelectTrigger className="col-span-3">
             <SelectValue placeholder="Select a category" />
           </SelectTrigger>
           <SelectContent>
-            {categories.map((category) => (
-              <SelectItem key={category.id} value={category.id.toString()}>
-                {category.categoryName}
+            {categories.map((cat) => (
+              <SelectItem key={cat.id} value={cat.id.toString()}>
+                {cat.category}
               </SelectItem>
             ))}
           </SelectContent>
         </Select>
       </div>
+
       <DialogFooter>
-        <Button type="submit" disabled={isPending}>
-          {isPending ? (isEditing ? "Updating..." : "Adding...") : isEditing ? "Update Product" : "Add Product"}
+        <Button type="submit" disabled={isSubmitting}>
+          {isSubmitting
+            ? isEditing
+              ? "Updating..."
+              : "Adding..."
+            : isEditing
+            ? "Update Product"
+            : "Add Product"}
         </Button>
       </DialogFooter>
     </form>

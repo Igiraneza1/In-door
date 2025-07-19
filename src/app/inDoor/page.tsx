@@ -5,11 +5,18 @@ import Articles from "./article/page";
 
 export default function Indoor() {
   return (
-    <div className="max-w-5xl bg-white mx-auto p-10">
-      <HomePage />
-      <CategoryPage />
-      <NewArrivals />
-      <Articles />
+    <div>
+      <div className="text-center  pt-15">
+        <h1 className="marquee text-3xl font-bold  text-gray-700 rounded-2xl w-full py-3">
+          Elegant
+        </h1>
+      </div>
+      <div className="  pl-10 pr-10">
+        <HomePage />
+        <CategoryPage />
+        <NewArrivals />
+        <Articles />
+      </div>
     </div>
   );
 }
