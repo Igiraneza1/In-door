@@ -16,18 +16,19 @@ interface article {
   excerpt?: string;
 }
 
- interface ViewModeButtonProps {
+interface ViewModeButtonProps {
   mode: string;
   icon: React.ElementType;
   isActive: boolean;
 }
+
 export default function Blog() {
   const [showAll, setShowAll] = useState(false);
   const [activeFilter, setActiveFilter] = useState("All Blog");
   const [sortOption, setSortOption] = useState("Latest");
   const [viewMode, setViewMode] = useState("grid");
 
-
+  // Filter posts based on active filter
   const filteredPosts = articles.filter((post) =>
     activeFilter === "All Blog"
       ? true
@@ -36,6 +37,7 @@ export default function Blog() {
       : false
   );
 
+  // Sort posts based on sort option
   const sortedPosts = [...filteredPosts].sort((a, b) => {
     const dateA = new Date(a.date).getTime();
     const dateB = new Date(b.date).getTime();
@@ -44,24 +46,22 @@ export default function Blog() {
     return 0;
   });
 
+  // Show all or slice to first 6
   const displayedPosts = showAll ? sortedPosts : sortedPosts.slice(0, 6);
 
-// const ViewModeButton = ({ mode, icon: Icon, isActive }: ViewModeButtonProps) => (
-//   <button className={isActive ? 'active' : ''}>
-//     <Icon />
-//     {mode}
-//   </button>
-// );
-const ViewModeButton = ({ mode, icon: Icon, isActive }: ViewModeButtonProps) => (
-  <button
-    className={`p-1 ${isActive ? 'bg-gray-200' : ''}`}
-    onClick={() => setViewMode(mode)}
-  >
-    <Icon className="w-4 h-4" />
-  </button>
-);
+  // View mode toggle button
+  const ViewModeButton = ({ mode, icon: Icon, isActive }: ViewModeButtonProps) => (
+    <button
+      className={`p-1 ${isActive ? "bg-gray-200" : ""}`}
+      onClick={() => setViewMode(mode)}
+      aria-label={`Switch to ${mode} view`}
+      type="button"
+    >
+      <Icon className="w-4 h-4" />
+    </button>
+  );
 
-
+  // CSS grid classes based on view mode
   const getGridClass = () => {
     switch (viewMode) {
       case "single":
@@ -75,21 +75,21 @@ const ViewModeButton = ({ mode, icon: Icon, isActive }: ViewModeButtonProps) => 
     }
   };
 
-    const BlogCard = ({ post }: { post: article }) => (
-    <Link href={`/blog/${post.slug}`} className="group">
+  // Single blog card component
+  const BlogCard = ({ post }: { post: article }) => (
+    <Link href={`/blog/${post.slug}`} className="group" passHref>
       <div
         className={`bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ${
           viewMode === "list" ? "flex gap-4" : ""
         }`}
       >
-        <div className={`${viewMode === "list" ? "w-48 flex-shrink-0" : ""}`}>
+        <div className={`${viewMode === "list" ? "w-48 flex-shrink-0 relative" : "relative"}`} style={{ minHeight: viewMode === "list" ? 128 : 192 }}>
           <Image
             src={post.image}
             alt={post.title || "Blog image"}
             fill
-            className={`w-full object-cover group-hover:scale-105 transition-transform duration-300 ${
-              viewMode === "list" ? "h-32" : "h-48"
-            }`}
+            className={`w-full object-cover group-hover:scale-105 transition-transform duration-300`}
+            sizes={viewMode === "list" ? "(max-width: 768px) 100vw, 192px" : "(max-width: 768px) 100vw, 300px"}
           />
         </div>
         <div className={`p-4 ${viewMode === "list" ? "flex-1" : ""}`}>
@@ -137,6 +137,7 @@ const ViewModeButton = ({ mode, icon: Icon, isActive }: ViewModeButtonProps) => 
                   ? "text-black border-b-2 border-black pb-1"
                   : "text-gray-500 hover:text-gray-700"
               } transition-all duration-200`}
+              type="button"
             >
               {filter}
             </button>
@@ -157,15 +158,29 @@ const ViewModeButton = ({ mode, icon: Icon, isActive }: ViewModeButtonProps) => 
           </div>
 
           <div className="flex items-center gap-1 border border-gray-300 rounded p-1">
-            <ViewModeButton mode="grid" icon={LayoutGrid} isActive={viewMode === "grid"} />
+            <ViewModeButton
+              mode="grid"
+              icon={LayoutGrid}
+              isActive={viewMode === "grid"}
+            />
             <ViewModeButton mode="two" icon={Grid} isActive={viewMode === "two"} />
-            <ViewModeButton mode="single" icon={Rows} isActive={viewMode === "single"} />
+            <ViewModeButton
+              mode="single"
+              icon={Rows}
+              isActive={viewMode === "single"}
+            />
             <ViewModeButton mode="list" icon={List} isActive={viewMode === "list"} />
           </div>
         </div>
       </div>
 
-      <div className={`grid ${getGridClass()} gap-6 mb-8`}>
+      <div
+        className={`${
+          viewMode === "list"
+            ? "flex flex-col gap-6 mb-8"
+            : `grid ${getGridClass()} gap-6 mb-8`
+        }`}
+      >
         {displayedPosts.map((post) => (
           <BlogCard key={post.id} post={post} />
         ))}
@@ -175,6 +190,7 @@ const ViewModeButton = ({ mode, icon: Icon, isActive }: ViewModeButtonProps) => 
         <button
           onClick={() => setShowAll(!showAll)}
           className="px-6 py-2 border border-gray-300 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors"
+          type="button"
         >
           {showAll ? "Show less" : "Show more"}
         </button>
