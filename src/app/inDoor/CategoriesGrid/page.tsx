@@ -8,7 +8,7 @@ export default function CategoryPage() {
   const [primary, ...secondary] = categories;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div className="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
       <div>
         <div className="relative h-[500px] w-full rounded-xl overflow-hidden shadow-md hover:shadow-lg">
           <Image

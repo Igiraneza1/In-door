@@ -24,8 +24,8 @@ export default function HomePage() {
   }, [currentIndex]);
 
   return (
-    <div className="w-full">
-      <div className="flex flex-col md:flex-row h-[500px]">
+    <div className="w-full ">
+      <div className="flex flex-col md:flex-row h-[500px] w-full">
         {/* 2/3 Image Slider */}
         <div className="relative w-full md:w-2/3 h-full overflow-hidden">
           <Image

@@ -26,7 +26,7 @@ export default function NewArrivals() {
   const [activeProductId, setActiveProductId] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
   const products: Product[] = news;
-  const productsToShow = showAll ? products : products.slice(0, 4);
+  const productsToShow = showAll ? products : products.slice(0, );
 
 const handleAddToCart = (product: Product) => {
   const cart: (Product & { quantity: number })[] = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -60,9 +60,9 @@ const handleAddToCart = (product: Product) => {
 };
   return (
     
-    <div className="bg-white">
+    <div className="bg-white max-w-7xl mx-auto p-4">
 
-      <section className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <section className=" mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900">
             New<br />Arrivals
@@ -113,7 +113,7 @@ const handleAddToCart = (product: Product) => {
                     src={item.image}
                     alt={item.title}
                     width={300}
-                    height={300}
+                    height={350}
                     className="w-full h-32 sm:h-36 md:h-40 object-contain transition-transform duration-500 group-hover:scale-105"
                   />
 
