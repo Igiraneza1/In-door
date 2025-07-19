@@ -2,21 +2,21 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { BathroomProducts } from "../../../data/bathroom";
+import { BedroomProducts } from "../../../data/bedroom";
 
-export default function Bathroom() {
+export default function Bedroom() {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
-  const handleAddToCart = (product: typeof BathroomProducts[number]) => {
+  const handleAddToCart = (product: typeof BedroomProducts[number]) => {
     alert(`Added "${product.name}" to cart!`);
   };
 
   return (
     <div className="py-12">
-      <h1 className="text-3xl font-bold text-center mb-10">Bathroom Products</h1>
+      <h1 className="text-3xl font-bold text-center mb-10">Bedroom Products</h1>
 
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-        {BathroomProducts.map((product) => (
+        {BedroomProducts.map((product) => (
           <div key={product.id} className="group text-center relative">
             <div
               className="relative h-64 w-full rounded-xl overflow-hidden shadow-md"
