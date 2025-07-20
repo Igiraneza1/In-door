@@ -1,22 +1,19 @@
 export interface Category {
-  id: number;
-  name: string;
-  slug: string;
-  image: string;
-  description?: string;
+  id: number
+  name: string
+  slug: string
+  category: string
+  image: string
+  description?: string
+  createdAt?: string
 }
-
-
 
 export interface Product {
-  id: number
-  title: string
-  description: string
+  id: string
+  name: string
   price: number
-  quantity: number
-  size?: string
-  color?: string
-  imageUrl?: string
-  category?: Category;
+  image: string
+  description?: string
+  category?: string // This is category ID as string
+  quantity?: number
 }
-

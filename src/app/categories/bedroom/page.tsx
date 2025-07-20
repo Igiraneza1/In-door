@@ -13,7 +13,7 @@ export default function Bedroom() {
 
   return (
     <div className="py-12">
-      <h1 className="text-3xl font-bold text-center mb-10">Bedroom Products</h1>
+      <h1 className="text-3xl font-bold text-center m-10">Bedroom Products</h1>
 
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
         {BedroomProducts.map((product) => (
@@ -34,7 +34,7 @@ export default function Bedroom() {
                 <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
                   <button
                     onClick={() => handleAddToCart(product)}
-                    className="px-4 py-2 text-sm font-semibold text-white bg-amber-700 rounded hover:bg-amber-500 transition"
+                    className="px-5 py-2 text-sm font-semibold text-white bg-amber-700 rounded-md hover:bg-amber-500 transition"
                   >
                     Add to Cart
                   </button>

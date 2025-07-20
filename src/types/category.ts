@@ -1,8 +1,10 @@
 export interface Category {
   id: string;
   name: string;
-  ptice: string
+  price: string
   slug: string;
+  category: string;
   image: string;
   description?: string;
+  createdAt?: string;
 }

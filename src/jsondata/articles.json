@@ -8,7 +8,8 @@
     "price": "$149.99",
     "content": "Want to give your home a designer’s touch without spending a fortune? Learn how to create stunning interiors with seven simple yet impactful decor techniques used by professionals. From mixing textures—like velvet cushions on leather sofas—to layering area rugs for added warmth and depth, these methods can dramatically transform your space. Strategically placing mirrors can make a room feel larger and brighter, while thoughtful wall art arrangements add a personal and polished flair. Incorporate greenery for a touch of nature, play with color contrasts, and rearrange furniture for better flow. Whether you're updating a single room or your entire home, these tips help you achieve a cohesive, high-end look that's stylish and budget-friendly. In addition, learn how to curate vignettes with books, candles, and accent pieces that reflect your personal style. Use lighting creatively—floor lamps, sconces, and pendants—to set the mood and highlight focal points. Consider statement pieces such as oversized artwork or a sculptural coffee table to add drama. With attention to detail and intentional choices, you can replicate the elegance of interior designers and transform your everyday home into a refined, magazine-worthy space.",
     "featured": true,
-    "date": "2025-07-01"
+    "date": "2025-07-01",
+    "category": "Home Decor"
   },
   {
     "id": 2,
@@ -17,9 +18,10 @@
     "slug": "kitchen-organisation",
     "description": "Maximize your kitchen space with these simple organization hacks.",
     "price": "$89.99",
-    "content":"A beautiful kitchen goes beyond just aesthetic appeal—it's about smart functionality and thoughtful organization. This guide takes you through practical strategies to streamline your culinary space and reduce everyday stress. Use tiered shelf organizers to make the most of cabinet space, install drawer dividers to keep utensils in order, and label glass jars for a clean, uniform pantry look. Consider magnetic knife strips, over-the-door storage, and under-sink baskets to keep everything within easy reach. These small changes can have a big impact on how your kitchen looks and functions, helping to create an inviting and efficient space where cooking becomes a joy, not a chore.Delve deeper into zone-based organization, where prep, cooking, and cleanup areas are clearly defined for smoother workflow. ",
+    "content":"A beautiful kitchen goes beyond just aesthetic appeal—it's about smart functionality and thoughtful organization. This guide takes you through practical strategies to streamline your culinary space and reduce everyday stress. Use tiered shelf organizers to make the most of cabinet space, install drawer dividers to keep utensils in order, and label glass jars for a clean, uniform pantry look. Consider magnetic knife strips, over-the-door storage, and under-sink baskets to keep everything within easy reach. These small changes can have a big impact on how your kitchen looks and functions, helping to create an inviting and efficient space where cooking becomes a joy, not a chore.Delve deeper into zone-based organization, where prep, cooking, and cleanup areas are clearly defined for smoother workflow.",
     "featured": false,
-    "date": "2025-06-28"
+    "date": "2025-06-28",
+    "category": "Kitchen"
   },
   {
     "id": 3,
@@ -30,7 +32,8 @@
     "price": "$199.99",
     "content": "Designing your child’s bedroom involves more than picking colorful themes—it’s about creating a safe, joyful, and nurturing environment where they can play, learn, and rest. Discover creative decor ideas that blend functionality and fun, from multi-purpose furniture and storage solutions to personalized wall art and cozy lighting. With thoughtful planning, you can build a bedroom that grows with your child and sparks their imagination every day.",
     "featured": true,
-    "date": "2025-06-15"
+    "date": "2025-06-15",
+    "category": "Bedroom"
   },
   {
     "id": 4,
@@ -41,7 +44,8 @@
     "price": "$179.99",
     "content": "Modern design and kid-friendly living don’t have to be mutually exclusive. This guide shows how to achieve a stylish, contemporary home that also accommodates the needs of young children. Learn about durable fabrics, rounded furniture edges, playful yet elegant accessories, and open layouts that promote both safety and aesthetic appeal. With the right touches, you can create a modern home that's practical, comfortable, and family-approved.",
     "featured": false,
-    "date": "2025-05-20"
+    "date": "2025-05-20",
+    "category": "Living Room"
   },
   {
     "id": 5,
@@ -52,7 +56,8 @@
     "price": "$129.99",
     "content": "Looking to carve out a peaceful retreat in your home? Turn an empty corner of your living room into a cozy reading nook that invites relaxation. Use soft lighting, plush cushions, a comfy armchair, and a small bookshelf or floating shelves to design a serene space perfect for unwinding with your favorite book. Whether your style is minimalist or eclectic, this little haven can add both charm and comfort to your living area.",
     "featured": true,
-    "date": "2025-05-12"
+    "date": "2025-05-12",
+    "category": "Living Room"
   },
   {
     "id": 6,
@@ -63,7 +68,8 @@
     "price": "$129.99",
     "content": "Minimalism isn't just a trend—it's a lifestyle that brings peace and clarity into your home. In the kitchen, this approach translates into sleek cabinetry, clutter-free countertops, and purposeful design choices. Explore minimalist kitchen ideas that focus on neutral tones, smart storage, and high-quality materials. By eliminating excess and emphasizing functionality, you can create a space that feels open, calming, and timelessly elegant.",
     "featured": false,
-    "date": "2025-04-28"
+    "date": "2025-04-28",
+    "category": "Kitchen"
   },
   {
     "id": 7,
@@ -74,7 +80,8 @@
     "price": "$99.99",
     "content": "Living in a small urban apartment doesn’t mean sacrificing comfort or style. Discover smart solutions designed to maximize space without compromising on design. Learn how to use foldable furniture, wall-mounted storage, multipurpose pieces, and light color palettes to create an illusion of spaciousness. These space-saving tricks will help you organize efficiently and make the most of every square foot in your city dwelling.",
     "featured": true,
-    "date": "2025-04-10"
+    "date": "2025-04-10",
+    "category": "Apartment"
   },
   {
     "id": 8,
@@ -85,7 +92,8 @@
     "price": "$59.99",
     "content": "Changing your home’s decor to match the seasons doesn’t have to be complicated. With a few thoughtful touches, you can keep your space feeling fresh and timely all year round. Swap out textiles, update color schemes, and incorporate seasonal elements like florals in spring, warm tones in fall, and cozy textures in winter. This guide offers simple strategies to transition your home decor seamlessly from one season to the next.",
     "featured": false,
-    "date": "2025-03-30"
+    "date": "2025-03-30",
+    "category": "Home Decor"
   },
   {
     "id": 9,
@@ -96,6 +104,7 @@
     "price": "$79.99",
     "content": "Clutter can quickly take over any home, but with the right storage solutions, every room can be both tidy and functional. Explore creative and innovative ideas for organizing your bedroom, kitchen, living room, and more. From under-bed compartments and vertical shelving to hidden storage ottomans and modular closet systems, this guide will help you find the perfect balance between form and function—ensuring every item has its place.",
     "featured": true,
-    "date": "2025-03-10"
+    "date": "2025-03-10",
+    "category": "Storage"
   }
 ]
