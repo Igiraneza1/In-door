@@ -1,56 +1,49 @@
 // app/inDoor/newsletter/page.tsx or components/Newsletter.tsx
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Newsletter() {
   return (
-    <section className="relative flex flex-col md:flex-row items-center justify-center bg-gray-100 mt-8 overflow-hidden h-[300px]">
-      
-      {/* Left Image */}
-      <div className="relative w-full md:w-1/3 h-full mr-60">
+    <section className="relative flex flex-col md:flex-row items-center justify-center bg-white overflow-hidden h-[280px] md:h-[360px]">
+      <div className="relative w-full md:w-1/4 h-full">
         <Image
           src="/image/bedroom/bedroom.png"
           alt="dresser"
           fill
-          className="object-cover"
+          className="object-cover object-left"
           priority
         />
       </div>
 
-      {/* Center Newsletter Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center w-full max-w-md px-4 py-10 md:py-8 bg-gray-100">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-2">
+
+      <div className="relative z-10 flex flex-col items-center justify-center text-center w-full md:w-2/4 px-8 py-8 bg-gray-100 h-full">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-gray-900 mb-3 leading-tight">
           Join Our Newsletter
         </h2>
-        <p className="text-gray-700 mb-6 text-sm sm:text-base md:text-lg">
+        <p className="text-gray-600 mb-8 text-sm md:text-base leading-relaxed max-w-sm">
           Sign up for deals, new products and promotions
         </p>
-  
-        <div className="flex items-center border-b border-gray-800 w-full max-w-md px-2">
-        
+
+        <div className="flex items-center border-b border-gray-400 w-full max-w-sm">
+    
           <input
             type="email"
             placeholder="Email address"
-            className="flex-1 bg-transparent outline-none text-gray-900 placeholder-gray-600 text-sm py-2"
+            className="flex-1 bg-transparent outline-none text-gray-900 placeholder-gray-500 text-sm py-3 font-light"
           />
-          <Link
-            href="/sign-up"
-            className="ml-4 text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors whitespace-nowrap"
-          >
+          <button className="ml-6 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors whitespace-nowrap uppercase tracking-wider">
             Signup
-          </Link>
+          </button>
         </div>
       </div>
-
-      {/* Right Image */}
-      <div className="relative w-full md:w-1/3  ml-50 h-full">
+      <div className="relative w-full md:w-1/4 h-full">
         <Image
           src="/image/Living-room/chair1.png"
-          alt="chair"
+          alt="chair with blanket"
           fill
-          className="object-cover"
+          className="object-cover object-right ml-10 "
           priority
         />
       </div>

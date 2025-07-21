@@ -8,7 +8,7 @@ export const LivingRoomProducts = [
   },
   {
     id: 2,
-    name: "Glass Coffee Table",
+    name: "Glass Coffee Chair",
     image: "/image/Living-room/chair2.jpg",
     price: "95000 Rwf",
     description: "Tempered glass coffee table with a minimalist metal frame design.",

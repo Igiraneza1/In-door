@@ -2,8 +2,8 @@ import HomePage from "./home/page";
 import CategoryPage from "./CategoriesGrid/page";
 import NewArrivals from "./newArrival/page";
 import Articles from "./article/page";
-// import Discount from "./discount/page";
-// import Newsletter from "./newsletter/page";
+import Discount from "./discount/page";
+import Newsletter from "./newsletter/page";
 
 export default function Indoor() {
   return (
@@ -13,11 +13,12 @@ export default function Indoor() {
           Elegant
         </h1>
       </div>
-      <div className="  pl-10 pr-10">
+      <div className="bg-white  pl-10 pr-10">
         <HomePage />
         <CategoryPage />
         <NewArrivals />
         <Articles />
+
       </div>
     </div>
   );
