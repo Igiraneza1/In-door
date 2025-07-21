@@ -9,7 +9,7 @@ export const BedroomProducts = [
   {
     id: 2,
     name: "Memory Foam Mattress",
-    image: "/image/bedroom/bedroom2.png",
+    image: "/image/bedroom/mattress1.png",
     price: "50000 Rwf",
     description: "Comfortable memory foam mattress for a restful night’s sleep.",
   },
