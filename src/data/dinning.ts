@@ -22,14 +22,14 @@ export const DiningProducts = [
   },
   {
     id: 4,
-    name: "Sideboard Cabinet",
+    name: "chair",
     image: "/image/dining/dining4.jpg",
     price: "185000 Rwf",
     description: "Stylish sideboard for storing dishes, cutlery, and table linens with extra surface space.",
   },
   {
     id: 5,
-    name: "Dining Bench",
+    name: "Dining Chair",
     image: "/image/dining/dining5.jpg",
     price: "85000 Rwf",
     description: "Long dining bench for flexible seating and space-saving design.",

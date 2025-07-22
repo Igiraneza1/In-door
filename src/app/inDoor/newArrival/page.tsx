@@ -55,7 +55,7 @@ const handleAddToCart = (product: Product) => {
   });
 
   setTimeout(() => {
-      window.location.href = "/cart"; 
+      window.location.href = "/product/${product.id}"; 
   }, 1000);
 };
   return (

@@ -44,7 +44,7 @@ export const LivingRoomProducts = [
   {
     id: 7,
     name: "Floor Lamp",
-    image: "/image/items/lamp.png",
+    image: "/image/bedroom/lamp.png",
     price: "62000 Rwf",
     description: "Adjustable floor lamp with a warm light bulb for cozy lighting.",
   },

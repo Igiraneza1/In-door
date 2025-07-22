@@ -1,5 +1,6 @@
 "use client";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -18,21 +19,37 @@ export default function AccountPage() {
     confirmPassword: "",
   });
 
+  // useEffect(() => {
+  //   if (status === "unauthenticated") router.push("/login");
+  //   if (status === "authenticated") {
+  //     axios.get("/api/user").then((res) => {
+  //       const { firstName, lastName, displayName, email } = res.data;
+  //       setFormData((prev) => ({
+  //         ...prev,
+  //         firstName,
+  //         lastName,
+  //         displayName,
+  //         email,
+  //       }));
+  //     });
+  //   }
+  // }, [status]);
+
   useEffect(() => {
-    if (status === "unauthenticated") router.push("/login");
-    if (status === "authenticated") {
-      axios.get("/api/user").then((res) => {
-        const { firstName, lastName, displayName, email } = res.data;
-        setFormData((prev) => ({
-          ...prev,
-          firstName,
-          lastName,
-          displayName,
-          email,
-        }));
-      });
-    }
-  }, [status]);
+  if (status === "unauthenticated") router.push("/login");
+  if (status === "authenticated") {
+    axios.get("/api/user").then((res) => {
+      const { firstName, lastName, displayName, email } = res.data;
+      setFormData((prev) => ({
+        ...prev,
+        firstName,
+        lastName,
+        displayName,
+        email,
+      }));
+    });
+  }
+}, [status, router]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -48,9 +65,11 @@ export default function AccountPage() {
       {/* Sidebar */}
       <aside className="md:col-span-1 bg-gray-50 border border-gray-200 rounded-lg p-6">
         <div className="flex flex-col items-center text-center space-y-4">
-          <img
+          <Image
             src="/placeholder-profile.jpg"
             alt="Profile"
+            width="20"
+            height= "20"
             className="w-20 h-20 rounded-full object-cover"
           />
           <div>

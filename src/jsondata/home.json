@@ -4,7 +4,7 @@
     "title": "Wooden Chair",
     "price": "$49.99",
     "category": "chairs",
-    "imageUrl": "/image/Living-room/homechair.jpg",
+    "imageUrl": "/image/Living-room/sofa1.jpg",
     "description": "Comfortable wooden chair perfect for your living room."
   },
   {
@@ -12,16 +12,16 @@
     "title": "Wooden Bedroom",
     "price": "$199.99",
     "category": "Beds",
-    "imageUrl": "/image/bedroom/bedroom1.jpg",
-    "description": "Elegant dining table made from solid oak."
+    "imageUrl": "/image/bedroom/bed3.jpg",
+    "description": "Elegant bed  made from solid tree oak."
   },
   {
     "id": "3",
     "title": "Modern Kitchen",
     "price": "$299.99",
     "category": "Kitchen",
-    "imageUrl": "/image/kitchen/pexels-andreaedavis-27065116.jpg",
-    "description": "Spacious and stylish sofa with soft cushions."
+    "imageUrl": "/image/kitchen/kitchen6.jpg",
+    "description": "Spacious and stylish kitchen  with soft cushions."
   },
   {
     "id": "4",
@@ -36,7 +36,7 @@
     "title": "Livingroom Chair",
     "price": "$89.99",
     "category": "chairs",
-    "imageUrl": "/image/Living-room/sofa12.jpg",
+    "imageUrl": "/image/Living-room/sofa12.png",
     "description": "Ergonomic office chair with adjustable height."
   },
   {
@@ -44,7 +44,7 @@
     "title": "Kitchen Table",
     "price": "$79.99",
     "category": "tables",
-    "imageUrl": "/image/kitchen/pexels-heyho-6032416.jpg",
+    "imageUrl": "/image/dining/table1.jpg",
     "description": "Modern coffee table made from tempered glass."
   },
   {
@@ -52,31 +52,31 @@
     "title": "Single Bed",
     "price": "$399.99",
     "category": "beds",
-    "imageUrl": "/image/bedroom/bedroom9.jpg",
+    "imageUrl": "/image/bedroom/bedroom9.png",
     "description": "Luxurious recliner sofa with soft leather finish."
   },
   {
     "id": "8",
-    "title": "Garden Chair",
+    "title": " Chair",
     "price": "$299.99",
     "category": "chairs",
-    "imageUrl": "/image/Living-room/sofa13.jpg",
-    "description": "Space-saving single bed for small rooms."
+    "imageUrl": "/image/Living-room/sofa10.jpg",
+    "description": "Space-saving Chair with comfort ."
   },
   {
     "id": "9",
     "title": "All in one Kitchen",
     "price": "$59.99",
     "category": "Kitchen",
-    "imageUrl": "/image/kitchen/pexels-curtis-adams-1694007-12119223.jpg",
-    "description": "Classic wooden rocking chair with smooth finish."
+    "imageUrl": "/image/kitchen/kitchen6.jpg",
+    "description": "Classic wooden rocking kitchen with smooth furniture."
   },
   {
     "id": "10",
     "title": "Waterproof Bed",
     "price": "$39.99",
     "category": "beds",
-    "imageUrl": "/image/bedroom/bedroom10.jpg",
-    "description": "Compact side table perfect next to your sofa."
+    "imageUrl": "/image/bedroom/bedroom10.png",
+    "description": "Compact Water proof  bed with more comfort"
   }
 ]

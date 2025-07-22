@@ -2,8 +2,9 @@ import HomePage from "./home/page";
 import CategoryPage from "./CategoriesGrid/page";
 import NewArrivals from "./newArrival/page";
 import Articles from "./article/page";
-import Discount from "./discount/page";
 import Newsletter from "./newsletter/page";
+import Discount from "./discount/page";
+
 
 export default function Indoor() {
   return (
@@ -17,7 +18,9 @@ export default function Indoor() {
         <HomePage />
         <CategoryPage />
         <NewArrivals />
+        <Discount/>
         <Articles />
+        <Newsletter />
 
       </div>
     </div>

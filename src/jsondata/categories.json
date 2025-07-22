@@ -3,21 +3,21 @@
     "id": "1",
     "name": "Living Room",
     "slug": "living-room",
-    "image": "/images/living-room.jpg",
+    "image": "/image/Living-room/livingroom.png",
     "description": "Comfortable furniture for your living space"
   },
   {
     "id": "2",
     "name": "Bedroom",
     "slug": "bedroom",
-    "image": "/images/bedroom.jpg",
+    "image": "/image/bedroom/bedroom.jpg",
     "description": "Create your perfect sleeping sanctuary"
   },
   {
     "id": "3",
     "name": "Kitchen",
     "slug": "kitchen",
-    "image": "/images/kitchen.jpg",
+    "image": "/images/kitchen/toaster.png",
     "description": "Modern appliances and kitchen essentials"
   },
   {
@@ -29,16 +29,16 @@
   },
   {
     "id": "5",
-    "name": "Outdoor",
-    "slug": "outdoor",
-    "image": "/images/outdoor.jpg",
+    "name": "Indoor",
+    "slug": "living-room",
+    "image": "/image/Living-room/sofa1.png",
     "description": "Durable furniture for outdoor living"
   },
   {
     "id": "6",
     "name": "Dining",
     "slug": "dining",
-    "image": "/images/dining.jpg",
+    "image": "/image/dining/table19.png",
     "description": "Elegant dining sets for every occasion"
   }
 ]

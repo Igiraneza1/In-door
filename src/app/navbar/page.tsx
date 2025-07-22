@@ -34,10 +34,10 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Check if user is logged in
-    const auth = localStorage.getItem("isAuthenticated");
-    setIsAuthenticated(auth === "true");
-  }, [pathname]);
+  const auth = localStorage.getItem("isAuthenticated");
+  setIsAuthenticated(auth === "true");
+  }, []);
+
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow z-50">
