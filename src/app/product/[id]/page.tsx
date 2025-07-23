@@ -1,10 +1,8 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { FaHeart, FaStar, FaMinus, FaPlus } from "react-icons/fa";
-import toast from "react-hot-toast";
+import { FaStar } from "react-icons/fa";
 import news from "../../../jsondata/news.json";
 
 interface Product {
@@ -19,166 +17,109 @@ interface Product {
   image: string;
 }
 
-export default function ProductPage() {
-  const { id } = useParams();
-  const router = useRouter();
+export default function ProducT({ params }: { params: { id: string } }) {
   const [product, setProduct] = useState<Product | null>(null);
-  const [quantity, setQuantity] = useState(1);
-  const [selectedColor, setSelectedColor] = useState("Black");
-  const [wishlist, setWishlist] = useState(false);
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    if (!id) return;
+    const productId = parseInt(params.id);
+    console.log("🟡 Param ID:", params.id);
+    const found = news.find((item) => item.id === productId);
+    console.log("🟢 Found Product:", found);
+    setProduct(found || null);
 
-    const actualId = Array.isArray(id) ? id[0] : id;
-    const productId = parseInt(actualId as string);
-    const found = news.find((p) => p.id === productId);
+    const related = news.filter((item) => item.id !== productId).slice(0, 4);
+    setRelatedProducts(related);
+  }, [params.id]);
 
-    if (found) {
-      setProduct(found);
-    }
-  }, [id]);
+  if (!product) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-center text-red-600">
+        Product not found. Check your JSON or route.
+      </div>
+    );
+  }
 
-  const handleAddToCart = () => {
-    if (!product) return;
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const existing = cart.find((item: any) => item.id === product.id);
-    if (existing) {
-      existing.quantity += quantity;
-    } else {
-      cart.push({ ...product, quantity, color: selectedColor });
-    }
-    localStorage.setItem("cart", JSON.stringify(cart));
-    toast.success("Product added to cart");
-    router.push("/cart");
-  };
-
-  const colors = ["Black", "White", "Brown", "Red"];
-  const productImages = product ? [product.image, product.image, product.image, product.image] : [];
-
-  if (!product) return null;
-  
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
-      <div className="grid md:grid-cols-2 gap-10">
-        {/* Image Gallery */}
+    <div className="bg-white text-black">
+    <div className="bg-white max-w-7xl mx-auto p-4 pt-22">
+      {/* Main Product Info */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Product Images */}
+        <div className="space-y-4">
+          <Image
+            src={product.image}
+            alt={product.title}
+            width={300}
+            height={350}
+            className="w-full h-64 object-contain rounded-lg"
+          />
+          {/* <div className="grid grid-cols-3 gap-2">
+            {[1, 2, 3].map((_, index) => (
+              <Image
+                key={index}
+                src={product.image}
+                alt={`Preview ${index}`}
+                width={100}
+                height={100}
+                className="w-full h-24 object-contain rounded-lg"
+              />
+            ))}
+          </div> */}
+        </div>
+
         <div>
-          <div className="relative w-full aspect-square bg-white rounded-lg overflow-hidden mb-4">
-            <Image
-              src={productImages[activeImageIndex]}
-              alt={product.title}
-              fill
-              className="object-contain p-6"
-            />
-          </div>
-          <div className="grid grid-cols-4 gap-3">
-            {productImages.map((img, i) => (
-              <div
+          <h1 className="text-3xl font-semibold text-gray-900">{product.title}</h1>
+          <div className="text-yellow-500 text-sm mb-2 flex">
+            {[...Array(5)].map((_, i) => (
+              <FaStar
                 key={i}
-                onClick={() => setActiveImageIndex(i)}
-                className={`relative aspect-square bg-white border-2 rounded-lg overflow-hidden cursor-pointer ${
-                  activeImageIndex === i ? "border-black" : "border-gray-200"
-                }`}
-              >
-                <Image src={img} alt={`Thumb ${i}`} fill className="object-contain p-2" />
-              </div>
+                className={i < product.rating ? "text-black" : "text-gray-300"}
+              />
             ))}
           </div>
-        </div>
-
-        {/* Info Section */}
-        <div className="space-y-6">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold text-gray-900">{product.title}</h1>
-            <div className="flex items-center gap-2">
-              {[...Array(5)].map((_, i) => (
-                <FaStar
-                  key={i}
-                  className={`text-sm ${
-                    i < product.rating ? "text-yellow-500" : "text-gray-300"
-                  }`}
-                />
-              ))}
-              <span className="text-sm text-gray-600">(11 reviews)</span>
-            </div>
-          </div>
-
-          <p className="text-gray-700 leading-relaxed">
-            {product.description ||
-              "Buy one or buy a few and make every space where you sit more convenient."}
-          </p>
-
-          <div className="flex items-center space-x-3">
-            <span className="text-3xl font-bold">${product.price}</span>
+          <p className="text-gray-600 text-sm mb-2">{product.description}</p>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-gray-900 font-bold text-xl">${product.price}</span>
             {product.originalPrice && (
-              <span className="text-xl line-through text-gray-400">
-                ${product.originalPrice}
-              </span>
+              <span className="text-gray-400 line-through text-sm">${product.originalPrice}</span>
             )}
           </div>
+          <select className="mb-4 p-2 border rounded w-full">
+            <option>17" x 20.5" x 17"</option>
+            <option>Black</option>
+          </select>
 
-          <div>
-            <p className="font-semibold text-gray-800 mb-2">
-              Choose Color: <span className="text-gray-500">{selectedColor}</span>
-            </p>
-            <div className="flex gap-3">
-              {colors.map((color) => (
-                <button
-                  key={color}
-                  onClick={() => setSelectedColor(color)}
-                  className={`w-8 h-8 rounded-full border-2 ${
-                    selectedColor === color ? "border-black" : "border-gray-300"
-                  } ${
-                    color === "Black"
-                      ? "bg-black"
-                      : color === "White"
-                      ? "bg-white"
-                      : color === "Brown"
-                      ? "bg-amber-800"
-                      : "bg-red-500"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <div className="flex border border-gray-300 rounded">
-              <button
-                onClick={() => setQuantity((q) => (q > 1 ? q - 1 : 1))}
-                className="px-3 py-1 hover:bg-gray-100"
-              >
-                <FaMinus />
-              </button>
-              <span className="px-4 py-1">{quantity}</span>
-              <button
-                onClick={() => setQuantity((q) => q + 1)}
-                className="px-3 py-1 hover:bg-gray-100"
-              >
-                <FaPlus />
-              </button>
-            </div>
-            <button
-              onClick={() => setWishlist((w) => !w)}
-              className={`p-2 border rounded-full ${
-                wishlist ? "text-red-500" : "text-gray-400"
-              }`}
-            >
-              <FaHeart />
-            </button>
-          </div>
-
-          <div className="flex flex-col gap-3 mt-4">
-            <button
-              onClick={handleAddToCart}
-              className="w-full bg-black text-white py-3 rounded hover:bg-gray-800 transition"
-            >
-              Add to Cart
-            </button>
-          </div>
+          <button className="mb-4  bg-white border border-black text-gray-600 mx-auto px-6 py-3 w-full text-left">Add to Wishlist</button>
+          <button
+            onClick={() => (window.location.href = `/cart`)}
+            className="bg-black text-white px-6 py-3 rounded-lg w-full"
+          >
+            Add to Cart 
+          </button>
         </div>
       </div>
+
+      {/* Related Products */}
+      <div className="mt-10">
+        <h2 className="text-xl font-semibold mb-4">You might also like</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {relatedProducts.map((item) => (
+            <div key={item.id} className="border rounded-xl p-2">
+              <Image
+                src={item.image}
+                alt={item.title}
+                width={200}
+                height={200}
+                className="w-full object-contain rounded-md"
+              />
+              <h3 className="mt-2 font-medium text-sm">{item.title}</h3>
+              <p className="text-gray-700 text-sm">${item.price}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
     </div>
   );
 }
