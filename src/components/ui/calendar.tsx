@@ -1,34 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { DayPicker, useNavigation } from "react-day-picker";
+import { DayPicker } from "react-day-picker";
 
 import { cn } from "../../app/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
-
-function CustomNavigation() {
-  const { goToMonth, previousMonth, nextMonth } = useNavigation();
-
-  return (
-    <div className="flex items-center justify-between px-2 py-1">
-      <button
-        onClick={() => previousMonth && goToMonth(previousMonth)}
-        aria-label="Previous month"
-      >
-        <ChevronLeft className="h-4 w-4" />
-      </button>
-      <button
-        onClick={() => nextMonth && goToMonth(nextMonth)}
-        aria-label="Next month"
-      >
-        <ChevronRight className="h-4 w-4" />
-      </button>
-    </div>
-  );
-}
 
 function Calendar({
   className,
@@ -45,9 +23,7 @@ function Calendar({
         month: "space-y-4",
         caption: "flex justify-center pt-1 relative items-center",
         caption_label: "text-sm font-medium",
-        nav: "space-x-1 flex items-center",
-        nav_button_previous: "absolute left-1",
-        nav_button_next: "absolute right-1",
+        nav: "hidden", // 👈 hides the navigation buttons
         table: "w-full border-collapse space-y-1",
         head_row: "flex",
         head_cell:
@@ -69,9 +45,6 @@ function Calendar({
           "aria-selected:bg-accent aria-selected:text-accent-foreground",
         day_hidden: "invisible",
         ...classNames,
-      }}
-      components={{
-        Navigation: CustomNavigation, // ✅ NOW it's used
       }}
       {...props}
     />
