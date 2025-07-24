@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -44,9 +44,33 @@ export default function Shop() {
     },
   };
 
-  const selectedCategory =
-    categoryMap[categorySlug] ?? categoryMap["all-rooms"];
+  const selectedCategory = categoryMap[categorySlug] ?? categoryMap["all-rooms"];
   const products = selectedCategory.products;
+
+  // ✅ Cart state
+  const [cart, setCart] = useState<Products[]>([]);
+
+  // ✅ Load cart from localStorage on mount
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
+
+  // ✅ Save cart to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  // ✅ Add to Cart handler
+  const handleAddToCart = (product: Products) => {
+    const exists = cart.find((item) => item.id === product.id);
+    if (!exists) {
+      setCart([...cart, product]);
+    }
+    console.log("Cart:", [...cart, product]);
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -79,24 +103,12 @@ export default function Shop() {
             <div>
               <p className="text-gray-900 mb-4 font-bold">CATEGORIES</p>
               <ul className="space-y-2 text-gray-600">
-                <li>
-                  <Link href="/categories">All Rooms</Link>
-                </li>
-                <li>
-                  <Link href="/living-room">Living Room</Link>
-                </li>
-                <li>
-                  <Link href="/bedroom">Bedroom</Link>
-                </li>
-                <li>
-                  <Link href="/kitchen">Kitchen</Link>
-                </li>
-                <li>
-                  <Link href="/bathroom">Bathroom</Link>
-                </li>
-                <li>
-                  <Link href="/dining">Dining</Link>
-                </li>
+                <li><Link href="/shop/all-rooms">All Rooms</Link></li>
+                <li><Link href="/shop/living-room">Living Room</Link></li>
+                <li><Link href="/shop/bedroom">Bedroom</Link></li>
+                <li><Link href="/shop/kitchen">Kitchen</Link></li>
+                <li><Link href="/shop/bathroom">Bathroom</Link></li>
+                <li><Link href="/shop/dining">Dining</Link></li>
               </ul>
             </div>
           </div>
@@ -146,12 +158,16 @@ export default function Shop() {
                       {product.discount}
                     </span>
                   )}
-                  {product.id === 5 && (
-                    <button className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded w-3/4">
-                      Add to Cart
-                    </button>
-                  )}
+
+                  {/* ✅ Show Add to Cart on all products */}
+                  <button
+                    onClick={() => handleAddToCart(product)}
+                    className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded w-3/4"
+                  >
+                    Add to Cart
+                  </button>
                 </div>
+
                 <h3 className="text-md font-semibold text-gray-900 mt-2">
                   {product.name}
                 </h3>
