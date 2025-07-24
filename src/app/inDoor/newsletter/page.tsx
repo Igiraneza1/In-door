@@ -43,7 +43,7 @@ export default function Newsletter() {
           src="/image/Living-room/chair1.png"
           alt="chair with blanket"
           fill
-          className="object-cover object-right ml-10 "
+          className="object-cover  "
           priority
         />
       </div>

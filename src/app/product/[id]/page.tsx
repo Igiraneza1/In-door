@@ -20,6 +20,7 @@ interface Product {
 export default function Produc({ params }: { params: { id: string } }) {
   const [product, setProduct] = useState<Product | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
+  const [quantity, setQuantity] = useState(0); // ✅ Add this line
 
   useEffect(() => {
     const productId = parseInt(params.id);
@@ -35,7 +36,7 @@ export default function Produc({ params }: { params: { id: string } }) {
   if (!product) {
     return (
       <div className="min-h-screen flex items-center justify-center text-center text-red-600">
-        Product not found. Check your JSON or route.
+        Loading
       </div>
     );
   }
@@ -51,7 +52,7 @@ export default function Produc({ params }: { params: { id: string } }) {
               src={product.image}
               alt={product.title}
               width={300}
-              height={350}
+              height={300}
               className="w-full h-64 object-contain rounded-lg"
             />
             {/* <div className="grid grid-cols-3 gap-2">
@@ -69,10 +70,10 @@ export default function Produc({ params }: { params: { id: string } }) {
           </div>
 
           <div>
-            <h1 className="text-3xl font-semibold text-gray-900">
+            <h1 className="text-3xl font-semibold p-2 text-gray-900">
               {product.title}
             </h1>
-            <div className="text-yellow-500 text-sm mb-2 flex">
+            <div className="text-yellow-500 text-sm mb-2 p-2 flex">
               {[...Array(5)].map((_, i) => (
                 <FaStar
                   key={i}
@@ -82,13 +83,15 @@ export default function Produc({ params }: { params: { id: string } }) {
                 />
               ))}
             </div>
-            <p className="text-gray-600 text-sm mb-2">{product.description}</p>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-gray-900 font-bold text-xl">
+            <p className="text-gray-600 text-sm p-2 mb-2 ">
+              {product.description}
+            </p>
+            <div className="flex items-center gap-2 p-2 mb-4">
+              <span className="text-gray-900 font-bold  text-xl">
                 ${product.price}
               </span>
               {product.originalPrice && (
-                <span className="text-gray-400 line-through text-sm">
+                <span className="text-gray-400   line-through text-sm">
                   ${product.originalPrice}
                 </span>
               )}
@@ -97,10 +100,31 @@ export default function Produc({ params }: { params: { id: string } }) {
               <option>17" x 20.5" x 17"</option>
               <option>Black</option>
             </select>
+            <div className="flex flex-row mr-4">
+            <div className="mb-4 flex  w-1/4 bg-gray-300 flex-row items-center rounded-lg px-4 py-2 ">
+              <button
+                onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+                className="text-lg font-bold px-2"
+              >
+                -
+              </button>
+              <span className="text-lg font-medium px-4">{quantity}</span>
+              <button
+                onClick={() => setQuantity((prev) => prev + 1)}
+                className="text-lg font-bold px-2"
+              >
+                +
+              </button>
+            </div>
 
-            <button className="mb-4  bg-white border border-black text-gray-600 mx-auto px-6 py-3 w-full text-left">
-              Add to Wishlist
+            {/* Add to Wishlist Button */}
+            <button
+              className="mb-4 w-3/4 border border-black text-gray-800 py-2  rounded-lg hover:bg-gray-100"
+              onClick={() => alert("Added to wishlist!")} // Replace with real logic if needed
+            >
+              ❤️ Add to Wishlist
             </button>
+            </div>
             <button
               onClick={() => {
                 if (!product) return;
