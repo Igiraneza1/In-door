@@ -13,7 +13,7 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { name: "Home", href: "/inDoor" },
-  { name: "Shop", href: "/shop" },
+  { name: "Product", href: "/product" },
   { name: "Contact", href: "/contact" },
   // { name: "Dashboard", href: "/user-dashboard" },
 ];
@@ -34,10 +34,10 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Check if user is logged in
-    const auth = localStorage.getItem("isAuthenticated");
-    setIsAuthenticated(auth === "true");
-  }, [pathname]);
+  const auth = localStorage.getItem("isAuthenticated");
+  setIsAuthenticated(auth === "true");
+  }, []);
+
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow z-50">

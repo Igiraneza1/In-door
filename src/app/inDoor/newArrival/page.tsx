@@ -28,36 +28,27 @@ export default function NewArrivals() {
   const products: Product[] = news;
   const productsToShow = showAll ? products : products.slice(0, );
 
-const handleAddToCart = (product: Product) => {
+  const handleAddToCart = (product: Product) => {
   const cart: (Product & { quantity: number })[] = JSON.parse(localStorage.getItem("cart") || "[]");
-  
-  console.log("Current cart before adding:", cart); 
 
   const existing = cart.find((item) => item.id === product.id);
   if (existing) {
     existing.quantity += 1;
   } else {
-    cart.push({
-      ...product,
-      price: product.price,
-      quantity: 1,
-  
-      
-    });
+    cart.push({ ...product, quantity: 1 });
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
-  console.log("Updated cart:", cart); 
-
   toast.success("Added to cart! Redirecting...", {
     duration: 1000,
     position: "top-center",
   });
 
   setTimeout(() => {
-      window.location.href = "/cart"; 
+    window.location.href = `/product/${product.id}`; 
   }, 1000);
 };
+
   return (
     
     <div className="bg-white max-w-7xl mx-auto p-4">
@@ -154,10 +145,10 @@ const handleAddToCart = (product: Product) => {
                       </span>
                     )}
                   </div>
-
+{/* 
                   {activeProductId === item.id && (
                     <p className="text-gray-600 text-xs mt-2">{item.description}</p>
-                  )}
+                  )} */}
                 </div>
               </div>
             ))}

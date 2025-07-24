@@ -16,7 +16,7 @@ export const BedroomProducts = [
   {
     id: 3,
     name: "Two-Drawer Nightstand",
-    image: "/image/bedroom/bedroom3.jpg",
+    image: "/image/bedroom/bed4.jpg",
     price: "300000 Rwf",
     description: "Compact nightstand with two drawers for bedside storage.",
   },
