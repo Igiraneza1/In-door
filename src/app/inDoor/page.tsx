@@ -2,9 +2,14 @@ import HomePage from "./home/page";
 import CategoryPage from "./CategoriesGrid/page";
 import NewArrivals from "./newArrival/page";
 import Articles from "./article/page";
+<<<<<<< HEAD
+// import Discount from "./discount/page";
+// import Newsletter from "./newsletter/page";
+=======
 import Newsletter from "./newsletter/page";
 import Discount from "./discount/page";
 
+>>>>>>> 3046aab507a9827b7806b8e6841644b83d53338c
 
 export default function Indoor() {
   return (
