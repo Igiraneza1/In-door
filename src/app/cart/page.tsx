@@ -114,10 +114,11 @@ export default function Cart() {
               <div className="flex flex-col lg:flex-row gap-8">
                 <div className="lg:w-2/3">
                   <div className="hidden lg:flex justify-between font-medium text-gray-600 mb-4">
-                    <span className="w-1/4">Product</span>
-                    <span className="w-1/4 text-center">Quantity</span>
-                    <span className="w-1/4 text-center">Price</span>
-                    <span className="w-1/4 text-right">Subtotal</span>
+                    <span className="w-1/5">Product</span>
+                    <span className="w-1/5text-center">Quantity</span>
+                    <span className="w-1/5 text-center">Price</span>
+                    <span className="w-1/5 text-center">Total</span>
+                    <span className="w-1/5 text-right">Subtotal</span>
                   </div>
 
                   {cart.map((item) => (
