@@ -44,7 +44,8 @@ export default function Shop() {
     },
   };
 
-  const selectedCategory = categoryMap[categorySlug] ?? categoryMap["all-rooms"];
+  const selectedCategory =
+    categoryMap[categorySlug] ?? categoryMap["all-rooms"];
   const products = selectedCategory.products;
 
   // ✅ Cart state
@@ -103,12 +104,24 @@ export default function Shop() {
             <div>
               <p className="text-gray-900 mb-4 font-bold">CATEGORIES</p>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/shop/all-rooms">All Rooms</Link></li>
-                <li><Link href="/shop/living-room">Living Room</Link></li>
-                <li><Link href="/shop/bedroom">Bedroom</Link></li>
-                <li><Link href="/shop/kitchen">Kitchen</Link></li>
-                <li><Link href="/shop/bathroom">Bathroom</Link></li>
-                <li><Link href="/shop/dining">Dining</Link></li>
+                <li>
+                  <Link href="/shop/all-rooms">All Rooms</Link>
+                </li>
+                <li>
+                  <Link href="/shop/living-room">Living Room</Link>
+                </li>
+                <li>
+                  <Link href="/shop/bedroom">Bedroom</Link>
+                </li>
+                <li>
+                  <Link href="/shop/kitchen">Kitchen</Link>
+                </li>
+                <li>
+                  <Link href="/shop/bathroom">Bathroom</Link>
+                </li>
+                <li>
+                  <Link href="/shop/dining">Dining</Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -179,10 +192,24 @@ export default function Shop() {
                     </span>
                   )}
                 </p>
-                <div className="flex items-center gap-1 mt-1">
+                {/* <div className="flex items-center gap-1 mt-1">
                   {Array.from({ length: 5 }, (_, i) => (
                     <span
                       key={i}
+                      className={
+                        i < Math.floor(product.rating)
+                          ? "text-gray-900"
+                          : "text-gray-400"
+                      }
+                    >
+                      ★
+                    </span>
+                  ))}
+                </div> */}
+                <div className="flex items-center gap-1 mt-1">
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <span
+                      key={`${product.id}-star-${i}`}
                       className={
                         i < Math.floor(product.rating)
                           ? "text-gray-900"

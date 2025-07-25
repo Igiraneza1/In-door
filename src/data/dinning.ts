@@ -2,7 +2,7 @@ export const DiningProducts = [
   {
     id: 1,
     name: "Wooden Dining Table Set",
-    image: "/image/dining/dining1.png",
+    image: "/image/dining/dining1.jpg",
     price: "250000 Rwf",
     description: "Elegant wooden dining table with 6 matching chairs, perfect for family meals and gatherings.",
   },
@@ -44,7 +44,7 @@ export const DiningProducts = [
   {
     id: 7,
     name: "Dining Room Chandelier",
-    image: "/image/dining/chair7.jpg",
+    image: "/image/dining/chair7.png",
     price: "67000 Rwf",
     description: "Elegant chandelier lighting fixture to enhance the dining ambiance.",
   },
@@ -58,15 +58,15 @@ export const DiningProducts = [
   {
     id: 9,
     name: "Cutlery Holder",
-    image: "/image/dining/dining9.jpg",
+    image: "/image/dining/dining5.jpg",
     price: "12000 Rwf",
     description: "Wooden cutlery holder to organize forks, knives, and spoons neatly on the table.",
   },
   {
     id: 10,
-    name: "Tablecloth Set",
-    image: "/image/dining/dining10.jpg",
+    name: "Table ",
+    image: "/image/dining/dining19.jpg",
     price: "28000 Rwf",
-    description: "Decorative tablecloth with matching napkins for formal or casual dining occasions.",
+    description: "Decorative table with for formal or casual dining occasions.",
   },
 ];

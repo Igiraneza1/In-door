@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Minus, Plus, X, Search, User, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import news from "../../jsondata/news.json"
+
 
 interface CartItem {
   id: number;
@@ -17,7 +17,7 @@ interface CartItem {
 
 export default function Cart() {
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [shippingOption, setShippingOption] = useState("free");
+  const [shippingOption] = useState("free");
   const [couponCode, setCouponCode] = useState("");
   const router = useRouter();
 

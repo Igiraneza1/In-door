@@ -22,9 +22,9 @@
   },
   {
     "id": "4",
-    "name": "Office",
-    "slug": "office",
-    "image": "/images/office.jpg",
+    "name": "dining",
+    "slug": "dining",
+    "image": "/images/dining/dining1.jpg",
     "description": "Productive workspaces for home or business"
   },
   {

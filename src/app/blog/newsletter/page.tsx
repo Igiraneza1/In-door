@@ -30,7 +30,7 @@ export default function Newsletter() {
                  </div>
                  <div className="absolute right-0 h-full w-1/3">
                    <Image
-                     src="/image/furniture/chair1.png"
+                     src="/image/Living-room/chair1.png"
                      alt="chair"
                      fill
                      className="object-cover"

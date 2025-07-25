@@ -23,7 +23,7 @@ export const BedroomProducts = [
   {
     id: 4,
     name: "Bedroom Wardrobe Closet",
-    image: "/image/bedroom/bedroom4.png",
+    image: "/image/bedroom/bedroom12.jpg",
     price: "220000 Rwf",
     description: "Spacious wardrobe with hanging space and shelves for organization.",
   },

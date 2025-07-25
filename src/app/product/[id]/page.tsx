@@ -97,7 +97,7 @@ export default function Produc({ params }: { params: { id: string } }) {
               )}
             </div>
             <select className="mb-4 p-2 border rounded w-full">
-              <option>17" x 20.5" x 17"</option>
+              <option>17 x 20.5 x 17</option>
               <option>Black</option>
             </select>
             <div className="flex flex-row mr-4">

@@ -51,7 +51,7 @@ export const KitchenProducts = [
   {
     id: 8,
     name: "Dish Drying Rack",
-    image: "/image/kitchen/kitchen2.webp",
+    image: "/image/kitchen/kitchen2.jpg",
     price: "40000 Rwf",
     description: "Holds and air-dries dishes, cups, and cutlery after washing for clean and organized drying.",
   },

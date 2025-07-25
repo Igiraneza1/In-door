@@ -3,6 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./navbarDynamic/page"; // 👈 import your client wrapper
 
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
