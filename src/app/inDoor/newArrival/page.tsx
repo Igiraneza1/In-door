@@ -145,10 +145,6 @@ export default function NewArrivals() {
                       </span>
                     )}
                   </div>
-{/* 
-                  {activeProductId === item.id && (
-                    <p className="text-gray-600 text-xs mt-2">{item.description}</p>
-                  )} */}
                 </div>
               </div>
             ))}
@@ -156,7 +152,7 @@ export default function NewArrivals() {
         </div>
       </section>
 
-      {/* === Feature Section === */}
+      
       <section className="max-w-6xl mx-auto bg-white py-12 px-4 sm:px-6 md:px-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {[

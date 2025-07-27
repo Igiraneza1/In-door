@@ -25,7 +25,7 @@ export default function Discount() {
           room in your home a stylish makeover
         </p>
         <a
-          href="#"
+          href="/shop"
           className="text-black underline hover:text-gray-800 font-medium text-sm md:text-base"
         >
           Shop Now →

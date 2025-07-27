@@ -19,6 +19,7 @@ export default function Cart() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [shippingOption] = useState("free");
   const [couponCode, setCouponCode] = useState("");
+  const [isLoading, setIsLoading] = useState(true); 
   const router = useRouter();
 
   const shippingOptions = [
@@ -26,6 +27,48 @@ export default function Cart() {
     { label: "Express shipping", cost: 15 },
     { label: "Pick Up", cost: 0},
   ];
+  
+  useEffect(() => {
+    const loadCart = () => {
+      try {
+        const savedCart = localStorage.getItem("cart");
+        if (savedCart) {
+          const parsedCart = JSON.parse(savedCart);
+          
+          // Validate and sanitize cart items
+          const validCart = parsedCart.filter((item: any) => 
+            item.id && 
+            item.title && 
+            !isNaN(item.price) && 
+            !isNaN(item.quantity) && 
+            item.image
+          );
+          
+          setCart(validCart);
+        }
+      } catch (error) {
+        console.error("Error loading cart:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadCart();
+    
+    // Listen for storage events from other tabs
+    window.addEventListener('storage', loadCart);
+    return () => window.removeEventListener('storage', loadCart);
+  }, []);
+
+  // Rest of your component remains the same...
+  
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <p>Loading cart...</p>
+      </div>
+    );
+  }
   useEffect(() => {
     try {
       const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");

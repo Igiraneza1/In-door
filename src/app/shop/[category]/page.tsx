@@ -72,7 +72,7 @@ export default function Category() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const savedCart = localStorage.getItem("cart"); // ✅ correct key
+      const savedCart = localStorage.getItem("cart"); 
       if (savedCart) {
         setCart(JSON.parse(savedCart));
       }
@@ -83,34 +83,37 @@ export default function Category() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
- 
-const handleAddToCart = (product: Products) => {
+ const handleAddToCart = (product: Products) => {
   const existingItem = cart.find((item) => item.id === product.id);
 
-  let updatedCart: CartItem[];
+  const updatedCart = existingItem
+    ? cart.map((item) =>
+        item.id === product.id 
+          ? { ...item, quantity: item.quantity + 1 } 
+          : item
+      )
+    : [
+        ...cart,
+        {
+          id: product.id,
+          title: product.name,
+          price: parseFloat(product.price),
+          quantity: 1,
+          image: product.image,
+        },
+      ];
 
-  if (existingItem) {
-    updatedCart = cart.map((item) =>
-      item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-    );
-  } else {
-    const newItem: CartItem = {
-      id: product.id,
-      title: product.name,
-      price: parseFloat(product.price),
-      quantity: 1,
-      image: product.image,
-    };
-    updatedCart = [...cart, newItem];
-  }
-
-  // ✅ Immediately save to localStorage
+  // Update both state and localStorage
+  setCart(updatedCart);
   localStorage.setItem("cart", JSON.stringify(updatedCart));
 
-  // ✅ THEN update state and navigate
-  setCart(updatedCart);
-  router.push("/cart");
+  // Optional: Show a success message
+  alert(`${product.name} added to cart!`);
+  
+  // Optional: Navigate to cart automatically
+  // router.push("/cart");
 };
+
 
 
   return (

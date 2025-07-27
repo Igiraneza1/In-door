@@ -5,7 +5,7 @@
  export default function Intro(){
     return(
         
-    <section className="h-86 bg-white">
+    <section className="h-100 bg-white">
       <div className="relative h-86 bg-gray-300 mb-6">
         <Image
           src="/image/Living-room/sofa4.jpg"
