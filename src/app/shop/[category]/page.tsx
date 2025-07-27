@@ -4,12 +4,23 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { BathroomProducts } from "../../../data/bathroom";
 import { BedroomProducts } from "../../../data/bedroom";
 import { DiningProducts } from "../../../data/dinning";
 import { KitchenProducts } from "../../../data/kitchen";
 import { LivingRoomProducts } from "../../../data/living-room";
+
+// Define CartItem type
+interface CartItem {
+  id: number;
+  title: string;
+  price: number;
+  quantity: number;
+  image: string;
+  color?: string;
+}
 
 interface Products {
   id: number;
@@ -24,14 +35,15 @@ interface Products {
 
 export default function Category() {
   const params = useParams();
+   const router = useRouter();
   const categorySlug = decodeURIComponent(params?.category as string || "all-rooms");
 
-  // Helper to convert product price fields to string
   function normalizeProducts(products: any[]): Products[] {
     return products.map((product) => ({
       ...product,
       price: String(product.price),
-      originalPrice: product.originalPrice !== undefined ? Number(product.originalPrice).toString() : undefined,
+      originalPrice:
+        product.originalPrice !== undefined ? Number(product.originalPrice).toString() : undefined,
     }));
   }
 
@@ -56,12 +68,14 @@ export default function Category() {
   const selectedCategory = categoryMap[categorySlug] ?? categoryMap["all-rooms"];
   const products = selectedCategory.products;
 
-  const [cart, setCart] = useState<Products[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
-    const savedCart = localStorage.getItem("cart");
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
+    if (typeof window !== "undefined") {
+      const savedCart = localStorage.getItem("cart"); // ✅ correct key
+      if (savedCart) {
+        setCart(JSON.parse(savedCart));
+      }
     }
   }, []);
 
@@ -69,13 +83,35 @@ export default function Category() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  const handleAddToCart = (product: Products) => {
-    const exists = cart.find((item) => item.id === product.id);
-    if (!exists) {
-      setCart([...cart, product]);
-    }
-    console.log("Cart:", [...cart, product]);
-  };
+ 
+const handleAddToCart = (product: Products) => {
+  const existingItem = cart.find((item) => item.id === product.id);
+
+  let updatedCart: CartItem[];
+
+  if (existingItem) {
+    updatedCart = cart.map((item) =>
+      item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+    );
+  } else {
+    const newItem: CartItem = {
+      id: product.id,
+      title: product.name,
+      price: parseFloat(product.price),
+      quantity: 1,
+      image: product.image,
+    };
+    updatedCart = [...cart, newItem];
+  }
+
+  // ✅ Immediately save to localStorage
+  localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+  // ✅ THEN update state and navigate
+  setCart(updatedCart);
+  router.push("/cart");
+};
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -120,7 +156,7 @@ export default function Category() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
-              <div key={product.id} className="p-4 relative">
+              <div key={`${product.id}-${product.name}`} className="p-4 relative">
                 <div className="relative">
                   <Image
                     src={product.image}
@@ -152,8 +188,8 @@ export default function Category() {
                 <p className="text-gray-600">
                   ${Number(product.price).toFixed(2)}{" "}
                   {product.originalPrice && (
-                    <span className="line-through text-gray-500">
-                      ${Number(product.originalPrice).toFixed(2)}
+                    <span className="line-through text-gray-500 ml-2">
+                      Rwf{Number(product.originalPrice).toFixed(2)}
                     </span>
                   )}
                 </p>

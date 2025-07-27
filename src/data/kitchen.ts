@@ -54,7 +54,7 @@ export const KitchenProducts = [
     name: "Cutlery Set with Holder",
     image: "/image/kitchen/kitchen6.png",
     price: 25000,
-    originalPrice: 28000,
+    originalPrice: 25000,
     isNew: false,
     rating: 4.0,
     description: "A full set of knives, forks, and spoons stored in a stylish and compact holder.",
