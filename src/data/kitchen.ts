@@ -42,7 +42,7 @@ export const KitchenProducts = [
   {
     id: 5,
     name: "Kitchen Storage Rack",
-    image: "/image/kitchen/kettle1.jpg",
+    image: "/image/kitchen/kettle1.png",
     price: 70000,
     originalPrice: 77000,
     isNew: true,
@@ -82,7 +82,7 @@ export const KitchenProducts = [
   {
     id: 9,
     name: "Electric Kettle",
-    image: "/image/kitchen/kettle.jpg",
+    image: "/image/kitchen/kettle.png",
     price: 49000,
     originalPrice: 55000,
     isNew: true,

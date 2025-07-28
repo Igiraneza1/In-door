@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Search, ShoppingBag, User, HelpCircle } from "lucide-react";
-import ProfileDropdown from "@/components/ui/profile";
+import { ChevronDown } from "lucide-react";
 
 interface NavLink {
   name: string;
@@ -14,7 +13,6 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { name: "Home", href: "/inDoor" },
   { name: "Shop", href: "/shop" },
-  { name: "Product", href: "/categories" },
   { name: "Contact Us", href: "/contact" },
 ];
 
@@ -28,17 +26,13 @@ const Product = [
 ];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const pathname = usePathname();
   const [isHydrated, setIsHydrated] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
-    // Only run on client side
     if (typeof window === "undefined") return;
-
-    // Check authentication status
     const checkAuth = () => {
       try {
         const auth = localStorage.getItem("isAuthenticated");
@@ -50,16 +44,13 @@ export default function Navbar() {
     checkAuth();
     setIsHydrated(true);
     window.addEventListener("storage", checkAuth);
-
-    return () => {
-      window.removeEventListener("storage", checkAuth);
-    };
-  }, []); 
+    return () => window.removeEventListener("storage", checkAuth);
+  }, []);
 
   if (!isHydrated) return <div className="h-16" />;
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white border-b border-gray-100 z-50 ">
+    <nav className="fixed top-0 left-0 w-full bg-white border-b border-gray-100 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex-shrink-0">
@@ -68,8 +59,8 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center space-x-8">
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center space-x-8 relative">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -81,8 +72,32 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
+
+          {/* Product Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
+          >
+            <button className="flex items-center gap-1 text-gray-700 hover:text-black font-medium transition">
+              Product <ChevronDown size={16} />
+            </button>
+            {dropdownOpen && (
+              <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 shadow-lg rounded-md z-50">
+                {Product.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-     </div>
+      </div>
     </nav>
   );
 }

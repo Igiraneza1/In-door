@@ -38,6 +38,8 @@ export default function Category() {
   const params = useParams();
   const router = useRouter();
   const { addToCart } = useCart();
+  const [showAll, setShowAll] = useState(false);
+
   const categorySlug = decodeURIComponent(params?.category as string || "all-rooms");
 
   function normalizeProducts(products: any[]): Products[] {
@@ -69,6 +71,8 @@ export default function Category() {
 
   const selectedCategory = categoryMap[categorySlug] ?? categoryMap["all-rooms"];
   const products = selectedCategory.products;
+  const visibleCount = showAll ? products.length : 5;
+  const productsToShow = showAll ? products : products.slice(0, 5);
 
   const [cart, setCart] = useState<CartItem[]>([]);
 
@@ -139,8 +143,8 @@ export default function Category() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product) => (
-              <div key={`${product.id}-${product.name}`} className="p-4 relative">
+            {products.slice(0, visibleCount).map((product) => (
+              <div key={`Rwf${product.id}-${product.name}`} className="p-4 relative">
                 <div className="relative">
                   <Image
                     src={product.image}
@@ -170,7 +174,7 @@ export default function Category() {
                   {product.name}
                 </h3>
                 <p className="text-gray-600">
-                  ${Number(product.price).toFixed(2)}{" "}
+                  Rwf{Number(product.price).toFixed(2)}{" "}
                   {product.originalPrice && (
                     <span className="line-through text-gray-500 ml-2">
                       Rwf{Number(product.originalPrice).toFixed(2)}
@@ -194,14 +198,19 @@ export default function Category() {
               </div>
             ))}
           </div>
-
+          {visibleCount < products.length && (
           <div className="text-center mt-6">
-            <button className="px-4 py-2 bg-white border border-gray-300 rounded text-gray-900 hover:bg-gray-100">
-              Show more
+            <button
+              onClick={() => setShowAll((prev) => !prev)}
+              className="text-gray-600 hover:text-gray-900 flex items-center text-sm font-medium gap-1 transition-colors"
+            >
+              {showAll ? "Show Less" : "Show More"}
             </button>
           </div>
+          )}
         </div>
       </div>
     </div>
   );
 }
+

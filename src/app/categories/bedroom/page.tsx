@@ -12,6 +12,7 @@ export default function Bedroom() {
   };
 
   return (
+    <div className="bg-white">
     <div className="py-12 text-black">
       <h1 className="text-3xl font-bold text-center m-10">Bedroom Products</h1>
 
@@ -50,6 +51,7 @@ export default function Bedroom() {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }
