@@ -18,7 +18,7 @@ const categories = [
     id: 3,
     name: "Kitchen",
     slug: "kitchen",
-    image: "/image/kitchen/kitchen5.png",
+    image: "/image/kitchen/kitchen8.png",
     link: "/categories/kitcken",  
   },
   {

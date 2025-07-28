@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useCart } from "../../context/CartContext";
 
 import { BathroomProducts } from "../../../data/bathroom";
 import { BedroomProducts } from "../../../data/bedroom";
@@ -12,7 +13,7 @@ import { DiningProducts } from "../../../data/dinning";
 import { KitchenProducts } from "../../../data/kitchen";
 import { LivingRoomProducts } from "../../../data/living-room";
 
-// Define CartItem type
+
 interface CartItem {
   id: number;
   title: string;
@@ -35,7 +36,8 @@ interface Products {
 
 export default function Category() {
   const params = useParams();
-   const router = useRouter();
+  const router = useRouter();
+  const { addToCart } = useCart();
   const categorySlug = decodeURIComponent(params?.category as string || "all-rooms");
 
   function normalizeProducts(products: any[]): Products[] {
@@ -83,38 +85,17 @@ export default function Category() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
- const handleAddToCart = (product: Products) => {
-  const existingItem = cart.find((item) => item.id === product.id);
-
-  const updatedCart = existingItem
-    ? cart.map((item) =>
-        item.id === product.id 
-          ? { ...item, quantity: item.quantity + 1 } 
-          : item
-      )
-    : [
-        ...cart,
-        {
-          id: product.id,
-          title: product.name,
-          price: parseFloat(product.price),
-          quantity: 1,
-          image: product.image,
-        },
-      ];
-
-  // Update both state and localStorage
-  setCart(updatedCart);
-  localStorage.setItem("cart", JSON.stringify(updatedCart));
-
-  // Optional: Show a success message
-  alert(`${product.name} added to cart!`);
-  
-  // Optional: Navigate to cart automatically
-  // router.push("/cart");
-};
-
-
+  const handleAddToCart = (product: Products) => {
+    const cartItem: CartItem = {
+      id: product.id,
+      title: product.name,
+      price: Number(product.price),
+      quantity: 1,
+      image: product.image,
+    };
+    addToCart(cartItem);
+    router.push("/cart"); // no need for timeout anymore!
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -125,12 +106,12 @@ export default function Category() {
             <div>
               <p className="text-gray-900 mb-4 font-bold">CATEGORIES</p>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href={"/shop/all-rooms"}>All Rooms</Link></li>
-                <li><Link href={"/shop/living-room"}>Living Room</Link></li>
-                <li><Link href={"/shop/bedroom"}>Bedroom</Link></li>
-                <li><Link href={"/shop/kitchen"}>Kitchen</Link></li>
-                <li><Link href={"/shop/bathroom"}>Bathroom</Link></li>
-                <li><Link href={"/shop/dining"}>Dining</Link></li>
+                <li><Link href="/shop/all-rooms">All Rooms</Link></li>
+                <li><Link href="/shop/living-room">Living Room</Link></li>
+                <li><Link href="/shop/bedroom">Bedroom</Link></li>
+                <li><Link href="/shop/kitchen">Kitchen</Link></li>
+                <li><Link href="/shop/bathroom">Bathroom</Link></li>
+                <li><Link href="/shop/dining">Dining</Link></li>
               </ul>
             </div>
           </div>

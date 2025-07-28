@@ -12,6 +12,7 @@ export default function LivingRoom() {
   };
 
   return (
+    <div className="text-black">
     <div>
         <h1 className="text-3xl font-bold text-center m-10">Living Room Products</h1>
     <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -48,6 +49,7 @@ export default function LivingRoom() {
           <p className="text-sm text-gray-700">{product.description}</p>
         </div>
       ))}
+    </div>
     </div>
     </div>
   );

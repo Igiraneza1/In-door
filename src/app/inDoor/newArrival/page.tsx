@@ -23,7 +23,7 @@ interface Product {
 }
 
 export default function NewArrivals() {
-  const [activeProductId, setActiveProductId] = useState<number | null>(null);
+  const [activeProductId, setActiveProductId] = useState<number>(() => news[0]?.id ?? 0);
   const [showAll, setShowAll] = useState(false);
   const products: Product[] = news;
   const productsToShow = showAll ? products : products.slice(0, );

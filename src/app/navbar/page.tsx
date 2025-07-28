@@ -14,11 +14,11 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { name: "Home", href: "/inDoor" },
   { name: "Shop", href: "/shop" },
-  { name: "Product", href: "/product" },
+  { name: "Product", href: "/categories" },
   { name: "Contact Us", href: "/contact" },
 ];
 
-const categories = [
+const Product = [
   { name: "All Rooms", href: "/categories" },
   { name: "Living Room", href: "/categories/living-room" },
   { name: "Bedroom", href: "/categories/bedroom" },
@@ -29,7 +29,7 @@ const categories = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  // const [catOpen, setCatOpen] = useState(false);
+  
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const pathname = usePathname();
   const [isHydrated, setIsHydrated] = useState(false);

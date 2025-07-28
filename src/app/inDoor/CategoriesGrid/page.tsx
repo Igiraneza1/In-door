@@ -45,7 +45,7 @@ export default function CategoryPage() {
           </div>
         </div>
 
-        <div className="flex flex-col w-86">
+        <div className="flex flex-col w-86 ">
           <div className="grid grid-cols-1 gap-6 flex-1">
             {paginatedSecondary.map((category) => (
               <div key={category.id} className="flex flex-col">
@@ -55,7 +55,7 @@ export default function CategoryPage() {
                       src={category.image}
                       alt={category.name}
                       fill
-                      className="object-contain hover:scale-105 transition-transform duration-300"
+                      className="object-contain hover:scale-105 transition-transform duration-300 bg-gray-100"
                     />
                   </Link>
                 </div>
