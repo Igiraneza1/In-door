@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 const Navbar = dynamic(() => import('../navbar/page'), { ssr: false });
 const Footer = dynamic(() => import('../footer/page'), { ssr: false });
 
-export default function ClientLayout({ children }: { children: ReactNode }) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <>
       <Navbar />
@@ -15,4 +15,3 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
     </>
   );
 }
-

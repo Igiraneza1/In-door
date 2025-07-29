@@ -16,22 +16,23 @@ export default function Bathroom() {
     <div className="py-12  text-black">
       <h1 className="text-3xl font-bold text-center m-10">Bathroom Products</h1>
 
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 ">
         {BathroomProducts.map((product) => (
           <div
             key={product.id}
             className="group bg-white shadow-lg rounded-2xl overflow-hidden transition hover:shadow-2xl"
           >
             <div
-              className="relative h-64 w-full overflow-hidden"
+              className="relative h-64 w-full overflow-hidden container"
               onMouseEnter={() => setHoveredId(product.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
               <Image
                 src={product.image}
                 alt={product.name}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                width={300}
+                height={500}
+                className="object-cover co group-hover:scale-105 transition-transform duration-500 ease-in-out"
               />
 
               {hoveredId === product.id && (

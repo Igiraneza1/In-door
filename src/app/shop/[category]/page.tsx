@@ -71,7 +71,7 @@ export default function Category() {
 
   const selectedCategory = categoryMap[categorySlug] ?? categoryMap["all-rooms"];
   const products = selectedCategory.products;
-  const visibleCount = showAll ? products.length : 5;
+  const visibleCount = showAll ? products.length : 6;
   const productsToShow = showAll ? products : products.slice(0, 5);
 
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -142,17 +142,20 @@ export default function Category() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 container">
             {products.slice(0, visibleCount).map((product) => (
               <div key={`Rwf${product.id}-${product.name}`} className="p-4 relative">
-                <div className="relative">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={200}
-                    height={300}
-                    className="w-full h-64 object-cover mb-2"
-                  />
+                 <div className="relative">
+  <div className="w-full h-64 overflow-hidden border border-gray-200 rounded shadow-sm bg-white">
+    <Image
+      src={product.image}
+      alt={product.name}
+      width={200}
+      height={500}
+      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+    />
+  </div>
+
                   {product.isNew && (
                     <span className="absolute top-2 bg-green-500 text-white text-xs px-2 py-1 rounded">
                       NEW
@@ -202,7 +205,7 @@ export default function Category() {
           <div className="text-center mt-6">
             <button
               onClick={() => setShowAll((prev) => !prev)}
-              className="text-gray-600 hover:text-gray-900 flex items-center text-sm font-medium gap-1 transition-colors"
+              className="text-white bg-black p-2 rounded-lg mx-auto hover:text-gray-900 flex items-center text-sm font-medium gap-1 transition-colors"
             >
               {showAll ? "Show Less" : "Show More"}
             </button>

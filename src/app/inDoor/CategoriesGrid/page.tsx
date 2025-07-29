@@ -21,8 +21,8 @@ export default function CategoryPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
 
         <div className="flex flex-col">
-          <div className="relative h-[600px] w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gray-50">
-            <Link href={primary.link} className="block h-full">
+          <div className="relative h-[1200px] w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gray-50">
+            <Link href={primary.link} className="block h-full w-full">
               <Image
                 src={primary.image}
                 alt={primary.name}

@@ -29,7 +29,8 @@ export default function LivingRoom() {
                   <Image
                     src={product.image}
                     alt={product.name}
-                    fill
+                    width={300}
+                    height={500}
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
 
