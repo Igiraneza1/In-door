@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import chair from "../../../public/image/Living-room/chair1.png";
 
@@ -15,9 +14,10 @@ export default function SignIn() {
     type: "error" | "success";
     text: string;
   } | null>(null);
+
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setMessage(null);
 
@@ -31,43 +31,14 @@ export default function SignIn() {
 
     setLoading(true);
 
-    try {
-      const res = await fetch("https://elegant-be.onrender.com/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message || "Invalid credentials.");
-      }
-
-      // ✅ Save token and role
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("role", data.role); // role could be 'admin' or 'user'
-
+    // Fake login success — no backend call
+    setTimeout(() => {
+      setLoading(false);
       setMessage({ type: "success", text: "Login successful! Redirecting..." });
 
-      setTimeout(() => {
-        if (data.role === "admin") {
-          router.push("/admin-dashboard");
-        } else {
-          router.push("/inDoor");
-        }
-      }, 1200);
-    } catch (err: unknown) {
-      const errorMsg =
-        err instanceof Error
-          ? err.message
-          : "Something went wrong. Please try again.";
-      setMessage({ type: "error", text: errorMsg });
-    } finally {
-      setLoading(false);
-    }
+      // Navigate to /inDoor on "success"
+      router.push("/inDoor");
+    }, 1000);
   };
 
   return (
@@ -90,9 +61,13 @@ export default function SignIn() {
           <h1 className="text-3xl font-bold text-gray-800 mb-4">Sign In</h1>
           <p className="text-gray-500 mb-6">
             Don’t have an account?{" "}
-            <Link href="/signup" className="text-green-600 hover:underline">
+            <button
+              type="button"
+              onClick={() => router.push("/signup")}
+              className="text-green-600 hover:underline"
+            >
               Sign up here
-            </Link>
+            </button>
           </p>
 
           {/* Message */}
@@ -143,9 +118,13 @@ export default function SignIn() {
                 <input type="checkbox" className="accent-blue-600" />
                 <span className="text-gray-700">Remember me</span>
               </label>
-              <Link href="/forgot-password" className="text-blue-600 hover:underline">
+              <button
+                type="button"
+                onClick={() => router.push("/forgot-password")}
+                className="text-blue-600 hover:underline"
+              >
                 Forgot password?
-              </Link>
+              </button>
             </div>
 
             <button

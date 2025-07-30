@@ -1,13 +1,12 @@
 "use client";
 
+import React, { useState } from "react";
 import Image from "next/image";
 import chair from "../../../public/image/Living-room/chair1.png";
-import Link from "next/link";
-import { useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
+// import axios from "axios"; // Uncomment if backend works
 
-function SignUp() {
+export default function SignUp() {
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -18,10 +17,7 @@ function SignUp() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState<{
-    type: "success" | "error";
-    text: string;
-  } | null>(null);
+  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -33,37 +29,51 @@ function SignUp() {
     setLoading(true);
     setMessage(null);
 
-    try {
-      await axios.post(
-        "https://elegant-be.onrender.com/api/users/register",
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      setMessage({
-        type: "success",
-        text: "Registration successful! 🎉 Redirecting...",
-      });
-
-      setTimeout(() => {
-        router.push("/signin");
-      }, 2000);
-    } catch (error: unknown) {
-  let errorMsg = "An unexpected error occurred.";
-
-  if (axios.isAxiosError(error) && error.response) {
-    errorMsg = error.response.data?.message || error.message;
-  } else if (error instanceof Error) {
-    errorMsg = error.message;
-  }
-
-  console.error("Error:", errorMsg);
-}finally {
+    // Simple validation
+    if (!formData.fullName || !formData.userName || !formData.email || !formData.password) {
+      setMessage({ type: "error", text: "Please fill in all fields." });
       setLoading(false);
+      return;
+    }
+
+    try {
+      // Uncomment and fix your API if needed:
+      /*
+      await axios.post("https://elegant-be.onrender.com/api/users/register", formData, {
+        headers: { "Content-Type": "application/json" },
+      });
+      */
+
+      // Simulate success for now:
+      // setTimeout(() => {
+      //   setLoading(false);
+      //   setMessage({ type: "success", text: "Registration successful! Redirecting to Sign In..." });
+      //   setTimeout(() => {
+      //     router.push("/signin");
+      //   }, 2000);
+      // }, 1000);
+      setMessage({ type: "success", text: "Registration successful! Redirecting to Sign In..." });
+setLoading(false);
+
+// Redirect after 2 seconds
+setTimeout(() => {
+  router.push("/signin");
+}, 2000);
+
+    } catch (error: unknown) {
+      let errorMsg = "An unexpected error occurred.";
+
+      /*
+      if (axios.isAxiosError(error) && error.response) {
+        errorMsg = error.response.data?.message || error.message;
+      } else if (error instanceof Error) {
+        errorMsg = error.message;
+      }
+      */
+
+      setMessage({ type: "error", text: errorMsg });
+      setLoading(false);
+      console.error("Error:", errorMsg);
     }
   };
 
@@ -71,27 +81,24 @@ function SignUp() {
     <div className="grid items-center justify-center bg-gray-200 h-screen">
       <div className="bg-white p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 items-center justify-center rounded gap-6 shadow-md max-w-4xl mx-auto">
         <div className="flex items-center justify-center">
-          <Image
-            src={chair}
-            alt="Decorative Chair"
-            width={500}
-            height={400}
-            className="rounded"
-            priority
-          />
+          <Image src={chair} alt="Decorative Chair" width={500} height={400} className="rounded" priority />
         </div>
 
         <div>
           <h1 className="text-3xl text-gray-800 font-bold mb-4">Sign Up</h1>
           <p className="text-gray-500 mb-6">
             Already have an account?{" "}
-            <Link href="/signin" className="text-green-500 hover:underline">
+            <button
+              type="button"
+              onClick={() => router.push("/signin")}
+              className="text-green-500 hover:underline"
+            >
               Sign in
-            </Link>
+            </button>
           </p>
 
-          <form onSubmit={handleSubmit} className="mt-4">
-            <div className="mb-4">
+          <form onSubmit={handleSubmit} className="mt-4 space-y-4">
+            <div>
               <label htmlFor="fullName" className="block text-gray-700 mb-2">
                 Full Name
               </label>
@@ -107,7 +114,7 @@ function SignUp() {
               />
             </div>
 
-            <div className="mb-4">
+            <div>
               <label htmlFor="userName" className="block text-gray-700 mb-2">
                 Username
               </label>
@@ -123,7 +130,7 @@ function SignUp() {
               />
             </div>
 
-            <div className="mb-4">
+            <div>
               <label htmlFor="email" className="block text-gray-700 mb-2">
                 Email Address
               </label>
@@ -139,7 +146,7 @@ function SignUp() {
               />
             </div>
 
-            <div className="mb-6">
+            <div>
               <label htmlFor="password" className="block text-gray-700 mb-2">
                 Password
               </label>
@@ -166,9 +173,7 @@ function SignUp() {
             {message && (
               <p
                 className={`mt-4 text-center text-sm ${
-                  message.type === "success"
-                    ? "text-green-600"
-                    : "text-red-500"
+                  message.type === "success" ? "text-green-600" : "text-red-500"
                 }`}
               >
                 {message.text}
@@ -180,5 +185,3 @@ function SignUp() {
     </div>
   );
 }
-
-export default SignUp;
