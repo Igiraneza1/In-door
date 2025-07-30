@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 import news from "../../../jsondata/news.json";
+import { Link } from "lucide-react";
 
 
 
@@ -156,12 +157,13 @@ export default function ProductPage() {
                 </button>
               </div>
 
-              <button
+              <Link
+              href="/wishlist"
                 className="flex-1 border border-black text-gray-800 py-2 rounded-lg hover:bg-gray-50"
                 onClick={() => alert("Added to wishlist!")}
               >
                 ❤️ Add to Wishlist
-              </button>
+              </Link>
             </div>
 
             <button

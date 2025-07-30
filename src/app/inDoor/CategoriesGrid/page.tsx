@@ -8,7 +8,7 @@ export default function CategoryPage() {
   const [primary, ...secondary] = categories;
   const [pageIndex, setPageIndex] = useState(0);
 
-  const ITEMS_PER_PAGE = 2; // Show 2 items (one top, one bottom) per page
+  const ITEMS_PER_PAGE = 2; 
   const totalPages = Math.ceil(secondary.length / ITEMS_PER_PAGE);
 
   const paginatedSecondary = secondary.slice(
@@ -17,12 +17,12 @@ export default function CategoryPage() {
   );
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 mt-4">
+    <div className="max-w-7xl mx-auto px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
 
         <div className="flex flex-col">
-          <div className="relative h-[1200px] w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gray-50">
-            <Link href={primary.link} className="block h-full w-full">
+          <div className="relative h-[600px] w-full rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gray-50">
+            <Link href={primary.link} className="block h-full">
               <Image
                 src={primary.image}
                 alt={primary.name}
@@ -45,17 +45,17 @@ export default function CategoryPage() {
           </div>
         </div>
 
-        <div className="flex flex-col w-86 ">
+        <div className="flex flex-col w-86">
           <div className="grid grid-cols-1 gap-6 flex-1">
             {paginatedSecondary.map((category) => (
               <div key={category.id} className="flex flex-col">
-                <div className="relative h-[280px] w-full rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 bg-gray-50">
+                <div className="relative h-[280px] w-full rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 bg-white">
                   <Link href={category.link} className="block h-full">
                     <Image
                       src={category.image}
                       alt={category.name}
                       fill
-                      className="object-contain hover:scale-105 transition-transform duration-300 bg-gray-100"
+                      className="object-contain hover:scale-105 transition-transform duration-300"
                     />
                   </Link>
                 </div>
@@ -83,7 +83,7 @@ export default function CategoryPage() {
                   onClick={() => setPageIndex(i)}
                   className={`w-3 h-3 rounded-full transition-all duration-200 ${
                     i === pageIndex 
-                      ? "bg-blue-600 shadow-md" 
+                      ? "bg-gray-600 shadow-md" 
                       : "bg-gray-300 hover:bg-gray-400"
                   }`}
                   aria-label={`Go to page ${i + 1}`}

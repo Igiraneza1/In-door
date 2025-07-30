@@ -152,26 +152,7 @@
     "discount": "20%",
     "description": "Soft and fluffy pillow for restful sleep.\nHypoallergenic and breathable fabric.\nSupports neck and head alignment.\nMachine washable for easy care."
   },
-  {
-    "id": 16,
-    "image": "/image/bedroom/mattress1.png",
-    "title": "Soft Mattress",
-    "price": 25.0,
-    "rating": 4,
-    "isNew": true,
-    "discount": "30%",
-    "description": "Experience ultimate comfort and support.\nMemory foam contours to your body.\nIdeal for restful and deep sleep.\nDurable and easy to transport."
-  },
-  {
-    "id": 17,
-    "image": "/image/bedroom/mattress4.png",
-    "title": "Woolen Mattress",
-    "price": 70.0,
-    "rating": 5,
-    "isNew": true,
-    "discount": "25%",
-    "description": "Natural wool layers for warmth and comfort.\nBreathable and moisture-wicking.\nPerfect for all seasons.\nLong-lasting durability and support."
-  },
+  
   {
     "id": 18,
     "image": "/image/kitchen/toaster2.png",
@@ -184,7 +165,7 @@
   },
   {
     "id": 19,
-    "image": "/image/kitchen/kitchen1.png",
+    "image": "/image/kitchen/kitchen16.jpg",
     "title": "Modern Kitchen Cupboard",
     "price": 60.0,
     "rating": 5,

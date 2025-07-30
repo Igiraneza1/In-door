@@ -21,7 +21,7 @@ const Product = [
   { name: "Living Room", href: "/categories/living-room" },
   { name: "Bedroom", href: "/categories/bedroom" },
   { name: "Kitchen", href: "/categories/kitchen" },
-  { name: "Bathroom", href: "/categories/bathroom" },
+  { name: "Bathroom", href: "/categories/Bathroom" },
   { name: "Dining", href: "/categories/dining" },
 ];
 

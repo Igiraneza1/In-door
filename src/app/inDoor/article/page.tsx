@@ -26,12 +26,12 @@ export default function Articles() {
                 />
               </div>
               <h3 className="mt-4 text-xl font-semibold text-black">{article.title}</h3>
-              <Link
-                href={`/blog/${article.slug}`}
+              <a
+                  href={`/blog/${article.id}`}
                 className="mt-2 inline-block text-lg underline text-black"
               >
                 Read More →
-              </Link>
+              </a>
             </div>
           ))}
         </div>

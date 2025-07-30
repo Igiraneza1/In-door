@@ -38,7 +38,7 @@
   {
     "id": 4,
     "title": "Modern Texas Home is Kid-Friendly",
-    "image": "/image/Living-room/sofa19.jpg",
+    "image": "/image/Living-room/sofa7.jpg",
     "slug": "living-room-makeover-ideas",
     "description": "Simple ideas to refresh your living room style.",
     "price": "$179.99",
@@ -50,7 +50,7 @@
   {
     "id": 5,
     "title": "Creating a Cozy Reading Nook in Your Living Room",
-    "image": "/image/Living-room/sofa12.png",
+    "image": "/image/Living-room/chair2.jpg",
     "slug": "modern-bathroom-design",
     "description": "Inspiration for a sleek and stylish Living-room upgrade.",
     "price": "$129.99",
@@ -63,7 +63,7 @@
   {
     "id": 6,
     "title": "Minimalist Kitchen Design Ideas That Work",
-    "image": "/image/kitchen/kitchen3.jpg",
+    "image": "/image/kitchen/cabinet5.jpg",
     "slug": "modern-kitchen design",
     "description": "Inspiration for a sleek and stylish kitchen upgrade.",
     "price": "$129.99",
@@ -75,7 +75,7 @@
   {
     "id": 7,
     "title": "Small Space Solutions for Urban Apartments",
-    "image": "/image/kitchen/kitchen4.jpg",
+    "image": "/image/Living-room/sofa6.jpg",
     "slug": "small-space-solutions",
     "description": "Smart design tips for maximizing small living spaces.",
     "price": "$99.99",
@@ -99,7 +99,7 @@
   {
     "id": 9,
     "title": "Smart Storage Solutions for Every Room",
-    "image": "/image/bedroom/bedroom2.jpg",
+    "image": "/image/bedroom/cupboard11.jpg",
     "slug": "smart-storage-solutions",
     "description": "Innovative storage ideas to keep your home organized and clutter-free.",
     "price": "$79.99",

@@ -82,9 +82,9 @@ export const KitchenProducts = [
   },
   {
     id: 10,
-    name: "5-Piece Bamboo Chopping Board Set",
+    name: "Simple",
     image: "/image/kitchen/toaster5.jpg",
-    price: 22000,
+    price: "Rwf 22000",
     originalPrice: 25000,
     isNew: false,
     rating: 3.8,

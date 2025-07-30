@@ -8,7 +8,7 @@ import { LiaMoneyBillSolid } from "react-icons/lia";
 import { GrSecure } from "react-icons/gr";
 import { IoCallOutline } from "react-icons/io5";
 import {toast } from "react-hot-toast";
-import news from "../../../jsondata/news.json";
+import news from "@/jsondata/news.json";
 
 interface Product {
   id: number;
@@ -28,7 +28,7 @@ export default function NewArrivals() {
   const products: Product[] = news;
   const productsToShow = showAll ? products : products.slice(0, );
 
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart: (product: Product) => void = (product: Product) => {
   const cart: (Product & { quantity: number })[] = JSON.parse(localStorage.getItem("cart") || "[]");
 
   const existing = cart.find((item) => item.id === product.id);
