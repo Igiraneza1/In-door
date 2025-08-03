@@ -2,7 +2,7 @@ import Intro from "./intro/page";
 import About from "./about/page";
 import Form from "./form/page";
 import Icon from "./icon/page";
-import Newsletter from "../inDoor/newsletter/page";
+
 
 export default function ContactPage() {
   return (
@@ -12,7 +12,7 @@ export default function ContactPage() {
         <About />
         <Form />
         <Icon />
-        <Newsletter />
+    
         
       </div>
     </div>
