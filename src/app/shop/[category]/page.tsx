@@ -13,7 +13,6 @@ import { DiningProducts } from "../../../data/dinning";
 import { KitchenProducts } from "../../../data/kitchen";
 import { LivingRoomProducts } from "../../../data/living-room";
 
-
 interface CartItem {
   id: number;
   title: string;
@@ -40,23 +39,33 @@ export default function Category() {
   const { addToCart } = useCart();
   const [showAll, setShowAll] = useState(false);
 
-  const categorySlug = decodeURIComponent(params?.category as string || "all-rooms");
+  const categorySlug = decodeURIComponent(
+    (params?.category as string) || "all-rooms"
+  );
 
   function normalizeProducts(products: any[]): Products[] {
     return products.map((product) => ({
       ...product,
       price: String(product.price),
       originalPrice:
-        product.originalPrice !== undefined ? Number(product.originalPrice).toString() : undefined,
+        product.originalPrice !== undefined
+          ? Number(product.originalPrice).toString()
+          : undefined,
     }));
   }
 
   const categoryMap: Record<string, { name: string; products: Products[] }> = {
-    "living-room": { name: "Living Room", products: normalizeProducts(LivingRoomProducts) },
-    "bedroom": { name: "Bedroom", products: normalizeProducts(BedroomProducts) },
-    "kitchen": { name: "Kitchen", products: normalizeProducts(KitchenProducts) },
-    "bathroom": { name: "Bathroom", products: normalizeProducts(BathroomProducts) },
-    "dining": { name: "Dining", products: normalizeProducts(DiningProducts) },
+    "living-room": {
+      name: "Living Room",
+      products: normalizeProducts(LivingRoomProducts),
+    },
+    bedroom: { name: "Bedroom", products: normalizeProducts(BedroomProducts) },
+    kitchen: { name: "Kitchen", products: normalizeProducts(KitchenProducts) },
+    bathroom: {
+      name: "Bathroom",
+      products: normalizeProducts(BathroomProducts),
+    },
+    dining: { name: "Dining", products: normalizeProducts(DiningProducts) },
     "all-rooms": {
       name: "All Rooms",
       products: normalizeProducts([
@@ -69,16 +78,16 @@ export default function Category() {
     },
   };
 
-  const selectedCategory = categoryMap[categorySlug] ?? categoryMap["all-rooms"];
+  const selectedCategory =
+    categoryMap[categorySlug] ?? categoryMap["all-rooms"];
   const products = selectedCategory.products;
   const visibleCount = showAll ? products.length : 6;
-  const productsToShow = showAll ? products : products.slice(0, 5);
 
   const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const savedCart = localStorage.getItem("cart"); 
+      const savedCart = localStorage.getItem("cart");
       if (savedCart) {
         setCart(JSON.parse(savedCart));
       }
@@ -98,12 +107,13 @@ export default function Category() {
       image: product.image,
     };
     addToCart(cartItem);
-    router.push("/cart"); // no need for timeout anymore!
+    router.push("/cart");
   };
 
   return (
     <div className="min-h-screen bg-white">
       <div className="mx-auto p-4 pt-6 flex flex-col md:flex-row gap-6">
+        {/* Sidebar */}
         <div className="w-full md:w-1/4 bg-white p-4">
           <h2 className="text-lg font-semibold mb-4 text-gray-900">Filter</h2>
           <div className="space-y-6">
@@ -121,8 +131,10 @@ export default function Category() {
           </div>
         </div>
 
+        {/* Divider */}
         <div className="hidden md:block w-1 bg-gradient-to-t from-brown-700 to-black mx-4 h-86"></div>
 
+        {/* Product Grid */}
         <div className="w-full md:w-3/4">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold text-gray-900">
@@ -142,19 +154,23 @@ export default function Category() {
             </div>
           </div>
 
+          {/* Grid of products */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 container">
             {products.slice(0, visibleCount).map((product) => (
-              <div key={`Rwf${product.id}-${product.name}`} className="p-4 relative">
-                 <div className="relative">
-  <div className="w-full h-64 overflow-hidden border border-gray-200 rounded shadow-sm bg-white">
-    <Image
-      src={product.image}
-      alt={product.name}
-      width={200}
-      height={500}
-      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-    />
-  </div>
+              <div
+                key={`Rwf${product.id}-${product.name}`}
+                className="p-4 relative"
+              >
+                <div className="relative">
+                  <div className="w-full h-64 overflow-hidden border border-gray-200 rounded shadow-sm bg-white">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      width={200}
+                      height={500}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
 
                   {product.isNew && (
                     <span className="absolute top-2 bg-green-500 text-white text-xs px-2 py-1 rounded">
@@ -173,17 +189,22 @@ export default function Category() {
                     Add to Cart
                   </button>
                 </div>
+
                 <h3 className="text-md font-semibold text-gray-900 mt-2">
                   {product.name}
                 </h3>
+
                 <p className="text-gray-600">
-                  Rwf{Number(product.price).toFixed(2)}{" "}
-                  {product.originalPrice && (
-                    <span className="line-through text-gray-500 ml-2">
-                      Rwf{Number(product.originalPrice).toFixed(2)}
-                    </span>
-                  )}
-                </p>
+  {product.price && !isNaN(Number(product.price.replace(/[^\d.-]/g, '').trim()))
+    ? `Rwf ${Number(product.price.replace(/[^\d.-]/g, '').trim()).toFixed(2)}`
+    : "Price Unavailable"}
+  {product.originalPrice && !isNaN(Number(product.originalPrice)) && (
+    <span className="line-through text-gray-500 ml-2">
+      Rwf {Number(product.originalPrice).toFixed(2)}
+    </span>
+  )}
+</p>
+
                 <div className="flex items-center gap-1 mt-1">
                   {Array.from({ length: 5 }, (_, i) => (
                     <span
@@ -201,19 +222,20 @@ export default function Category() {
               </div>
             ))}
           </div>
+
+          {/* Show More / Less Button */}
           {visibleCount < products.length && (
-          <div className="text-center mt-6">
-            <button
-              onClick={() => setShowAll((prev) => !prev)}
-              className="text-white bg-black p-2 rounded-lg mx-auto hover:text-gray-900 flex items-center text-sm font-medium gap-1 transition-colors"
-            >
-              {showAll ? "Show Less" : "Show More"}
-            </button>
-          </div>
+            <div className="text-center mt-6">
+              <button
+                onClick={() => setShowAll((prev) => !prev)}
+                className="text-white bg-black p-2 rounded-lg mx-auto hover:text-gray-900 flex items-center text-sm font-medium gap-1 transition-colors"
+              >
+                {showAll ? "Show Less" : "Show More"}
+              </button>
+            </div>
           )}
         </div>
       </div>
     </div>
   );
 }
-

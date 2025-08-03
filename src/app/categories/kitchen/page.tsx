@@ -14,7 +14,7 @@ export default function Kitchen() {
   return (
     <div className="bg-white">
       <div className="py-12 text-black">
-        <h1 className="text-3xl font-bold text-center m-10">
+        <h1 className="text-3xl font-bold text-center m-15">
           Kitchen Products
         </h1>
 
@@ -22,7 +22,7 @@ export default function Kitchen() {
           {KitchenProducts.map((product) => (
             <div key={product.id} className="group text-center relative">
               <div
-                className="relative h-64 w-full rounded-xl overflow-hidden shadow-md"
+                className="relative h-90 rounded-xl overflow-hidden shadow-md"
                 onMouseEnter={() => setHoveredId(product.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
@@ -31,7 +31,7 @@ export default function Kitchen() {
                   alt={product.name}
                   width={300}
                   height={500}
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105 w-full"
                 />
 
                 {hoveredId === product.id && (

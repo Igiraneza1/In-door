@@ -88,8 +88,8 @@ export default function Blog() {
             src={post.image}
             alt={post.title || "Blog image"}
             fill
-            className={`w-full object-cover group-hover:scale-105 transition-transform duration-300`}
-            sizes={viewMode === "list" ? "(max-width: 768px) 100vw, 192px" : "(max-width: 768px) 100vw, 300px"}
+            className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300`"
+      
           />
         </div>
         <div className={`p-4 ${viewMode === "list" ? "flex-1" : ""}`}>

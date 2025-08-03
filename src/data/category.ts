@@ -19,7 +19,7 @@ const categories = [
     name: "Kitchen",
     slug: "kitchen",
     image: "/image/kitchen/kitchen5 (3).png",
-    link: "/categories/kitcken",  
+    link: "/categories/kitchen",  
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const categories = [
     name: "Dinning",
     slug: "dinning",
     image: "/image/Dining/table19 (1).png",
-    link: "/categories/dinning", 
+    link: "/categories/dining", 
   },
 ];
 export default categories;

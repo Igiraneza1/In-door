@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function BlogPage3() {
   return (
-    <main className="max-w-3xl mx-auto px-4 py-10 text-black">
+    <main className="max-w-6xl mx-auto px-4 py-10 text-black">
       <h1 className="text-3xl font-bold mb-2 ">7 Ways to Decor Your Home Like a Professional</h1>
       <p className="text-sm text-gray-500 mb-4">Published on 2025-07-01</p>
       <Image src="/image/Living-room/sofa2.jpg" alt="7 Ways to Decor Your Home Like a Professional" width={800} height={450} className="rounded-lg mb-6 object-cover w-full" />

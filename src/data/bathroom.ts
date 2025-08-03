@@ -484,7 +484,7 @@ export const BathroomProducts = [
     id: 54,
     name: "Robinet",
     image: "/image/bathroom/robine.png",
-    price: 65000,
+    price: "Rwf 65000",
     originalPrice:"Rwf 75000",
     isNew: true,
     rating: 4.4,

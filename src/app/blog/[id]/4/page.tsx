@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function BlogPage4() {
   return (
-    <main className="max-w-3xl mx-auto px-4 py-10 text-black">
+    <main className="max-w-6xl mx-auto px-4 py-10 text-black">
       <h1 className="text-3xl font-bold mb-2">Inside a Beautiful Kitchen Organization</h1>
       <p className="text-sm text-gray-500 mb-4">Published on 2025-06-28</p>
       <Image src="/image/kitchen/kitchen.jpg" alt="Inside a Beautiful Kitchen Organization" width={800} height={450} className="rounded-lg mb-6 object-cover w-full" />

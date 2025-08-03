@@ -15,14 +15,14 @@ export default function LivingRoom() {
     <div className="bg-white">
       <div className="text-black">
         <div>
-          <h1 className="text-3xl font-bold text-center m-10">
+          <h1 className="text-3xl font-bold text-center m-15">
             Living Room Products
           </h1>
           <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {LivingRoomProducts.map((product) => (
               <div key={product.id} className="group text-center relative">
                 <div
-                  className="relative h-64 w-full rounded-xl overflow-hidden shadow-md"
+                  className="relative h-89  rounded-xl overflow-hidden shadow-md"
                   onMouseEnter={() => setHoveredId(product.id)}
                   onMouseLeave={() => setHoveredId(null)}
                 >
@@ -30,8 +30,8 @@ export default function LivingRoom() {
                     src={product.image}
                     alt={product.name}
                     width={300}
-                    height={500}
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    height={600}
+                    className="object-cover transition-transform duration-300 group-hover:scale-105 w-full h-full"
                   />
 
                   {hoveredId === product.id && (

@@ -10,7 +10,7 @@ import BlogPage9 from "./9/page";
 
 export default function BlogPage(){
    return(
-    <div className="bg-white max-w-8xl">
+    <div className="bg-white max-w-8xl mx-auto">
       <BlogPage1/>
       <BlogPage2/>
       <BlogPage3/>

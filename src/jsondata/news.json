@@ -10,41 +10,11 @@
     "discount": "50%",
     "description": "A compact and stylish loveseat for cozy spaces.\nSoft cushions provide lasting comfort.\nCrafted with premium fabric for a luxurious feel.\nPerfect for modern living rooms."
   },
-  {
-    "id": 2,
-    "image": "/image/bedroom/Table-lamp1.png",
-    "title": "Table Lamp",
-    "price": 22.0,
-    "rating": 5,
-    "originalPrice": 44.0,
-    "isNew": true,
-    "discount": "50%",
-    "description": "Brighten your space with this elegant table lamp.\nMinimalist design suits any decor style.\nEnergy-efficient LED bulb included.\nIdeal for desks, nightstands, or reading nooks."
-  },
-  {
-    "id": 3,
-    "image": "/image/bedroom/table lamp.png",
-    "title": " Beige Table Lamp",
-    "price": 24.0,
-    "rating": 4,
-    "isNew": true,
-    "discount": "50%",
-    "description": "Neutral tones to complement your interior.\nSoft lighting creates a warm ambiance.\nDurable base ensures stability.\nPerfect for bedrooms or living rooms."
-  },
-  {
-    "id": 4,
-    "image": "/image/bedroom/basket.png",
-    "title": "Basket",
-    "price": 30.0,
-    "rating": 4,
-    "isNew": true,
-    "discount": "50%",
-    "description": "A versatile storage basket made from natural fibers.\nIdeal for laundry, toys, or blankets.\nDurable and lightweight design.\nAdds rustic charm to your space."
-  },
+ 
   {
     "id": 5,
-    "image": "/image/kitchen/toaster.png",
-    "title": "Toaster",
+    "image": "/image/dining/Dining Table.png",
+    "title": "Round white dinning Table",
     "price": 40.0,
     "rating": 4,
     "isNew": true,
@@ -73,8 +43,8 @@
   },
   {
     "id": 8,
-    "image": "/image/dining/table15.png",
-    "title": "White Dining Table",
+    "image": "/image/dining/table19.png",
+    "title": "Round elegant dining table",
     "price": 30.0,
     "rating": 4,
     "isNew": true,
@@ -155,8 +125,8 @@
   
   {
     "id": 18,
-    "image": "/image/kitchen/toaster2.png",
-    "title": " Simple Toaster",
+    "image": "/image/bedroom/bed6.png",
+    "title": " Simple Bed Frame",
     "price": 20.0,
     "rating": 4,
     "isNew": true,
@@ -165,7 +135,7 @@
   },
   {
     "id": 19,
-    "image": "/image/kitchen/kitchen16.jpg",
+    "image": "/image/kitchen/kitchen16.png",
     "title": "Modern Kitchen Cupboard",
     "price": 60.0,
     "rating": 5,
@@ -185,7 +155,7 @@
   },
   {
     "id": 21,
-    "image": "/image/bathroom/bathtub4.png",
+    "image": "/image/bathroom/bathtub6.png",
     "title": "Soft Bathtub",
     "price": 45.0,
     "rating": 4,
@@ -195,7 +165,7 @@
   },
   {
     "id": 22,
-    "image": "/image/bathroom/s.png",
+    "image": "/image/bathroom/bathroom-cabinet2.png",
     "title": "Two Purpose Sink",
     "price": 30.0,
     "rating": 4,

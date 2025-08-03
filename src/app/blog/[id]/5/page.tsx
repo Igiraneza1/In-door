@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function BlogPage5() {
   return (
-    <main className="max-w-3xl mx-auto px-4 py-10 text-black">
+    <main className="max-w-6xl mx-auto px-4 py-10 text-black">
       <h1 className="text-3xl font-bold mb-2">Minimalist Kitchen Design Ideas That Work</h1>
       <p className="text-sm text-gray-500 mb-4">Published on 2025-04-28</p>
       <Image src="/image/kitchen/cabinet5.jpg" alt="Minimalist Kitchen Design Ideas That Work" width={800} height={450} className="rounded-lg mb-6 object-cover w-full" />

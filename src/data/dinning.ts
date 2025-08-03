@@ -103,7 +103,7 @@ export const DiningProducts =
     {
     "id": 11,
     "name": "Dining Table 1",
-    "image": "/image/dining/table1.jpg",
+    "image": "/image/dining/Dining Table.jpg",
     "price": "Rwf 200000",
     "originalPrice": "Rwf 230000",
     "isNew": true,
@@ -113,7 +113,7 @@ export const DiningProducts =
   {
     "id": 12,
     "name": "Dining Table 2",
-    "image": "/image/dining/table2.jpg",
+    "image": "/image/dining/Dining Table5.jpg",
     "price": "Rwf 210000",
     "originalPrice": "Rwf 240000",
     "isNew": false,
@@ -123,7 +123,7 @@ export const DiningProducts =
   {
     "id": 13,
     "name": "Dining Table 3",
-    "image": "/image/dining/table3.jpg",
+    "image": "/image/dining/Dining Table2.jpg",
     "price": "Rwf 220000",
     "originalPrice": "Rwf 250000",
     "isNew": true,
@@ -143,7 +143,7 @@ export const DiningProducts =
   {
     "id": 15,
     "name": "Dining Table 5",
-    "image": "/image/dining/table20.pngg",
+    "image": "/image/dining/table20.png",
     "price": "Rwf 240000",
     "originalPrice": "Rwf 270000",
     "isNew": true,
@@ -153,7 +153,7 @@ export const DiningProducts =
     {
     "id": 16,
     "name": "Dining Table 6",
-    "image": "/image/dining/table21.png",
+    "image": "/image/dining/Dining Table3.jpg",
     "price": "Rwf 250000",
     "originalPrice": "Rwf 280000",
     "isNew": false,
@@ -173,7 +173,7 @@ export const DiningProducts =
   {
     "id": 18,
     "name": "Dining Table 8",
-    "image": "/image/dining/table8.jpg",
+    "image": "/image/dining/table17.png",
     "price": "Rwf 270000",
     "originalPrice": "Rwf 300000",
     "isNew": false,
@@ -204,12 +204,12 @@ export const DiningProducts =
   {
     "id": 42,
     "name": "Cutlery Organizer",
-    "image": "/image/dining/dining5.jpg",
+    "image": "/image/dining/dining8.jpg",
     "price": "Rwf 12000",
     "originalPrice": "Rwf 15000",
     "isNew": false,
     "rating": 4.0,
-    "description": "Wooden cutlery holder to organize forks, knives, and spoons neatly on the table. Space-saving and elegant."
+    "description": "Wooden cutlery  Space-saving and elegant design for dining room."
   },
   {
     "id": 43,
@@ -244,27 +244,27 @@ export const DiningProducts =
   {
     "id": 46,
     "name": "Dining Chair Set (4)",
-    "image": "/image/dining/table15.png",
+    "image": "/image/dining/Dining Table7.jpg",
     "price": "Rwf 120000",
     "originalPrice": "Rwf 135000",
     "isNew": true,
     "rating": 4.2,
     "description": "Set of 4 cushioned dining chairs designed for comfort and elegance."
   },
-  {
-    "id": 47,
-    "name": "Glass Top Dining Table",
-    "image": "/image/dining/table4.jpg",
-    "price": "Rwf 310000",
-    "originalPrice": "Rwf 345000",
-    "isNew": false,
-    "rating": 4.4,
-    "description": "Modern glass-top dining table with metal frame for a contemporary dining experience."
-  },
+  // {
+  //   "id": 47,
+  //   "name": "Glass Top Dining Table",
+  //   "image": "/image/dining/table4.jpg",
+  //   "price": "Rwf 310000",
+  //   "originalPrice": "Rwf 345000",
+  //   "isNew": false,
+  //   "rating": 4.4,
+  //   "description": "Modern glass-top dining table with metal frame for a contemporary dining experience."
+  // },
   {
     "id": 48,
     "name": "Decorative Dining Table",
-    "image": "/image/dining/table14.png",
+    "image": "/image/dining/Dining Table1.jpg",
     "price": "Rwf 28000",
     "originalPrice": "Rwf 35000",
     "isNew": true,

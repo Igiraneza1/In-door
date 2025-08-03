@@ -8,7 +8,7 @@ export default function Newsletter() {
          <section className="relative h-72 flex items-center justify-center bg-gray-100 mt-8">
                  <div className="absolute left-0 h-full w-1/3">
                    <Image
-                     src="/image/furniture/bedroom.png"
+                     src="/image/bedroom/bedroom.png"
                      alt="dresser"
                      fill
                      className="object-cover"

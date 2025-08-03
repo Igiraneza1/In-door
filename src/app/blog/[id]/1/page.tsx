@@ -2,10 +2,10 @@ import Image from 'next/image'
 
 export default function BlogPage1() {
   return (
-    <main className="max-w-3xl mx-auto px-4 py-10 text-black">
-      <h1 className="text-3xl font-bold mb-2">Decor Your Bedroom for Your Children</h1>
+    <main className="max-w-6xl mx-auto px-4 py-10 text-black ">
+      <h1 className="text-3xl font-bold m-10">Decor Your Bedroom for Your Children</h1>
+      <Image src="/image/bedroom/bed12.jpg" alt="Decor Your Bedroom for Your Children" width={800} height={250} className=" h-160 rounded-lg mb-6 object-cover w-full" />
       <p className="text-sm text-gray-500 mb-4">Published on 2025-06-15</p>
-      <Image src="/image/bedroom/bedroom11.jpg" alt="Decor Your Bedroom for Your Children" width={800} height={450} className="rounded-lg mb-6 object-cover w-full" />
       <p className="text-lg mb-6">Explore more about Decor Your Bedroom for Your Children</p>
       <div className="space-y-4 text-base leading-relaxed">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
