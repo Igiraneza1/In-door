@@ -12,7 +12,7 @@
     "title": "Wooden Bedroom",
     "price": "$199.99",
     "category": "Beds",
-    "imageUrl": "/image/bedroom/bed3.jpg",
+    "imageUrl": "/image/bedroom/bed2.jpg",
     "description": "Elegant bed  made from solid tree oak."
   },
   {
@@ -20,7 +20,7 @@
     "title": "Modern Kitchen",
     "price": "$299.99",
     "category": "Kitchen",
-    "imageUrl": "/image/kitchen/kitchen6.jpg",
+    "imageUrl": "/image/kitchen/cabinet8.png",
     "description": "Spacious and stylish kitchen  with soft cushions."
   },
   {
@@ -36,15 +36,15 @@
     "title": "Livingroom Chair",
     "price": "$89.99",
     "category": "chairs",
-    "imageUrl": "/image/Living-room/sofa12.png",
+    "imageUrl": "/image/Living-room/sofa13.png",
     "description": "Ergonomic office chair with adjustable height."
   },
   {
     "id": "6",
-    "title": "Kitchen Table",
+    "title": "Dining table Table",
     "price": "$79.99",
     "category": "tables",
-    "imageUrl": "/image/dining/table1.jpg",
+    "imageUrl": "/image/dining/table21.png",
     "description": "Modern coffee table made from tempered glass."
   },
   {
@@ -52,7 +52,7 @@
     "title": "Single Bed",
     "price": "$399.99",
     "category": "beds",
-    "imageUrl": "/image/bedroom/bedroom9.png",
+    "imageUrl": "/image/bedroom/bed5.jpeg",
     "description": "Luxurious recliner sofa with soft leather finish."
   },
   {
@@ -68,7 +68,7 @@
     "title": "All in one Kitchen",
     "price": "$59.99",
     "category": "Kitchen",
-    "imageUrl": "/image/kitchen/kitchen6.jpg",
+    "imageUrl": "/image/kitchen/cabinet7.jpeg",
     "description": "Classic wooden rocking kitchen with smooth furniture."
   },
   {
@@ -76,7 +76,7 @@
     "title": "Waterproof Bed",
     "price": "$39.99",
     "category": "beds",
-    "imageUrl": "/image/bedroom/bedroom10.png",
+    "imageUrl": "/image/bedroom/bed.jpeg",
     "description": "Compact Water proof  bed with more comfort"
   }
 ]

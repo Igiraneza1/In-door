@@ -1,25 +1,97 @@
 import Image from 'next/image'
+import Link from 'next/link'
+import Head from 'next/head'
 
 export default function BlogPage5() {
   return (
-    <main className="max-w-6xl mx-auto px-4 py-10 text-black">
-      <h1 className="text-3xl font-bold mb-2">Minimalist Kitchen Design Ideas That Work</h1>
-      <p className="text-sm text-gray-500 mb-4">Published on 2025-04-28</p>
-      <Image src="/image/kitchen/cabinet5.jpg" alt="Minimalist Kitchen Design Ideas That Work" width={800} height={450} className="rounded-lg mb-6 object-cover w-full" />
-      <p className="text-lg mb-6">Explore more about Minimalist Kitchen Design Ideas That Work</p>
-      <div className="space-y-4 text-base leading-relaxed">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-        <p>Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
-      </div>
-      <div className="mt-8 grid grid-cols-2 gap-4">
-        <Image src="/image/kitchen/cabinet2.jpg" alt="Supporting image 1" width={400} height={300} className="rounded-lg" />
-        <Image src="/image/kitchen/cabinet4.jpg" alt="Supporting image 2" width={400} height={300} className="rounded-lg" />
-      </div>
-      <div className="mt-10 p-4 bg-gray-100 rounded-lg">
-        <h2 className="text-xl font-semibold mb-2">Shop This Look</h2>
-        <p>Minimalist Kitchen Design Ideas That Work — <strong>$129.99</strong></p>
-        <button className="mt-2 px-4 py-2 bg-black text-white rounded-md">Shop Now</button>
-      </div>
-    </main>
+    <>
+      <Head>
+        <title>Minimalist Kitchen Design Ideas That Work </title>
+        <meta
+          name="description"
+          content="Discover minimalist kitchen design ideas to create a sleek, functional, and stylish kitchen space."
+        />
+      </Head>
+
+      <main className="max-w-6xl mx-auto px-4 py-10 text-gray-900">
+        {/* Back link */}
+        <Link
+          href="/blogs"
+          className="text-sm text-blue-600 hover:underline mb-6 block"
+          aria-label="Back to all blogs"
+        >
+          ← Back to all blogs
+        </Link>
+
+        <article>
+          <h1 className="text-4xl font-extrabold mb-4">Minimalist Kitchen Design Ideas That Work</h1>
+          <p className="text-sm text-gray-500 mb-6">Published on April 28, 2025 · By HomeStyle Team</p>
+
+          <Image
+            src="/image/kitchen/kitchen19.jpeg"
+            alt="Sleek minimalist kitchen design with clean lines and modern appliances"
+            width={800}
+            height={450}
+            className="rounded-lg mb-8 object-cover w-full"
+            priority
+          />
+
+          <p className="text-lg mb-8 leading-relaxed">
+            Embracing minimalism in kitchen design is about creating a space that feels open, airy, and free of clutter. This post explores essential ideas to achieve a minimalist kitchen without sacrificing functionality or style.
+          </p>
+
+          <section className="space-y-6 text-base text-gray-700 leading-relaxed">
+            <p>
+              Focus on clean lines and neutral color palettes such as whites, grays, and natural wood tones. These colors create a calm and inviting atmosphere.
+            </p>
+            <p>
+              Use smart storage solutions to hide away appliances and utensils. Minimalism isn’t about having fewer items, but about thoughtful placement and organization.
+            </p>
+            <p>
+              Incorporate natural light and reflective surfaces to make your kitchen appear larger and more open.
+            </p>
+            <p>
+              Add texture with natural materials like stone countertops or wooden cabinetry to keep the minimalist space from feeling cold or sterile.
+            </p>
+          </section>
+
+          <aside className="mt-12">
+            <h2 className="text-black text-2xl font-semibold mb-4">You may also like</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <Image
+                src="/image/kitchen/cabinet11.jpeg"
+                alt="Minimalist kitchen cabinet with handle-less drawers"
+                width={400}
+                height={300}
+                className="rounded-lg"
+              />
+              <Image
+                src="/image/kitchen/cabinet12.jpeg"
+                alt="Modern kitchen with open shelving and minimal decor"
+                width={400}
+                height={300}
+                className="rounded-lg"
+              />
+            </div>
+          </aside>
+
+          <aside className="mt-12 p-6 bg-gray-100 rounded-lg max-w-sm shadow-md">
+            <h2 className="text-xl font-semibold mb-3">Shop This Look</h2>
+            <p>
+              Minimalist Kitchen Organizer Set — <strong>$129.99</strong>
+            </p>
+            <a
+              href="https://yourshop.com/minimalist-kitchen-set"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-4 px-5 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition"
+              aria-label="Shop minimalist kitchen organizer set"
+            >
+              Shop Now
+            </a>
+          </aside>
+        </article>
+      </main>
+    </>
   )
 }

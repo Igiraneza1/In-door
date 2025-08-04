@@ -2,7 +2,7 @@ export default function Intro() {
   return (
     <div className="bg-white mx-auto p-4 sm:p-6 md:p-8 max-w-7xl">
       <main>
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight text-center md:text-left text-black">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl mb-6 leading-tight text-center md:text-left text-black">
           We believe in sustainable <br />
           decor. We are passionate about <br />
           life at home.

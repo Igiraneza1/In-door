@@ -1,25 +1,97 @@
 import Image from 'next/image'
+import Link from 'next/link'
+import Head from 'next/head'
 
 export default function BlogPage6() {
   return (
-    <main className="max-w-6xl mx-auto px-4 py-10 text-black">
-      <h1 className="text-3xl font-bold mb-2">Modern Texas Home is Kid-Friendly</h1>
-      <p className="text-sm text-gray-500 mb-4">Published on 2025-05-20</p>
-      <Image src="/image/Living-room/sofa7.jpg" alt="Modern Texas Home is Kid-Friendly" width={800} height={450} className="rounded-lg mb-6 object-cover w-full" />
-      <p className="text-lg mb-6">Explore more about Modern Texas Home is Kid-Friendly</p>
-      <div className="space-y-4 text-base leading-relaxed">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-        <p>Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
-      </div>
-      <div className="mt-8 grid grid-cols-2 gap-4">
-        <Image src="/image/Living-room/chair16.jpg" alt="Supporting image 1" width={400} height={300} className="rounded-lg" />
-        <Image src="/image/Living-room/chair15.jpg" alt="Supporting image 2" width={400} height={300} className="rounded-lg" />
-      </div>
-      <div className="mt-10 p-4 bg-gray-100 rounded-lg">
-        <h2 className="text-xl font-semibold mb-2">Shop This Look</h2>
-        <p>Modern Texas Home is Kid-Friendly — <strong>$179.99</strong></p>
-        <button className="mt-2 px-4 py-2 bg-black text-white rounded-md">Shop Now</button>
-      </div>
-    </main>
+    <>
+      <Head>
+        <title>Modern Texas Home is Kid-Friendly </title>
+        <meta
+          name="description"
+          content="Explore how modern Texas homes can be stylish and kid-friendly with smart design ideas for families."
+        />
+      </Head>
+
+      <main className="max-w-6xl mx-auto px-4 py-10 text-gray-900">
+        {/* Back link */}
+        <Link
+          href="/blog"
+          className="text-sm text-gray-700 hover:underline mb-6 block"
+          aria-label="Back to blog list"
+        >
+          ← Back to Blog
+        </Link>
+
+        <article>
+          <h1 className="text-4xl font-extrabold mb-4">Modern Texas Home is Kid-Friendly</h1>
+          <p className="text-sm text-gray-500 mb-6">Published on May 20, 2025 · By HomeStyle Team</p>
+
+          <Image
+            src="/image/Living-room/sofa7.jpg"
+            alt="Cozy modern living room in Texas home designed to be kid-friendly"
+            width={800}
+            height={450}
+            className="rounded-lg mb-8 object-cover w-full"
+            priority
+          />
+
+          <p className="text-lg mb-8 leading-relaxed">
+            Designing a kid-friendly home doesn’t mean sacrificing style. This modern Texas home strikes the perfect balance between practical family living and sleek, contemporary design.
+          </p>
+
+          <section className="space-y-6 text-base text-gray-700 leading-relaxed">
+            <p>
+              Durable materials and furniture are essential for families with children. Think stain-resistant fabrics, rounded edges, and washable surfaces.
+            </p>
+            <p>
+              Create plenty of storage options for toys, books, and art supplies. Clever built-ins and multi-functional furniture help keep clutter out of sight.
+            </p>
+            <p>
+              Open floor plans allow parents to keep an eye on kids while cooking or working. Large windows bring in natural light, creating a cheerful and inviting atmosphere.
+            </p>
+            <p>
+              Lastly, add pops of color and fun elements like play areas or chalkboard walls to keep the space lively and engaging for little ones.
+            </p>
+          </section>
+
+          <aside className="mt-12">
+            <h2 className="text-black text-2xl font-semibold mb-4">You may also like</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <Image
+                src="/image/Living-room/sofa21.jpeg"
+                alt="Modern family living room with soft sofa and colorful pillows"
+                width={400}
+                height={300}
+                className="rounded-lg"
+              />
+              <Image
+                src="/image/Living-room/sofa22.jpeg"
+                alt="Bright, airy living room perfect for kids and adults"
+                width={400}
+                height={300}
+                className="rounded-lg"
+              />
+            </div>
+          </aside>
+
+          <aside className="mt-12 p-6 bg-gray-100 rounded-lg max-w-sm shadow-md">
+            <h2 className="text-xl font-semibold mb-3">Shop This Look</h2>
+            <p>
+              Durable Modern Sofa — <strong>$179.99</strong>
+            </p>
+            <a
+              href="https://yourshop.com/durable-modern-sofa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-4 px-5 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition"
+              aria-label="Shop durable modern sofa"
+            >
+              Shop Now
+            </a>
+          </aside>
+        </article>
+      </main>
+    </>
   )
 }
